@@ -4,7 +4,7 @@ public class Main {
         FactoriaCarreraYBicicleta fac1 = new FactoriaCarretera();
         FactoriaCarreraYBicicleta fac2 = new FactoriaMontania();
 
-        Bicicleta bici1 = fac1.crearBicicleta();
+        Bicicleta bici1 = fac1.crearBicicleta(); //carretera
         Bicicleta bici2 = fac2.crearBicicleta();
 
         Carrera car1 = fac1.crearCarrera();
@@ -19,7 +19,13 @@ public class Main {
         car1.aniadirBici(bici1);
         car1.aniadirBici(bici2);
 
-        System.out.printf("Los participantes de la carrera 1 son las bicis con id ");
+        car1.start();
+        car2.start();
+
+        car1.run();
+        car2.run();
+
+       System.out.printf("Los participantes de la carrera 1 son las bicis con id ");
 
         for (Bicicleta bici: car1.getParticipantes()){
             System.out.printf(" " + bici.id + " y tipo " + bici.tipo + "; ");
