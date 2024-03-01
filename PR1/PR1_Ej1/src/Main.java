@@ -7,8 +7,8 @@ public class Main {
         Bicicleta bici1 = fac1.crearBicicleta(); //carretera
         Bicicleta bici2 = fac2.crearBicicleta();
 
-        Carrera car1 = fac1.crearCarrera();
-        Carrera car2 = fac2.crearCarrera();
+        Carrera car1 = fac1.crearCarrera("Carrera 1");
+        Carrera car2 = fac2.crearCarrera("Carrera 2");
 
         bici1.mostrarTipo();
         bici2.mostrarTipo();
@@ -19,17 +19,12 @@ public class Main {
         car1.aniadirBici(bici1);
         car1.aniadirBici(bici2);
 
-        car1.start();
-        car2.start();
-
         car1.run();
-        car2.run();
 
-       System.out.printf("Los participantes de la carrera 1 son las bicis con id ");
+       System.out.printf("Los participantes de la carrera " + car1.getNombre() + " son las bicis con id ");
 
         for (Bicicleta bici: car1.getParticipantes()){
             System.out.printf(" " + bici.id + " y tipo " + bici.tipo + "; ");
-            System.out.println("prueba\n");
         }
     }
 }

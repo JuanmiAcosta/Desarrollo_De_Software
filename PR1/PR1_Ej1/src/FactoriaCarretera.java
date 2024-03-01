@@ -1,7 +1,7 @@
 public class FactoriaCarretera implements FactoriaCarreraYBicicleta{
     @Override
-    public Carrera crearCarrera() {
-        return new CarreraCarretera();
+    public Carrera crearCarrera(String nombre) {
+        return new CarreraCarretera(nombre);
     }
 
     @Override

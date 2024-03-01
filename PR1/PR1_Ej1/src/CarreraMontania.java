@@ -1,7 +1,9 @@
 public class CarreraMontania extends Carrera{
 
-    public CarreraMontania(){
+    public CarreraMontania(String nombre){
         tipo="montania";
+        carreras.add(this);
+        nombreCarrera=nombre;
     }
     @Override
     public void mostrarTipo() {
@@ -12,7 +14,9 @@ public class CarreraMontania extends Carrera{
     public void run() {
         try {
             Thread.sleep(this.duracion * 1000);
-            System.out.println("Terminé montania\n");
+            for (Carrera carrera: this.getCarreras()){
+                System.out.printf("Terminada carrera " + carrera.getNombre() +"\n");
+            }
         } catch (InterruptedException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();

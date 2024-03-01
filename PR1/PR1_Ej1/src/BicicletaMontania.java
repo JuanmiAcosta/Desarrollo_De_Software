@@ -4,7 +4,7 @@ public class BicicletaMontania extends Bicicleta{
 
     public BicicletaMontania(){
         Random rand = new Random();
-        id = rand.nextInt(11);
+        id = rand.nextInt(101);
         tipo = "montania";
     }
     @Override

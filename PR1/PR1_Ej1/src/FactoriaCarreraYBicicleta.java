@@ -1,6 +1,6 @@
 public interface FactoriaCarreraYBicicleta {
 
-    Carrera crearCarrera();
+    Carrera crearCarrera(String nombre);
 
     Bicicleta crearBicicleta();
 }
