@@ -3,8 +3,7 @@ import java.util.ArrayList;
 public abstract class Carrera {
 
     private ArrayList<Bicicleta> participantes = new ArrayList<>();
-    protected int duracion = 60;
-
+    protected int duracionCarrera = 60;
     protected String tipo = "normal";
 
     public abstract void mostrarTipo();
