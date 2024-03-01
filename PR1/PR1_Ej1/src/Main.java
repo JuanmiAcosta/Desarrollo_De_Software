@@ -29,6 +29,7 @@ public class Main {
 
         for (Bicicleta bici: car1.getParticipantes()){
             System.out.printf(" " + bici.id + " y tipo " + bici.tipo + "; ");
+            System.out.println("prueba\n");
         }
     }
 }

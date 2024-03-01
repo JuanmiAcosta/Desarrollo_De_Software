@@ -3,11 +3,15 @@ import java.util.ArrayList;
 public abstract class Carrera implements Runnable{
 
     private ArrayList<Bicicleta> participantes = new ArrayList<>();
+<<<<<<< HEAD
 
     private Thread hilo;
 
     protected int duracion = 10;
 
+=======
+    protected int dura = 60;
+>>>>>>> 83a029a4bdf7634d6bb0223802c537997d451447
     protected String tipo = "normal";
 
     public abstract void mostrarTipo();
