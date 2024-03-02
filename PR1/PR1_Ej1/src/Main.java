@@ -4,31 +4,14 @@ public class Main {
         FactoriaCarreraYBicicleta fac1 = new FactoriaCarretera();
         FactoriaCarreraYBicicleta fac2 = new FactoriaMontania();
 
-        Bicicleta bici1 = fac1.crearBicicleta(); //carretera
-        Bicicleta bici2 = fac2.crearBicicleta();
-
         Carrera car1 = fac1.crearCarrera();
         Carrera car2 = fac2.crearCarrera();
 
-        bici1.mostrarTipo();
-        bici2.mostrarTipo();
+        Thread t_car1 = new Thread(car1);
+        Thread t_car2 = new Thread(car2);
 
-        car1.mostrarTipo();
-        car2.mostrarTipo();
+        t_car1.start();
+        t_car2.start();
 
-        car1.aniadirBici(bici1);
-        car1.aniadirBici(bici2);
-
-        car1.start();
-        car2.start();
-
-        car1.run();
-        car2.run();
-
-       System.out.printf("Los participantes de la carrera 1 son las bicis con id ");
-
-        for (Bicicleta bici: car1.getParticipantes()){
-            System.out.printf(" " + bici.id + " y tipo " + bici.tipo + "; ");
-        }
     }
 }
