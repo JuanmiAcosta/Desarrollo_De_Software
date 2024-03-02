@@ -5,14 +5,12 @@ public abstract class Carrera implements Runnable{
 
     private ArrayList<Bicicleta> participantes = new ArrayList<>();
 
-    public static int NUM_BICIS=10;
+    private ArrayList<Thread> hilodBicicletas = new ArrayList<>();
 
-    protected int duracion = 10;
-
+    protected int duracion = 60;
     protected String tipo = "normal";
 
     public abstract void mostrarTipo();
-
 
     public void aniadirBici(Bicicleta bici){
         this.participantes.add(bici);
@@ -22,36 +20,26 @@ public abstract class Carrera implements Runnable{
         return participantes;
     }
 
-    @Override
-    public synchronized void run(){
-        System.out.println(Thread.currentThread().getName() + " is starting");
+    public ArrayList<Thread> getHilosBicicletas(){
+        return hilodBicicletas;
+    }
 
-        try {
-
-            Boolean bici_montania;
-            Random tipo_bici = new Random();
-
-            for (int i=0; i<NUM_BICIS; i++) {
-                bici_montania = tipo_bici.nextBoolean();
-                if (bici_montania){
-                    FactoriaCarreraYBicicleta fac2 = new FactoriaMontania();
-                    Bicicleta bici = fac2.crearBicicleta();
-                    bici.setId(i);
-                    this.aniadirBici(bici);
-                }else{
-                    FactoriaCarreraYBicicleta fac2 = new FactoriaCarretera();
-                    Bicicleta bici = fac2.crearBicicleta();
-                    bici.setId(i);
-                    this.aniadirBici(bici);
-                }
+    public ArrayList<Bicicleta> getRetirados(int n){
+        Random ran = new Random();
+        ArrayList<Bicicleta> retirados = new ArrayList<>();
+        int retirado=0;
+        Bicicleta actual;
+        while(retirados.size()<n){
+            for (int i=0;i<n;i++){
+                retirado = (int) (Math.random() * 10);
+                actual=getParticipantes().get(retirado);
+                if(!retirados.contains(actual) && !getHilosBicicletas().get(retirado).isAlive()) retirados.add(getParticipantes().get(retirado));
             }
-
-            Thread.sleep(1000*duracion);
-
-        } catch(InterruptedException ie) {
-            ie.printStackTrace();
         }
+        return retirados;
+    }
 
-        System.out.println(Thread.currentThread().getName() + " is finished");
+    public void addHilosBicis(Thread hilo){
+        hilodBicicletas.add(hilo);
     }
 }
