@@ -1,17 +1,14 @@
 import java.util.ArrayList;
+import java.util.Random;
 
 public abstract class Carrera implements Runnable{
 
     private ArrayList<Bicicleta> participantes = new ArrayList<>();
-<<<<<<< HEAD
 
-    private Thread hilo;
+    private ArrayList<Thread> hilodBicicletas = new ArrayList<>();
 
-    protected int duracion = 10;
-
-=======
+    protected int duracion = 5;
     protected int dura = 60;
->>>>>>> 83a029a4bdf7634d6bb0223802c537997d451447
     protected String tipo = "normal";
 
     public abstract void mostrarTipo();
@@ -20,15 +17,31 @@ public abstract class Carrera implements Runnable{
     public void aniadirBici(Bicicleta bici){
         this.participantes.add(bici);
     }
- //EMpiezan las dos carreras, ya que están sincronizadas
-    public void start(){
-        if(hilo==null){
-            hilo=new Thread(this);
-            hilo.start();
-        }
-    }
 
     public ArrayList<Bicicleta> getParticipantes(){
         return participantes;
+    }
+
+    public ArrayList<Thread> getHilosBicicletas(){
+        return hilodBicicletas;
+    }
+
+    public ArrayList<Bicicleta> getRetirados(int n){
+        Random ran = new Random();
+        ArrayList<Bicicleta> retirados = new ArrayList<>();
+        int retirado=0;
+        Bicicleta actual;
+        while(retirados.size()<n){
+            for (int i=0;i<n;i++){
+                retirado = (int) (Math.random() * 10);
+                actual=getParticipantes().get(retirado);
+                if(!retirados.contains(actual) && !getHilosBicicletas().get(retirado).isAlive()) retirados.add(getParticipantes().get(retirado));
+            }
+        }
+        return retirados;
+    }
+
+    public void addHilosBicis(Thread hilo){
+        hilodBicicletas.add(hilo);
     }
 }

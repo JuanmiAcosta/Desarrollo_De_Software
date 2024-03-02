@@ -1,35 +1,65 @@
+import java.util.ArrayList;
+
 public class Main {
+    static final int nBicicletas = 10;
     public static void main(String[] args) {
 
         FactoriaCarreraYBicicleta fac1 = new FactoriaCarretera();
         FactoriaCarreraYBicicleta fac2 = new FactoriaMontania();
 
-        Bicicleta bici1 = fac1.crearBicicleta(); //carretera
-        Bicicleta bici2 = fac2.crearBicicleta();
-
         Carrera car1 = fac1.crearCarrera();
         Carrera car2 = fac2.crearCarrera();
 
-        bici1.mostrarTipo();
-        bici2.mostrarTipo();
+        Bicicleta bici1;
+        System.out.println("\nInscripsciones de Carrera Carretera:");
+        for(int i=0;i<nBicicletas;i++){
+            bici1= fac1.crearBicicleta(i+1);
+            Thread hilo = new Thread(bici1);
+            car1.addHilosBicis(hilo);
+            car1.aniadirBici(bici1);
+            System.out.println("Bicicleta con ID: "+bici1.id);
+        }
 
-        car1.mostrarTipo();
-        car2.mostrarTipo();
+        System.out.println("\nInscripsciones de Carrera Montaña:");
+        for(int i=0;i<nBicicletas;i++) {
+            bici1 = fac2.crearBicicleta(i+1);
+            Thread hilo = new Thread(bici1);
+            car2.addHilosBicis(hilo);
+            car2.aniadirBici(bici1);
+            System.out.println("Bicicleta con ID: " + bici1.id);
+        }
 
-        car1.aniadirBici(bici1);
-        car1.aniadirBici(bici2);
+        Thread hilo1 = new Thread(car1);
+        Thread hilo2 = new Thread(car2);
 
-        car1.start();
-        car2.start();
+        System.out.println("\nEmpiezan ambas carreras a la vez \n");
+        hilo1.start();
+        hilo2.start();
+        ArrayList<Bicicleta> retirados1 = car1.getRetirados(2);
+        ArrayList<Bicicleta> retirados2 = car2.getRetirados(1);
 
-        car1.run();
-        car2.run();
+        System.out.println("\nSe retiro de la Carrera carretera: ");
+        for(int i=0;i<retirados1.size();i++){
+            System.out.println("Bicicleta con ID: " +  retirados1.get(i).id + " y tipo " + retirados1.get(i).tipo);
+        }
 
-       System.out.printf("Los participantes de la carrera 1 son las bicis con id ");
+        System.out.println("\nSe retiro de la Carrera montaña: ");
+        for(int i=0;i<retirados2.size();i++){
+            System.out.println("Bicicleta con ID: " +  retirados2.get(i).id + " y tipo " + retirados2.get(i).tipo);
+        }
+
+        /*
+       System.out.printf("\nLos participantes de la carrera 1 son las bicis con id: \n");
 
         for (Bicicleta bici: car1.getParticipantes()){
-            System.out.printf(" " + bici.id + " y tipo " + bici.tipo + "; ");
-            System.out.println("prueba\n");
+            System.out.printf(" " + bici.id + " y tipo " + bici.tipo + "; " + "\n");
         }
+
+        System.out.printf("\nLos participantes de la carrera 1 son las bicis con id: \n");
+
+        for (Bicicleta bici: car2.getParticipantes()){
+            System.out.printf(" " + bici.id + " y tipo " + bici.tipo + "; " + "\n");
+        }
+        */
     }
 }

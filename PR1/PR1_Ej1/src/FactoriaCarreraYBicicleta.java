@@ -2,5 +2,5 @@ public interface FactoriaCarreraYBicicleta {
 
     Carrera crearCarrera();
 
-    Bicicleta crearBicicleta();
+    Bicicleta crearBicicleta(int id);
 }

@@ -1,4 +1,4 @@
-public abstract class Bicicleta {
+public abstract class Bicicleta implements Runnable{
     protected int id = 0;
     protected String tipo = "normal";
 

@@ -5,7 +5,7 @@ public class FactoriaMontania implements FactoriaCarreraYBicicleta{
     }
 
     @Override
-    public Bicicleta crearBicicleta() {
-        return new BicicletaMontania();
+    public Bicicleta crearBicicleta(int id) {
+        return new BicicletaMontania(id);
     }
 }

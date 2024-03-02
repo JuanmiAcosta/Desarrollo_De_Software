@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.Random;
+
 public class CarreraMontania extends Carrera{
 
     public CarreraMontania(){
@@ -11,12 +14,14 @@ public class CarreraMontania extends Carrera{
     @Override
     public void run() {
         try {
+            for(int i=0;i<getHilosBicicletas().size();i++){
+                getHilosBicicletas().get(i).start();
+            }
             Thread.sleep(this.duracion * 1000);
-            System.out.println("Terminé montania\n");
+            System.out.println("\nTermino la carrera de montaña");
         } catch (InterruptedException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
     }
-
 }
