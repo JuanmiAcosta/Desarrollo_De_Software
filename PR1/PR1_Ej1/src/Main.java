@@ -2,7 +2,7 @@ import java.util.ArrayList;
 
 public class Main {
     static final int nBicicletas = 10;
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
 
         FactoriaCarreraYBicicleta fac1 = new FactoriaCarretera();
         FactoriaCarreraYBicicleta fac2 = new FactoriaMontania();
@@ -12,6 +12,7 @@ public class Main {
 
         Bicicleta bici1;
         System.out.println("\nInscripsciones de Carrera Carretera:");
+
         for(int i=0;i<nBicicletas;i++){
             bici1= fac1.crearBicicleta(i+1);
             Thread hilo = new Thread(bici1);
@@ -38,6 +39,7 @@ public class Main {
         ArrayList<Bicicleta> retirados1 = car1.getRetirados(2);
         ArrayList<Bicicleta> retirados2 = car2.getRetirados(1);
 
+        Thread.sleep(500); //Sincronizar output
         System.out.println("\nSe retiro de la Carrera carretera: ");
         for(int i=0;i<retirados1.size();i++){
             System.out.println("Bicicleta con ID: " +  retirados1.get(i).id + " y tipo " + retirados1.get(i).tipo);
@@ -48,18 +50,5 @@ public class Main {
             System.out.println("Bicicleta con ID: " +  retirados2.get(i).id + " y tipo " + retirados2.get(i).tipo);
         }
 
-        /*
-       System.out.printf("\nLos participantes de la carrera 1 son las bicis con id: \n");
-
-        for (Bicicleta bici: car1.getParticipantes()){
-            System.out.printf(" " + bici.id + " y tipo " + bici.tipo + "; " + "\n");
-        }
-
-        System.out.printf("\nLos participantes de la carrera 1 son las bicis con id: \n");
-
-        for (Bicicleta bici: car2.getParticipantes()){
-            System.out.printf(" " + bici.id + " y tipo " + bici.tipo + "; " + "\n");
-        }
-        */
     }
 }

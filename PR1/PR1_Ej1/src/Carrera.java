@@ -7,12 +7,10 @@ public abstract class Carrera implements Runnable{
 
     private ArrayList<Thread> hilodBicicletas = new ArrayList<>();
 
-    protected int duracion = 5;
-    protected int dura = 60;
+    protected int duracion = 60;
     protected String tipo = "normal";
 
     public abstract void mostrarTipo();
-
 
     public void aniadirBici(Bicicleta bici){
         this.participantes.add(bici);
