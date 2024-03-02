@@ -3,7 +3,7 @@ public class BicicletaCarretera extends Bicicleta{
 
     public BicicletaCarretera(){
         Random rand = new Random();
-        id = rand.nextInt(101);
+        id = rand.nextInt(11);
         tipo = "carretera";
     }
     @Override
