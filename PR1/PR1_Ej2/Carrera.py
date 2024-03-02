@@ -9,7 +9,7 @@ class Carrera(ABC):
         pass
 
     def aniadirBici(self,bici):
-        self.lista.append(bici)
+        self.participantes.append(bici)
 
     def getParticipantes(self):
         return self.participantes
