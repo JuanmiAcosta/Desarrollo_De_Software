@@ -7,7 +7,7 @@ public abstract class Carrera implements Runnable{
 
     private ArrayList<Thread> hilodBicicletas = new ArrayList<>();
 
-    protected int duracion = 60;
+    protected int duracion = 10;
     protected String tipo = "normal";
 
     public abstract void mostrarTipo();
