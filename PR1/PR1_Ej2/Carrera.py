@@ -13,3 +13,7 @@ class Carrera(ABC):
 
     def getParticipantes(self):
         return self.participantes
+
+    @abstractmethod
+    def run(self):
+        pass
