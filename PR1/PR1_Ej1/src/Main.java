@@ -39,7 +39,7 @@ public class Main {
         ArrayList<Bicicleta> retirados1 = car1.getRetirados(2);
         ArrayList<Bicicleta> retirados2 = car2.getRetirados(1);
 
-        Thread.sleep(5000); //Sincronizar output
+        Thread.sleep(10000); //Sincronizar output
         System.out.println("\nSe retiro de la Carrera carretera: ");
         for(int i=0;i<retirados1.size();i++){
             System.out.println("Bicicleta con ID: " +  retirados1.get(i).id + " y tipo " + retirados1.get(i).tipo);
