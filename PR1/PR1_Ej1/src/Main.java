@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Random;
 
 public class Main {
     public static void main(String[] args) throws InterruptedException {
@@ -10,7 +11,8 @@ public class Main {
         Carrera car2 = fac2.crearCarrera();
 
         Bicicleta bici1;
-        int nBicicletas = (int) (Math.random() * 100);
+        Random random = new Random();
+        int nBicicletas = random.nextInt(11) + 10;
         System.out.println("En cada carrera vamos a tener: "+nBicicletas+" inscritas");
         System.out.println("\nInscripsciones de Carrera Carretera:");
 
@@ -37,8 +39,8 @@ public class Main {
         System.out.println("\nEmpiezan ambas carreras a la vez \n");
         hilo1.start();
         hilo2.start();
-        ArrayList<Bicicleta> retirados1 = car1.getRetirados((int) Math.floor(0.1*nBicicletas));
-        ArrayList<Bicicleta> retirados2 = car2.getRetirados((int) Math.floor(0.2*nBicicletas));
+        ArrayList<Bicicleta> retirados1 = car1.getRetirados((int) Math.ceil(0.1*nBicicletas));
+        ArrayList<Bicicleta> retirados2 = car2.getRetirados((int) Math.ceil(0.2*nBicicletas));
 
         Thread.sleep(10000); //Sincronizar output
         System.out.println("\nSe han retirado "+retirados1.size()+ " bicicletas de la Carrera carretera: ");
@@ -46,7 +48,7 @@ public class Main {
             System.out.println("Bicicleta con ID: " +  retirados1.get(i).id + " y tipo " + retirados1.get(i).tipo);
         }
 
-        System.out.println("\nSe han retirado "+retirados1.size()+ " bicicletas de la Carrera de Montaña: ");
+        System.out.println("\nSe han retirado "+retirados2.size()+ " bicicletas de la Carrera de Montaña: ");
         for(int i=0;i<retirados2.size();i++){
             System.out.println("Bicicleta con ID: " +  retirados2.get(i).id + " y tipo " + retirados2.get(i).tipo);
         }
