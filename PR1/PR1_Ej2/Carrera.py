@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod
 class Carrera(ABC):
     def __init__(self):
-        self.participantes= []
+        self.participantes = []
         self.tipo = "normal"
 
     @abstractmethod
@@ -9,11 +9,11 @@ class Carrera(ABC):
         pass
 
     def aniadirBici(self,bici):
-        self.participantes.append(bici)
+        self.getParticipantes().append(bici)
 
     def getParticipantes(self):
         return self.participantes
 
     @abstractmethod
-    def run(self):
+    def run(self, bici):
         pass

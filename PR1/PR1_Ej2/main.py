@@ -10,8 +10,11 @@ def main():
     car1 = fac1.crearCarrera()
     car2 = fac2.crearCarrera()
 
-    t1 = threading.Thread(target=car1.run)
-    t2 = threading.Thread(target=car2.run)
+    bici1 = fac1.crearBicicleta()
+    bici2 = fac2.crearBicicleta()
+
+    t1 = threading.Thread(target=car1.run, args=[bici1])
+    t2 = threading.Thread(target=car2.run, args=[bici2])
 
     t1.start()
     t2.start()
