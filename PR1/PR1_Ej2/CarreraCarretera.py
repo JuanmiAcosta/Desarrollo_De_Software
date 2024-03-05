@@ -24,7 +24,7 @@ class CarreraCarretera(Carrera):
 
         time.sleep(6)
 
-        diez_por = math.ceil(num_bicis * 0.2)
+        diez_por = math.ceil(num_bicis * 0.1)
         retiradas = []
 
         for i in range(diez_por):
