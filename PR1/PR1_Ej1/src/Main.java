@@ -39,10 +39,10 @@ public class Main {
         System.out.println("\nEmpiezan ambas carreras a la vez \n");
         hilo1.start();
         hilo2.start();
+
+        Thread.sleep(10000);
         ArrayList<Bicicleta> retirados1 = car1.getRetirados((int) Math.ceil(0.1*nBicicletas));
         ArrayList<Bicicleta> retirados2 = car2.getRetirados((int) Math.ceil(0.2*nBicicletas));
-
-        Thread.sleep(10000); //Sincronizar output
         System.out.println("\nSe han retirado "+retirados1.size()+ " bicicletas de la Carrera carretera: ");
         for(int i=0;i<retirados1.size();i++){
             System.out.println("Bicicleta con ID: " +  retirados1.get(i).id + " y tipo " + retirados1.get(i).tipo);
