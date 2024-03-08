@@ -22,7 +22,7 @@ class CarreraMontania(Carrera):
 
         print("Estan listas las ", num_bicis, " para la carrera de montania\n")
 
-        time.sleep(4)
+        time.sleep(20)
 
         veinte_por = math.floor(num_bicis * 0.2)
         retiradas = []
@@ -36,6 +36,6 @@ class CarreraMontania(Carrera):
         for i in range(veinte_por):
             print ("\t", retiradas[i])
 
-        time.sleep(6)
+        time.sleep(40)
         print("\nCarrera de montania terminada\n")
 

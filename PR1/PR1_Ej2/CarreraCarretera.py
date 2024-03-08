@@ -22,7 +22,7 @@ class CarreraCarretera(Carrera):
 
         print("Estan listas las " , num_bicis, " para la carrera de carretera\n")
 
-        time.sleep(6)
+        time.sleep(40)
 
         diez_por = math.ceil(num_bicis * 0.1)
         retiradas = []
@@ -36,6 +36,6 @@ class CarreraCarretera(Carrera):
         for i in range(diez_por):
             print("\t", retiradas[i])
 
-        time.sleep(4)
+        time.sleep(20)
         print("\nCarrera de carretera terminada\n")
 
