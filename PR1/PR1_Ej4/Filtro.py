@@ -3,7 +3,7 @@ from abc import ABC, abstractmethod
 class Filtro(ABC):
 
     @abstractmethod
-    def filtrar(self, revoluciones, ):
+    def ejecutar(self, revoluciones, estado_motor):
         pass
 
     
