@@ -126,3 +126,11 @@ valoresJSON_S = json.dumps(valoresSelenium)
 
 print('Valores recogidos con Selenium:\t', valoresJSON_S)
 
+#Pasamos a generar un archivo JSON con los valores recogidos
+#Como son los mismos datos lo hacemos con los recogidos con selenium mismo
+
+with open('valores.json', 'w') as file:
+    json.dump(valoresSelenium, file, indent=4)
+
+print('Archivo JSON generado con los valores recogidos')
+
