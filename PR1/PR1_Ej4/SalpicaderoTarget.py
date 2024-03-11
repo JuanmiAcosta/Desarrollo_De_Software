@@ -1,4 +1,5 @@
 from EstadoMotor import EstadoMotor
+import math
 
 class SalpizaderoTarget():
 
@@ -15,6 +16,10 @@ class SalpizaderoTarget():
         self.velocidad_lineal = velocidad_lineal
         self.velocidad_angular = velocidad_angular
         self.distancia = distancia
+
+    def ejecutar(self, revoluciones, estado_motor):
+        self.estado_motor_actual = estado_motor
+        self.velocidad_lineal = 2*math.pi*0.15*revoluciones*(60/1000)
 
     def printEstadoMotor(self):
         print (f'Estado motor: {self.estado_motor_actual.name}')
