@@ -65,6 +65,7 @@ class SeleniumStrategy(ScrapeStrategy):
     def scrape(self, url):
         
         option = webdriver.ChromeOptions()
+        option.add_argument('headless')  
         driver = webdriver.Chrome(options = option)
 
         driver.get(url)
