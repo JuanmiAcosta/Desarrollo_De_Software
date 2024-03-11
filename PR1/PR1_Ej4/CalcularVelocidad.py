@@ -1,16 +1,20 @@
-import Filtro
+from Filtro import Filtro
 import EstadoMotor as EstadoMotor
-
 class CalcularVelocidad(Filtro):
 
+    def __init__(self):
+        self.incremento_velocidad = 0
+
     def ejecutar(self, revoluciones, estado_motor):
-        incrementoVelocidad = 0
 
         if estado_motor == EstadoMotor.EstadoMotor.APAGADO or estado_motor == EstadoMotor.EstadoMotor.ENCENDIDO:
-            incrementoVelocidad = 0
+            self.incrementoVelocidad = 0
         elif estado_motor == EstadoMotor.EstadoMotor.ACELERANDO:
-            incrementoVelocidad = 100
+            self.incrementoVelocidad = 100
         elif estado_motor == EstadoMotor.EstadoMotor.FRENANDO:
-            incrementoVelocidad = -100
+            self.incrementoVelocidad = -100
 
-        return revoluciones + incrementoVelocidad
+        if revoluciones + self.incrementoVelocidad > 5000:
+            self.incrementoVelocidad = 5000 - revoluciones
+
+        return revoluciones + self.incrementoVelocidad

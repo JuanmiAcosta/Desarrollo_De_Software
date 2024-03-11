@@ -1,4 +1,4 @@
-import Filtro
+from Filtro import Filtro
 
 class RepercutirRozamiento(Filtro):
 

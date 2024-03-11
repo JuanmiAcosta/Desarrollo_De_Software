@@ -14,11 +14,12 @@ class CadenaFiltros():
 
         for filtro in self.filtros:
             revoluciones = filtro.ejecutar(revoluciones, estado_motor)
-        
+
         if self.target is not None:
+            self.target.ejecutar(revoluciones,estado_motor)
             self.target.printEstadoMotor()
             self.target.printSalpicadero()
-        else:
-            self.target.ejecutar(revoluciones,estado_motor);
+        #else:
+        #    self.target.ejecutar(revoluciones,estado_motor)
 
         return revoluciones
