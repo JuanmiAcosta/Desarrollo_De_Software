@@ -17,4 +17,9 @@ class CalcularVelocidad(Filtro):
         if revoluciones + self.incrementoVelocidad > 5000:
             self.incrementoVelocidad = 5000 - revoluciones
 
-        return revoluciones + self.incrementoVelocidad
+        rev_devolver = revoluciones + self.incrementoVelocidad
+
+        if rev_devolver <= 0:
+            return 0
+        else:
+            return rev_devolver
