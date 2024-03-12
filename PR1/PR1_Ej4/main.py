@@ -3,6 +3,7 @@ from Cliente import Cliente
 from SalpicaderoTarget import SalpicaderoTarget
 from CalcularVelocidad import CalcularVelocidad
 from RepercutirRozamiento import RepercutirRozamiento
+
 def main():
     #Creamos el objetivo, un gestor de filtros y filtros
     target = SalpicaderoTarget()
@@ -20,5 +21,5 @@ def main():
     #El cliente hace una petición de filtros(los ejecuta)
     cliente.ejecutarFiltros()
 
-    if __name__ == "__main__":
-        main()
+if __name__ == "__main__":
+    main()
