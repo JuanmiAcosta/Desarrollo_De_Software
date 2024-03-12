@@ -50,18 +50,14 @@ def main():
     tiempo_inicial = time.time_ns()*(10**-9)
 
     #Creamos el objetivo, un gestor de filtros y filtros
-<<<<<<< HEAD
-    est
 
     target = SalpicaderoTarget()
-=======
     estado = EstadoMotor.APAGADO
     vel_lin = 0
     dist_lin = 0
     vel_ang = 0
 
     target = SalpicaderoTarget(vel_lin,vel_ang,dist_lin,estado)
->>>>>>> bb5526a986268cb328a2dfbe11ec9232c71409cd
     gestorFiltros = GestorFiltros(target)
     filtroVelocidad = CalcularVelocidad()
     rozamiento = RepercutirRozamiento()
