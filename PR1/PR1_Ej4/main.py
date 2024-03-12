@@ -25,8 +25,6 @@ def main():
             estado.set("FRENANDO")
             target.setEstadoMotor(EstadoMotor.FRENANDO)
 
-
-
     def set_encender():
         actual = buttonEncender.cget("text")
         if actual == "ENCENDER":
