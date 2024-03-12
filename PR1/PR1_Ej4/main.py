@@ -6,6 +6,8 @@ from RepercutirRozamiento import RepercutirRozamiento
 
 def main():
     #Creamos el objetivo, un gestor de filtros y filtros
+    est
+
     target = SalpicaderoTarget()
     gestorFiltros = GestorFiltros(target)
     filtroVelocidad = CalcularVelocidad()

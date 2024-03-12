@@ -11,9 +11,9 @@ class GestorFiltros():
         self.salpicadero_target = salpicaderoTarget
 
     def ejecutarFiltros(self):
-        revoluciones = 0
+        revoluciones = self.salpicadero_target.getVelocidadAngular()
 
         for cadena_filtros in self.cadena_filtros:
-            cadena_filtros.ejecutar(self.salpicadero_target.getVelocidadAngular(),self.salpicadero_target.getEstadoMotor())
+            revoluciones = cadena_filtros.ejecutar(,self.salpicadero_target.getEstadoMotor())
 
         return revoluciones

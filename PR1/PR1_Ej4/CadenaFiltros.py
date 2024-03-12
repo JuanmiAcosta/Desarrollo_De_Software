@@ -19,7 +19,5 @@ class CadenaFiltros():
             self.target.ejecutar(revoluciones,estado_motor)
             self.target.printEstadoMotor()
             self.target.printSalpicadero()
-        #else:
-        #    self.target.ejecutar(revoluciones,estado_motor)
 
         return revoluciones
