@@ -14,32 +14,6 @@ import threading
 
 
 def main():
-    def set_acelerando():
-        actual = buttonAcelerar.cget("text")
-        if actual == "ACELERANDO":
-            buttonAcelerar.config(text='SOLTAR ACELERADOR')
-            estado.set("ACELERANDO")
-            target.setEstadoMotor(EstadoMotor.ACELERANDO)
-        else:
-            buttonAcelerar.config(text='ACELERANDO')
-            estado.set("FRENANDO")
-            target.setEstadoMotor(EstadoMotor.FRENANDO)
-
-    def set_encender():
-        actual = buttonEncender.cget("text")
-        if actual == "ENCENDER":
-            buttonEncender.config(text='APAGAR')
-            estado.set("ENCENDIDO")
-            target.setEstadoMotor(EstadoMotor.ENCENDIDO)
-        else:
-            buttonEncender.config(text='ENCENDER')
-            estado.set("APAGADO")
-            target.setEstadoMotor(EstadoMotor.APAGADO)
-
-    def set_frenar():
-        estado.set("FRENANDO")
-        target.setEstadoMotor(EstadoMotor.FRENANDO)
-
     def pedalera():
         def set_acelerando():
             actual = buttonAcelerar.cget("text")
@@ -104,6 +78,7 @@ def main():
         labelCuentaRevoluciones.pack()
 
         buttonSalpicadero.mainloop()
+
 
 
     def calculoValores():
