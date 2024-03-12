@@ -40,6 +40,9 @@ def main():
             distancia_actual = target.getVelocidadLineal() * (tiempo_transcurrido / HORA_SEG)
             target.setDistancia(distancia_actual)
 
+            #limpiar terminal
+            print("\033c", end="")
+
             time.sleep(1)
 
 
