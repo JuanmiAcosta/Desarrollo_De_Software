@@ -49,13 +49,16 @@ def main():
     HORA_SEG = 3600
     tiempo_inicial = time.time_ns() * (10 ** -9)
 
-    # Creamos el objetivo, un gestor de filtros y filtros
+    #Creamis las variables del salpicadero para pasarselas al constructor
     estado = EstadoMotor.APAGADO
     vel_lin = 0
     dist_lin = 0
     vel_ang = 0
 
+    #Creamos el objetivo(salpicadero)
     target = SalpicaderoTarget(vel_lin, vel_ang, dist_lin, estado)
+
+    # Creamos gestor de filtros, cadena de filtros yfiltros
     gestorFiltros = GestorFiltros(target)
     filtroVelocidad = CalcularVelocidad()
     rozamiento = RepercutirRozamiento()
