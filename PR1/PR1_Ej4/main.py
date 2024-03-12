@@ -15,12 +15,28 @@ import threading
 
 def main():
     def set_acelerando():
-        estado.set("ACELERANDO")
-        target.setEstadoMotor(EstadoMotor.ACELERANDO)
+        actual = buttonAcelerar.cget("text")
+        if actual == "ACELERANDO":
+            buttonAcelerar.config(text='SOLTAR ACELERADOR')
+            estado.set("ACELERANDO")
+            target.setEstadoMotor(EstadoMotor.ACELERANDO)
+        else:
+            buttonAcelerar.config(text='ACELERAR')
+            estado.set("FRENANDO")
+            target.setEstadoMotor(EstadoMotor.FRENANDO)
+
+
 
     def set_encender():
-        estado.set("ENCENDIDO")
-        target.setEstadoMotor(EstadoMotor.ENCENDIDO)
+        actual = buttonEncender.cget("text")
+        if actual == "ENCENDER":
+            buttonEncender.config(text='APAGAR')
+            estado.set("ENCENDIDO")
+            target.setEstadoMotor(EstadoMotor.ENCENDIDO)
+        else:
+            buttonEncender.config(text='ENCENDER')
+            estado.set("APAGADO")
+            target.setEstadoMotor(EstadoMotor.APAGADO)
 
     def set_frenar():
         estado.set("FRENANDO")
@@ -87,12 +103,12 @@ def main():
     label = tk.Label(buttonWindow, textvariable=estado)
     label.pack()  # Place the label at the top of the window
 
-    buttonSet = tk.Button(buttonWindow, text="ACELERANDO", command=set_acelerando)
-    buttonSet.pack(side=tk.LEFT)
-    buttonSet = tk.Button(buttonWindow, text="ENCENDER", command=set_encender)
-    buttonSet.pack(side=tk.LEFT)
-    buttonSet = tk.Button(buttonWindow, text="FRENAR", command=set_frenar)
-    buttonSet.pack(side=tk.LEFT)
+    buttonAcelerar = tk.Button(buttonWindow, text="ACELERANDO", command=set_acelerando)
+    buttonAcelerar.pack(side=tk.LEFT)
+    buttonEncender = tk.Button(buttonWindow, text="ENCENDER", command=set_encender)
+    buttonEncender.pack(side=tk.LEFT)
+    buttonFrenar = tk.Button(buttonWindow, text="FRENAR", command=set_frenar)
+    buttonFrenar.pack(side=tk.LEFT)
 
     buttonWindow.mainloop()
 
