@@ -10,6 +10,8 @@ import time
 
 import tkinter as tk
 
+import threading
+
 def main():
     def set_acelerando():
         estado.set("ACELERANDO")
@@ -23,8 +25,24 @@ def main():
         estado.set("FRENANDO")
         target.setEstadoMotor(EstadoMotor.FRENANDO)
 
+    def calculoValores():
+        while True:
+            # El cliente hace una petición de filtros(los ejecuta)
+            revoluciones = cliente.ejecutarFiltros()
+            target.setVelocidadAngular(revoluciones)
 
-    DIST_GLOBAL=0
+            target.printSalpicadero()
+            target.printEstadoMotor()
+
+            tiempo_actual = time.time_ns()*(10**-9)
+            tiempo_transcurrido = tiempo_actual - tiempo_inicial
+
+            distancia_actual = target.getVelocidadLineal() * (tiempo_transcurrido / HORA_SEG)
+            target.setDistancia(distancia_actual)
+
+            time.sleep(1)
+
+
     HORA_SEG = 3600
     tiempo_inicial = time.time_ns()*(10**-9)
 
@@ -49,7 +67,11 @@ def main():
     #Creamos el cliente
     cliente = Cliente(gestorFiltros)
 
-    ## TKINTER GUI
+    #Creamos el hilo de la pedalera
+    calculo_thread = threading.Thread(target=calculoValores)
+    calculo_thread.start()
+
+    ## TKINTER GUI -------------------------------------
 
     buttonWindow = tk.Tk()
     buttonWindow.title("Pedalera")
@@ -67,25 +89,10 @@ def main():
     buttonSet.pack(side=tk.LEFT)
 
     buttonWindow.mainloop()
+    
+    ## TKINTER GUI -------------------------------------
 
-    ###############
-
-
-    while True:
-        # El cliente hace una petición de filtros(los ejecuta)
-        revoluciones = cliente.ejecutarFiltros()
-        target.setVelocidadAngular(revoluciones)
-
-        target.printSalpicadero()
-        target.printEstadoMotor()
-
-        tiempo_actual = time.time_ns()*(10**-9)
-        tiempo_transcurrido = tiempo_actual - tiempo_inicial
-
-        distancia_actual = target.getVelocidadLineal() * (tiempo_transcurrido / HORA_SEG)
-        target.setDistancia(distancia_actual)
-
-        time.sleep(1)
+    
 
 
 if __name__ == "__main__":
