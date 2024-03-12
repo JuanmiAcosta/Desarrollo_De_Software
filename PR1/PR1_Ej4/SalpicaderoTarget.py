@@ -1,15 +1,6 @@
-from EstadoMotor import EstadoMotor
 import math
 
 class SalpicaderoTarget():
-
-    def __init__(self):
-        self.gestores_filtros = []
-        self.radio_eje = 0.15
-        self.estado_motor_actual = EstadoMotor.APAGADO
-        self.velocidad_lineal = 0
-        self.velocidad_angular = 0
-        self.distancia = 0
 
     def __init__(self, velocidad_lineal, velocidad_angular, distancia, estado_motor):
         self.filtros = []
@@ -23,13 +14,16 @@ class SalpicaderoTarget():
         self.estado_motor_actual = estado_motor
         self.velocidad_lineal = 2*math.pi*self.radio_eje*revoluciones*(60/1000)
 
+        if self.velocidad_lineal <= 0:
+            self.setVelocidadLineal(0)
+
     def printEstadoMotor(self):
         print (f'Estado motor: {self.estado_motor_actual.name}')
 
     def printSalpicadero(self):
         print (f'Velocidad lineal: {self.velocidad_lineal}')
+        print (f'Distancia: {self.distancia}')
         print (f'Velocidad angular: {self.velocidad_angular}')
-        print (f'Distancia: {self.distancia}')  
 
     def setEstadoMotor(self, estado_motor):
         self.estado_motor_actual = estado_motor
@@ -41,7 +35,7 @@ class SalpicaderoTarget():
         self.velocidad_angular = velocidad_angular
 
     def setDistancia(self, distancia):
-        self.distancia = distancia
+        self.distancia += distancia
 
     def getEstadoMotor(self):
         return self.estado_motor_actual
