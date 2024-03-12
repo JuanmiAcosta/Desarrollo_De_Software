@@ -21,7 +21,7 @@ def main():
             estado.set("ACELERANDO")
             target.setEstadoMotor(EstadoMotor.ACELERANDO)
         else:
-            buttonAcelerar.config(text='ACELERAR')
+            buttonAcelerar.config(text='ACELERANDO')
             estado.set("FRENANDO")
             target.setEstadoMotor(EstadoMotor.FRENANDO)
 
