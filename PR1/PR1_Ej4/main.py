@@ -14,6 +14,7 @@ import threading
 
 
 def main():
+<<<<<<< HEAD
     def set_acelerando():
         actual = buttonAcelerar.cget("text")
         if actual == "ACELERANDO":
@@ -39,6 +40,74 @@ def main():
     def set_frenar():
         estado.set("FRENANDO")
         target.setEstadoMotor(EstadoMotor.FRENANDO)
+=======
+    def pedalera():
+        def set_acelerando():
+            actual = buttonAcelerar.cget("text")
+            if actual == "ACELERANDO":
+                buttonAcelerar.config(text='SOLTAR ACELERADOR')
+                estado.set("ACELERANDO")
+                target.setEstadoMotor(EstadoMotor.ACELERANDO)
+            else:
+                buttonAcelerar.config(text='ACELERAR')
+                estado.set("FRENANDO")
+                target.setEstadoMotor(EstadoMotor.APAGADO)
+
+        def set_encender():
+            actual = buttonEncender.cget("text")
+            if actual == "ENCENDER":
+                buttonEncender.config(text='APAGAR')
+                estado.set("ENCENDIDO")
+                target.setEstadoMotor(EstadoMotor.ENCENDIDO)
+            else:
+                buttonEncender.config(text='ENCENDER')
+                estado.set("APAGADO")
+                target.setEstadoMotor(EstadoMotor.APAGADO)
+
+        def set_frenar():
+            estado.set("FRENANDO")
+            target.setEstadoMotor(EstadoMotor.FRENANDO)
+
+        buttonWindow = tk.Tk()
+        buttonWindow.title("Pedalera")
+
+        estado = tk.StringVar()
+        estado.set("APAGADO")
+        label = tk.Label(buttonWindow, textvariable=estado)
+        label.pack()  # Place the label at the top of the window
+
+        buttonAcelerar = tk.Button(buttonWindow, text="ACELERANDO", command=set_acelerando)
+        buttonAcelerar.pack(side=tk.LEFT)
+        buttonEncender = tk.Button(buttonWindow, text="ENCENDER", command=set_encender)
+        buttonEncender.pack(side=tk.LEFT)
+        buttonFrenar = tk.Button(buttonWindow, text="FRENAR", command=set_frenar)
+        buttonFrenar.pack(side=tk.LEFT)
+
+        buttonWindow.mainloop()
+
+    def salpicadero():
+        buttonSalpicadero = tk.Tk()
+        buttonSalpicadero.title("Salpicadero")
+
+        velocimetro = tk.StringVar()
+        cuenta_km = tk.StringVar()
+        cuenta_revoluciones = tk.StringVar()
+
+        velocimetro.set(target.getVelocidadLineal())
+        cuenta_km.set(target.getDistancia())
+        cuenta_revoluciones.set(target.getVelocidadAngular())
+
+        labelVelocimetro = tk.Label(buttonSalpicadero, textvariable=velocimetro)
+        labelVelocimetro.pack()
+        labelCuentaKm = tk.Label(buttonSalpicadero, textvariable=cuenta_km)
+        labelCuentaKm.pack()
+        labelCuentaRevoluciones = tk.Label(buttonSalpicadero, textvariable=cuenta_revoluciones)
+        labelCuentaRevoluciones.pack()
+
+        buttonSalpicadero.mainloop()
+
+
+>>>>>>> david
 
     def calculoValores():
         while True:
@@ -59,6 +128,8 @@ def main():
             print("\033c", end="")
 
             time.sleep(1)
+
+
 
     HORA_SEG = 3600
     tiempo_inicial = time.time_ns() * (10 ** -9)
@@ -91,26 +162,11 @@ def main():
     calculo_thread = threading.Thread(target=calculoValores)
     calculo_thread.start()
 
-    ## TKINTER GUI -------------------------------------
+    pedalera_thread = threading.Thread(target=pedalera)
+    pedalera_thread.start()
 
-    buttonWindow = tk.Tk()
-    buttonWindow.title("Pedalera")
-
-    estado = tk.StringVar()
-    estado.set("APAGADO")
-    label = tk.Label(buttonWindow, textvariable=estado)
-    label.pack()  # Place the label at the top of the window
-
-    buttonAcelerar = tk.Button(buttonWindow, text="ACELERANDO", command=set_acelerando)
-    buttonAcelerar.pack(side=tk.LEFT)
-    buttonEncender = tk.Button(buttonWindow, text="ENCENDER", command=set_encender)
-    buttonEncender.pack(side=tk.LEFT)
-    buttonFrenar = tk.Button(buttonWindow, text="FRENAR", command=set_frenar)
-    buttonFrenar.pack(side=tk.LEFT)
-
-    buttonWindow.mainloop()
-
-    ## TKINTER GUI -------------------------------------
+    salpicadero_thread = threading.Thread(target=salpicadero)
+    salpicadero_thread.start()
 
 
 if __name__ == "__main__":
