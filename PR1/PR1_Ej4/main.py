@@ -14,7 +14,6 @@ import threading
 
 
 def main():
-<<<<<<< HEAD
     def set_acelerando():
         actual = buttonAcelerar.cget("text")
         if actual == "ACELERANDO":
@@ -40,7 +39,7 @@ def main():
     def set_frenar():
         estado.set("FRENANDO")
         target.setEstadoMotor(EstadoMotor.FRENANDO)
-=======
+
     def pedalera():
         def set_acelerando():
             actual = buttonAcelerar.cget("text")
@@ -106,8 +105,6 @@ def main():
 
         buttonSalpicadero.mainloop()
 
-
->>>>>>> david
 
     def calculoValores():
         while True:
