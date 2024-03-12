@@ -65,6 +65,11 @@ class SeleniumStrategy(ScrapeStrategy):
     def scrape(self, url):
         
         option = webdriver.ChromeOptions()
+        #
+        
+        
+        
+        
         option.add_argument('headless')  
         driver = webdriver.Chrome(options = option)
 
@@ -119,6 +124,14 @@ valoresJSON_B = json.dumps(valoresBeautifulSoup)
 
 print('Valores recogidos con BeautifulSoup:\t',valoresJSON_B)
 
+#Pasamos a generar un archivo JSON con los valores recogidos
+#Como son los mismos datos lo hacemos con los recogidos con BeautifulSoup mismo
+
+with open('valores.json', 'w') as file:
+    json.dump(valoresBeautifulSoup, file, indent=4)
+
+print('Archivo JSON generado con los valores recogidos')
+
 context.set_strategy(SeleniumStrategy())
 valoresSelenium = context.scrape(url)
 
@@ -127,11 +140,5 @@ valoresJSON_S = json.dumps(valoresSelenium)
 
 print('Valores recogidos con Selenium:\t', valoresJSON_S)
 
-#Pasamos a generar un archivo JSON con los valores recogidos
-#Como son los mismos datos lo hacemos con los recogidos con selenium mismo
 
-with open('valores.json', 'w') as file:
-    json.dump(valoresSelenium, file, indent=4)
-
-print('Archivo JSON generado con los valores recogidos')
 
