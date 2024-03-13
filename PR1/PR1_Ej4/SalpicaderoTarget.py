@@ -4,7 +4,6 @@ import math
 class SalpicaderoTarget():
 
     def __init__(self, velocidad_lineal, velocidad_angular, distancia, estado_motor):
-        self.filtros = []
         self.radio_eje = 0.15
         self.estado_motor_actual = estado_motor
         self.velocidad_lineal = velocidad_lineal
