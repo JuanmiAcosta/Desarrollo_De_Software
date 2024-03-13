@@ -6,7 +6,6 @@ from bs4 import BeautifulSoup
 
 #imports for Selenium
 from selenium import webdriver
-from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
 
 class ScrapeStrategy():
