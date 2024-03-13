@@ -1,6 +1,5 @@
 import requests
 import json
-from time import sleep
 
 #imports for BeautifulSoup
 from bs4 import BeautifulSoup
@@ -60,17 +59,11 @@ class BeautifulSoupStrategy(ScrapeStrategy):
             return f'Failed to retrieve the webpage, status code: {response.status_code}'
 
 
-
 class SeleniumStrategy(ScrapeStrategy):
     def scrape(self, url):
         
         option = webdriver.ChromeOptions()
-        #
-        
-        
-        
-        
-        option.add_argument('headless')  
+        option.add_argument('headless')
         driver = webdriver.Chrome(options = option)
 
         driver.get(url)
