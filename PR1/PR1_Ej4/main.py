@@ -15,7 +15,6 @@ import threading
 
 import math
 
-
 def main():
 
     #Creamos las variables del salpicadero para pasarselas al constructor
