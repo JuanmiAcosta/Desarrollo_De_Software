@@ -1,6 +1,7 @@
 from HamburguesaBuilder import HamburguesaBuilder
 
-class HamburguesaNormalBuilder(HamburguesaBuilder):
+class HamburguesaVeganaBuilder(HamburguesaBuilder):
+
     def aniadePan(self):
         self.hamburguesa.pan = "Pan normal"
 
@@ -10,9 +11,6 @@ class HamburguesaNormalBuilder(HamburguesaBuilder):
     def aniadeTomate(self):
         self.hamburguesa.tomate = "Tomate pera"
 
-    def aniadeQuesoCabra(self):
-        self.hamburguesa.quesoCabra = "Queso de cabra recién cortado"
-
     def aniadeCebolla(self):
         self.hamburguesa.cebolla = "Cebolla llorosa"
 
@@ -20,7 +18,7 @@ class HamburguesaNormalBuilder(HamburguesaBuilder):
         self.hamburguesa.pepinillos = "Pepinillos"
 
     def aniadeBacon(self):
-        self.hamburguesa.bacon = "Bacon grasiento"
+        self.hamburguesa.bacon = "Bacon Vegano reseco"
 
     def aniadeCarne(self):
-        self.hamburguesa.carne = "Carne Wagyu"
+        self.hamburguesa.carne = "Carne Vegana de dudosa procedencia"

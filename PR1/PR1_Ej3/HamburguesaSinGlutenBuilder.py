@@ -1,33 +1,26 @@
 from HamburguesaBuilder import HamburguesaBuilder
 
 class HamburguesaSinGlutenBuilder(HamburguesaBuilder):
-    def __init__(self):
-        self.ingredientes = []
+    def aniadePan(self):
+        self.hamburguesa.pan = "Pan sin gluten"
 
-    def construirPanSinGluten(self):  # Pan SIN gluten
-        self.ingredientes.append("Pan SIN gluten")
+    def aniadeLechuga(self):
+        self.hamburguesa.lechuga = "Lechuga verde"
 
-    def construirCarne(self):  # Carne
-        self.ingredientes.append("Carne")
+    def aniadeTomate(self):
+        self.hamburguesa.tomate = "Tomate pera"
 
-    def construirTomate(self):  # Tomate
-        self.ingredientes.append("Tomate")
+    def aniadeQuesoCabra(self):
+        self.hamburguesa.quesoCabra = "Queso de cabra (sin trazas)"
 
-    def construirLechuga(self):  # Lechuga
-        self.ingredientes.append("Lechuga")
+    def aniadeCebolla(self):
+        self.hamburguesa.cebolla = "Cebolla llorosa"
 
-    def construirQueso(self):  # Queso
-        self.ingredientes.append("Queso")
+    def aniadePepinillos(self):
+        self.hamburguesa.pepinillos = "Pepinillos"
 
-    def construirBacon(self):  # Bacon
-        self.ingredientes.append("Bacon")
+    def aniadeBacon(self):
+        self.hamburguesa.bacon = "Bacon grasiento"
 
-    def construirCebolla(self):  # Cebolla
-        self.ingredientes.append("Cebolla")
-
-    def construirHuevo(self):  # Huevo
-        self.ingredientes.append("Huevo")
-
-    def construirSalsa(self):  # Salsa
-        self.ingredientes.append("Salsa")
-
+    def aniadeCarne(self):
+        self.hamburguesa.carne = "Carne Wagyu (sin trazas)"
