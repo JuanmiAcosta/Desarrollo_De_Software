@@ -1,11 +1,15 @@
 from abc import ABC, abstractmethod
+from Protoype import Prototype
+import copy
 
-
-class Bicicleta(ABC):
+class Bicicleta(Prototype,ABC):
     def __init__(self):
-        self.id=0
         self.tipo="normal"
 
     @abstractmethod
     def mostrarTipo(self):
+        pass
+
+    @abstractmethod
+    def clone(self):
         pass

@@ -33,7 +33,7 @@ public abstract class Carrera implements Runnable{
             for (int i=0;i<n;i++){
                 retirado = (int) (Math.random() * 10);
                 actual=getParticipantes().get(retirado);
-                if(!retirados.contains(actual) && !getHilosBicicletas().get(retirado).isAlive()) retirados.add(getParticipantes().get(retirado));
+                if(!retirados.contains(actual)) retirados.add(getParticipantes().get(retirado));
             }
         }
         return retirados;

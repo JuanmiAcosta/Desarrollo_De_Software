@@ -6,5 +6,5 @@ class FactoriaMontania(FactoriaCarreraYBicicleta):
     def crearCarrera(self):
         return CarreraMontania()
 
-    def crearBicicleta(self,id):
-        return BicicletaMontania(id)
+    def crearBicicleta(self):
+        return BicicletaMontania()

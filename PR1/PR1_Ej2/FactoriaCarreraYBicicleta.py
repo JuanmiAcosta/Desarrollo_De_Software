@@ -5,5 +5,5 @@ class FactoriaCarreraYBicicleta(ABC):
     def crearCarrera(self):
         pass
 
-    def crearBicicleta(self,id):
+    def crearBicicleta(self):
         pass
