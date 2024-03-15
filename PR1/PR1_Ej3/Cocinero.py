@@ -1,49 +1,18 @@
+from HamburguesaBuilder import HamburguesaBuilder
+
 class Cocinero:
+    def __init__(self, builder):
+        self._builder = builder
 
-    def __init__(self, hamburguesabuilder):
-        self.builder = hamburguesabuilder
+    def build_hamburguesa(self):
+        self._builder.create_new_hamburguesa()
+        self._builder.aniadePan()
+        self._builder.aniadeLechuga()
+        self._builder.aniadeTomate()
+        if hasattr(self._builder, 'aniadeQuesoCabra'):
+            self._builder.aniadeQuesoCabra()
+        self._builder.aniadeCebolla()
+        self._builder.aniadePepinillos()
+        self._builder.aniadeBacon()
+        self._builder.aniadeCarne()
 
-    def construirHamburguesaNormal(self):
-        self.builder.construirPan()
-        self.builder.construirTomate()
-        self.builder.construirLechuga()
-        self.builder.construirCarne()
-        self.builder.construirQueso()
-        self.builder.construirBacon()
-        self.builder.construirCebolla()
-        self.builder.construirHuevo()
-        self.builder.construirSalsa()
-
-        return self.builder.ingredientes
-
-    def construirHamburguesaSinGluten(self):
-        self.builder.construirPanSinGluten()
-        self.builder.construirCarne()
-        self.builder.construirTomate()
-        self.builder.construirLechuga()
-        self.builder.construirQueso()
-        self.builder.construirBacon()
-        self.builder.construirCebolla()
-        self.builder.construirHuevo()
-        self.builder.construirSalsa()
-
-    def quitarTomate(self):
-        self.builder.ingredientes.remove("Tomate")
-
-    def quitarLechuga(self):
-        self.builder.ingredientes.remove("Lechuga")
-
-    def quitarQueso(self):
-        self.builder.ingredientes.remove("Queso")
-
-    def quitarBacon(self):
-        self.builder.ingredientes.remove("Bacon")
-
-    def quitarCebolla(self):
-        self.builder.ingredientes.remove("Cebolla")
-
-    def quitarHuevo(self):
-        self.builder.ingredientes.remove("Huevo")
-
-    def quitarSalsa(self):
-        self.builder.ingredientes.remove("Salsa")

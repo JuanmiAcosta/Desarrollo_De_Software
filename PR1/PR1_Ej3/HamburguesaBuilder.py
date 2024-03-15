@@ -1,43 +1,40 @@
-
 from abc import ABC, abstractmethod
+from Hamburguesa import Hamburguesa
 
 class HamburguesaBuilder(ABC):
+    def __init__(self):
+        self.hamburguesa = None
+
+    def create_new_hamburguesa(self):
+        self.hamburguesa = Hamburguesa()
+
     @abstractmethod
-    def construirPan(self):  # Pan
+    def aniadePan(self):
         pass
 
     @abstractmethod
-    def construirPan(self):  # Pan SIN gluten
+    def aniadeLechuga(self):
         pass
 
     @abstractmethod
-    def construirCarne(self):  # Carne
+    def aniadeTomate(self):
+        pass
+
+    def aniadeQuesoCabra(self): # Este método no tiene por qué ser implementado, las hamburguesas veganas no llevan queso de cabra
         pass
 
     @abstractmethod
-    def construirTomate(self):  # Tomate
+    def aniadeCebolla(self):
         pass
 
     @abstractmethod
-    def construirLechuga(self):  # Lechuga
+    def aniadePepinillos(self):
         pass
 
     @abstractmethod
-    def construirQueso(self):  # Queso
+    def aniadeBacon(self):
         pass
 
     @abstractmethod
-    def construirBacon(self):  # Bacon
-        pass
-
-    @abstractmethod
-    def construirCebolla(self):  # Cebolla
-        pass
-
-    @abstractmethod
-    def construirHuevo(self):  # Huevo
-        pass
-
-    @abstractmethod
-    def construirSalsa(self):  # Salsa
+    def aniadeCarne(self):
         pass
