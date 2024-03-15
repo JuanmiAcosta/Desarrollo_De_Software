@@ -1,5 +1,5 @@
 #!/bin/sh
-'''exec' "/home/david/Escritorio/Universidad/Curso23-24/Segundo Cuatrimestre/DS/Desarrollo_De_Software/PR1/PR1_Ej5/env/bin/python" "$0" "$@"
+'''exec' "/home/juanmi/Escritorio/Ingeniería Informática/3º 1er cuatri/DS/PR1/PR1_Ej5/env/bin/python3" "$0" "$@"
 ' '''
 # -*- coding: utf-8 -*-
 import re
