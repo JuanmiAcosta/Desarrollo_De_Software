@@ -1,4 +1,6 @@
-#!/home/juanmi/Escritorio/PR1_Ej5/env/bin/python3
+#!/bin/sh
+'''exec' "/home/juanmi/Escritorio/Ingeniería Informática/3º 1er cuatri/DS/PR1/PR1_Ej5/env/bin/python3" "$0" "$@"
+' '''
 # -*- coding: utf-8 -*-
 import re
 import sys
