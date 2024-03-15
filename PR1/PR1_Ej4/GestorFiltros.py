@@ -1,8 +1,7 @@
 class GestorFiltros():
 
-    def __init__(self, salpicadero_target):
+    def __init__(self):
         self.cadena_filtros = None
-        self.setTarget(salpicadero_target)
 
     def addCadenaFiltro(self, cadenaFiltro):
         self.cadena_filtros = cadenaFiltro
@@ -10,9 +9,12 @@ class GestorFiltros():
     def setTarget(self, salpicaderoTarget):
         self.cadena_filtros.setTarget(salpicaderoTarget)
 
+    def setCadenaFiltros (self, cadena):
+        self.cadena_filtros=cadena
+
     def ejecutarFiltros(self):
-        revoluciones = self.cadena_filtros.getVelocidadAngular()
-        estado = self.cadena_filtros.getEstadoMotor()
+        revoluciones = self.cadena_filtros.salpicadero_target.getVelocidadAngular()
+        estado = self.cadena_filtros.salpicadero_target.getEstadoMotor()
 
         revoluciones = self.cadena_filtros.ejecutar(revoluciones, estado)
 
