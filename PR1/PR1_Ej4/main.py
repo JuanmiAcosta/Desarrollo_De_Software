@@ -104,11 +104,14 @@ def main():
             distancia_actual = target.getVelocidadLineal() * (tiempo_transcurrido / HORA_SEG)
             target.setDistancia(distancia_actual)
 
-            # ACTUALIZAR VALORES GUI ------------------------------
-            velocimetro.set(f'{round(target.getVelocidadLineal(),2)} Km/h')
-            cuenta_km.set(f'{round(target.getDistancia(),3)} Km recorridos')
-            cuenta_revoluciones.set(f'{math.floor(target.getVelocidadAngular())} rpm')
-            #------------------------------------------------------
+            try:
+                # ACTUALIZAR VALORES GUI ------------------------------
+                velocimetro.set(f'{round(target.getVelocidadLineal(),2)} Km/h')
+                cuenta_km.set(f'{round(target.getDistancia(),3)} Km recorridos')
+                cuenta_revoluciones.set(f'{math.floor(target.getVelocidadAngular())} rpm')
+                #------------------------------------------------------
+            except:
+                pass
 
             time.sleep(1)
 
