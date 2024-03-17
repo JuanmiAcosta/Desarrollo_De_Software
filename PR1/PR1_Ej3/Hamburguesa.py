@@ -10,6 +10,7 @@ class Hamburguesa:
             self.pepinillos = None
             self.bacon = None
             self.carne = None
+            self.precio = 0
 
         def __str__(self):
 

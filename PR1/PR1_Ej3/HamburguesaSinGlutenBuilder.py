@@ -32,3 +32,6 @@ class HamburguesaSinGlutenBuilder(HamburguesaBuilder):
     def aniadeCarne(self):
         self.hamburguesa.carne = "Carne Wagyu (sin trazas)"
         time.sleep(0.8)
+
+    def aniadePrecio(self):
+        self.hamburguesa.precio = 6

@@ -36,3 +36,6 @@ class HamburguesaNormalBuilder(HamburguesaBuilder):
     def aniadeCarne(self):
         self.hamburguesa.carne = "Carne Wagyu"
         time.sleep(0.8)
+
+    def aniadePrecio(self):
+        self.hamburguesa.precio = 5

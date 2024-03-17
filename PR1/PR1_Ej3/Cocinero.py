@@ -22,6 +22,7 @@ class Cocinero(Subject):
         self._builder.aniadePepinillos()
         self._builder.aniadeBacon()
         self._builder.aniadeCarne()
+        self._builder.aniadePrecio()
 
         self.pedidoActual.aniadeHamburguesa(self._builder.hamburguesa)
         self.status = "Tomando pedido"

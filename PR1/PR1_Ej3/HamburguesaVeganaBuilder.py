@@ -29,3 +29,6 @@ class HamburguesaVeganaBuilder(HamburguesaBuilder):
     def aniadeCarne(self):
         self.hamburguesa.carne = "Carne Vegana de dudosa procedencia"
         time.sleep(1)
+
+    def aniadePrecio(self):
+        self.hamburguesa.precio = 5.5
