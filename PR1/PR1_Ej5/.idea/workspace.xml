@@ -6,7 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="b5803862-3b2d-4e09-a97b-cec4f153f687" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ej5opt.py" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,15 +23,15 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Python.ej5opt.executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "juanmi",
-    "last_opened_file_path": "/home/juanmi/Escritorio/Ingeniería Informática/3º 1er cuatri/DS/PR1/PR1_Ej2"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Python.ej5opt.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;juanmi&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/juanmi/Escritorio/Ingeniería Informática/3º 1er cuatri/DS/PR1/PR1_Ej5&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="ej5opt" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="PR1_Ej5" />
