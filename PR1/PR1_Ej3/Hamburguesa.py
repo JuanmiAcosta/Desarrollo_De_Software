@@ -10,26 +10,27 @@ class Hamburguesa:
             self.pepinillos = None
             self.bacon = None
             self.carne = None
+            self.precio = 0
 
         def __str__(self):
 
-            ingredientes = []
+            ingredientes = ''
 
             if (self.pan != None) :
-                ingredientes.append(f"{self.pan}")
+                ingredientes=ingredientes+f"{self.pan}"
             if (self.lechuga != None) :
-                ingredientes.append(f"{self.lechuga}")
+                ingredientes=ingredientes+f" {self.lechuga},"
             if (self.tomate != None) :
-                ingredientes.append(f"{self.tomate}")
+                ingredientes=ingredientes+f" {self.tomate},"
             if (self.quesoCabra != None) :
-                ingredientes.append(f"{self.quesoCabra}")
+                ingredientes=ingredientes+f" {self.quesoCabra},"
             if (self.cebolla != None) :
-                ingredientes.append(f"{self.cebolla}")
+                ingredientes=ingredientes+f" {self.cebolla},"
             if (self.pepinillos != None) :
-                ingredientes.append(f"{self.pepinillos}")
+                ingredientes=ingredientes+f" {self.pepinillos},"
             if (self.bacon != None) :
-                ingredientes.append(f"{self.bacon}")
+                ingredientes=ingredientes+f" {self.bacon},"
             if (self.carne != None) :
-                ingredientes.append(f"{self.carne}")
+                ingredientes=ingredientes+f" {self.carne}."
 
-            print(ingredientes)
+            return ingredientes

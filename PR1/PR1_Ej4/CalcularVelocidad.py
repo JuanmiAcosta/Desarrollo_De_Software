@@ -7,7 +7,7 @@ class CalcularVelocidad(Filtro):
 
     def ejecutar(self, revoluciones, estado_motor):
 
-        if estado_motor == EstadoMotor.EstadoMotor.APAGADO or estado_motor == EstadoMotor.EstadoMotor.ENCENDIDO:
+        if (estado_motor == EstadoMotor.EstadoMotor.APAGADO or estado_motor == EstadoMotor.EstadoMotor.ENCENDIDO):
             self.incrementoVelocidad = 0
         elif estado_motor == EstadoMotor.EstadoMotor.ACELERANDO:
             self.incrementoVelocidad = 100
@@ -23,3 +23,8 @@ class CalcularVelocidad(Filtro):
             return 0
         else:
             return rev_devolver
+
+
+
+
+

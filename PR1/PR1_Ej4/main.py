@@ -15,7 +15,6 @@ import threading
 
 import math
 
-
 def main():
 
     #Creamos las variables del salpicadero para pasarselas al constructor
@@ -55,38 +54,6 @@ def main():
 
     def calculoValores():
 
-        salpicaderoWindow = tk.Toplevel()
-        salpicaderoWindow.title("Salpicadero")
-        salpicaderoWindow.geometry('300x300')
-
-        velocimetro = tk.StringVar()
-        cuenta_km = tk.StringVar()
-        cuenta_revoluciones = tk.StringVar()
-
-        velocimetro.set(f'{target.getVelocidadLineal()} Km/h')
-        cuenta_km.set(f'{target.getDistancia()} Km recorridos')
-        cuenta_revoluciones.set(f'{math.floor(target.getVelocidadAngular())} rpm')
-
-        # Configuramos la columna y el ancho de la columna
-        salpicaderoWindow.grid_columnconfigure(0, weight=1)
-
-        labelVelocimetro = tk.Label(salpicaderoWindow, textvariable=velocimetro, font=("Arial", 12))
-        labelVelocimetro.grid(row=0, column=0, pady=10)
-
-        labelCuentaKm = tk.Label(salpicaderoWindow, textvariable=cuenta_km, font=("Arial", 12))
-        labelCuentaKm.grid(row=1, column=0, pady=5)
-
-        labelCuentaRevoluciones = tk.Label(salpicaderoWindow, textvariable=cuenta_revoluciones, font=("Arial", 12))
-        labelCuentaRevoluciones.grid(row=2, column=0, pady=5)
-
-        # Centramos la ventana en la pantalla
-        salpicaderoWindow.update_idletasks()
-        width = salpicaderoWindow.winfo_width()
-        height = salpicaderoWindow.winfo_height()
-        x = (salpicaderoWindow.winfo_screenwidth() // 2) - (width // 2)
-        y = (salpicaderoWindow.winfo_screenheight() // 2) - (height // 2)
-        salpicaderoWindow.geometry('{}x{}+{}+{}'.format(width, height, x-500, y))
-
         while True:
             # limpiar terminal
             print("\033c")
@@ -104,11 +71,14 @@ def main():
             distancia_actual = target.getVelocidadLineal() * (tiempo_transcurrido / HORA_SEG)
             target.setDistancia(distancia_actual)
 
-            # ACTUALIZAR VALORES GUI ------------------------------
-            velocimetro.set(f'{round(target.getVelocidadLineal(),2)} Km/h')
-            cuenta_km.set(f'{round(target.getDistancia(),3)} Km recorridos')
-            cuenta_revoluciones.set(f'{math.floor(target.getVelocidadAngular())} rpm')
-            #------------------------------------------------------
+            try:
+                # ACTUALIZAR VALORES GUI ------------------------------
+                velocimetro.set(f'{round(target.getVelocidadLineal(),2)} Km/h')
+                cuenta_km.set(f'{round(target.getDistancia(),3)} Km recorridos')
+                cuenta_revoluciones.set(f'{math.floor(target.getVelocidadAngular())} rpm')
+                #------------------------------------------------------
+            except:
+                exit()
 
             time.sleep(1)
 
@@ -119,12 +89,19 @@ def main():
     #Creamos el objetivo(salpicadero)
     target = SalpicaderoTarget(vel_lin, vel_ang, dist_lin, estado)
 
+    cadenaFiltro = CadenaFiltros()
+
     # Creamos gestor de filtros, cadena de filtros yfiltros
-    gestorFiltros = GestorFiltros(target)
+    gestorFiltros = GestorFiltros()
+
+    gestorFiltros.setCadenaFiltros(cadenaFiltro)
+
+    gestorFiltros.setTarget(target)
+
     filtroVelocidad = CalcularVelocidad()
     rozamiento = RepercutirRozamiento()
 
-    cadenaFiltro = CadenaFiltros()
+
     # Añadimos al gestor de filtros, los filtros creados
     cadenaFiltro.addFiltro(filtroVelocidad)
     cadenaFiltro.addFiltro(rozamiento)
@@ -164,13 +141,47 @@ def main():
     buttonFrenar.grid(row=1, column=2, padx=10, pady=5)  # Se sitúa en la segunda fila, tercera columna
 
     #SALPICADERO WINDOW -----------------------------------------------------------------------
+
+    salpicaderoWindow = tk.Toplevel()
+    salpicaderoWindow.title("Salpicadero")
+    salpicaderoWindow.geometry('300x300')
+
+    velocimetro = tk.StringVar()
+    cuenta_km = tk.StringVar()
+    cuenta_revoluciones = tk.StringVar()
+
+    velocimetro.set(f'{vel_lin} Km/h')
+    cuenta_km.set(f'{dist_lin} Km recorridos')
+    cuenta_revoluciones.set(f'{math.floor(vel_ang)} rpm')
+
+    # Configuramos la columna y el ancho de la columna
+    salpicaderoWindow.grid_columnconfigure(0, weight=1)
+
+    labelVelocimetro = tk.Label(salpicaderoWindow, textvariable=velocimetro, font=("Arial", 12))
+    labelVelocimetro.grid(row=0, column=0, pady=10)
+
+    labelCuentaKm = tk.Label(salpicaderoWindow, textvariable=cuenta_km, font=("Arial", 12))
+    labelCuentaKm.grid(row=1, column=0, pady=5)
+
+    labelCuentaRevoluciones = tk.Label(salpicaderoWindow, textvariable=cuenta_revoluciones, font=("Arial", 12))
+    labelCuentaRevoluciones.grid(row=2, column=0, pady=5)
+
+    # Centramos la ventana en la pantalla
+    salpicaderoWindow.update_idletasks()
+    width = salpicaderoWindow.winfo_width()
+    height = salpicaderoWindow.winfo_height()
+    x = (salpicaderoWindow.winfo_screenwidth() // 2) - (width // 2)
+    y = (salpicaderoWindow.winfo_screenheight() // 2) - (height // 2)
+    salpicaderoWindow.geometry('{}x{}+{}+{}'.format(width, height, x - 500, y))
+
+
     # Creamos el hilo de los vvalores y salpicadero
     calculo_thread = threading.Thread(target=calculoValores)
     calculo_thread.start()
 
 
     buttonWindow.mainloop()
-
+    exit()
 
 if __name__ == "__main__":
     main()

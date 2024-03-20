@@ -38,3 +38,7 @@ class HamburguesaBuilder(ABC):
     @abstractmethod
     def aniadeCarne(self):
         pass
+
+    @abstractmethod
+    def aniadePrecio(self):
+        pass
