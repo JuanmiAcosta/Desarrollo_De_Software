@@ -1,8 +1,8 @@
 
-Pedido 104559:
+Pedido 112144:
 	Hamburguesa 1: Pan sin gluten Lechuga verde, Tomate pera, Queso de cabra (sin trazas), Cebolla llorosa, Pepinillos, Bacon grasiento, Carne Wagyu (sin trazas). Precio 6
 	Total 6€
-Pedido 104601:
+Pedido 112146:
 	Hamburguesa 1: Pan normal Lechuga fresca, Tomate pera, Queso de cabra recién cortado, Cebolla llorosa, Pepinillos, Bacon grasiento, Carne Wagyu. Precio 5
 	Hamburguesa 2: Pan normal Lechuga fresca, Tomate pera, Cebolla llorosa, Pepinillos, Bacon Vegano reseco, Carne Vegana de dudosa procedencia. Precio 5.5
 	Total 10.5€
