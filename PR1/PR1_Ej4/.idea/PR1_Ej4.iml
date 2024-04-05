@@ -8,8 +8,12 @@
     <content url="file://$MODULE_DIR$">
       <excludeFolder url="file://$MODULE_DIR$/env" />
     </content>
+<<<<<<< HEAD
     <orderEntry type="inheritedJdk" />
 >>>>>>> master
+=======
+    <orderEntry type="jdk" jdkName="Python 3.10" jdkType="Python SDK" />
+>>>>>>> origin
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
 </module>

@@ -5,6 +5,7 @@ import math
 
 class CarreraMontania(Carrera):
     def __init__(self):
+       self.duracion = 60
        self.participantes = []
        self.tipo="Montaña"
 
@@ -22,7 +23,7 @@ class CarreraMontania(Carrera):
 
         print("Estan listas las ", num_bicis, " para la carrera de montania\n")
 
-        time.sleep(20)
+        time.sleep(self.duracion*0.30)
 
         veinte_por = math.floor(num_bicis * 0.2)
         retiradas = []
@@ -36,6 +37,6 @@ class CarreraMontania(Carrera):
         for i in range(veinte_por):
             print ("\t", retiradas[i])
 
-        time.sleep(40)
+        time.sleep(self.duracion*0.70)
         print("\nCarrera de montania terminada\n")
 

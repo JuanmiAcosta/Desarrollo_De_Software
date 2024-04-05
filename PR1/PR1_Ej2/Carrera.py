@@ -4,6 +4,7 @@ class Carrera(ABC):
         self.participantes = []
         self.tipo = "normal"
 
+
     @abstractmethod
     def mostrarTipo(self):
         pass
