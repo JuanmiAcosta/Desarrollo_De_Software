@@ -1,8 +1,7 @@
 import 'HamburguesaBuilder.dart';
 import 'Hamburguesa.dart';
-import 'dart:async';
 
-class HamburguesaSinGlutenBuilder implements HamburguesaBuilder {
+class HamburguesaSinGlutenBuilder extends HamburguesaBuilder {
   Hamburguesa hamburguesa = Hamburguesa();
 
   @override
@@ -56,15 +55,5 @@ class HamburguesaSinGlutenBuilder implements HamburguesaBuilder {
   @override
   void aniadePrecio() {
     hamburguesa.precio = 6;
-  }
-
-  void sleep() {
-    // Simular una pausa de 0.1 segundos
-    Future.delayed(Duration(milliseconds: 100));
-  }
-
-  void sleepLong() {
-    // Simular una pausa de 0.8 segundos
-    Future.delayed(Duration(milliseconds: 800));
   }
 }
