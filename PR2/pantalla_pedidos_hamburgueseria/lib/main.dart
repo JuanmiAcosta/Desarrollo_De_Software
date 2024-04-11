@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'DisplayPedidos.dart';
-import 'Cocinero.dart';
-import 'HamburguesaNormalBuilder.dart';
-import 'HamburguesaSinGlutenBuilder.dart';
-import 'HamburguesaVeganaBuilder.dart';
-
+import 'model/DisplayPedidos.dart';
+import 'model/Cocinero.dart';
+import 'model/HamburguesaNormalBuilder.dart';
+import 'model/HamburguesaSinGlutenBuilder.dart';
+import 'model/HamburguesaVeganaBuilder.dart';
 
 void main() {
+
   //runApp(const MyApp());
 
   //Ceramos la "pantalla"
