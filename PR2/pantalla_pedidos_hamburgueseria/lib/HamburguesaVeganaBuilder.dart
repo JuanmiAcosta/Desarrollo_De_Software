@@ -3,6 +3,7 @@ import 'Hamburguesa.dart';
 
 
 class HamburguesaVeganaBuilder extends HamburguesaBuilder {
+  @override
   Hamburguesa hamburguesa = Hamburguesa() ;
 
   @override

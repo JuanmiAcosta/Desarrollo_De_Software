@@ -7,7 +7,7 @@ class Pedido {
   late double precio;
 
   Pedido() {
-    idPedido = DateTime.now().toString().split(' ')[1];
+    idPedido = DateTime.now().toString().split('.').last;
     hamburguesas = [];
     precio = 0;
   }

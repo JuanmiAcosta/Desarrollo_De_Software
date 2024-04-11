@@ -23,11 +23,11 @@ abstract class HamburguesaBuilder {
 
   void sleep() {
     // Simular una pausa de 0.1 segundos
-    Future.delayed(Duration(milliseconds: 100));
+    Future.delayed(const Duration(milliseconds: 100));
   }
 
   void sleepLong() {
     // Simular una pausa de 0.8 segundos
-    Future.delayed(Duration(milliseconds: 800));
+    Future.delayed(const Duration(milliseconds: 800));
   }
 }

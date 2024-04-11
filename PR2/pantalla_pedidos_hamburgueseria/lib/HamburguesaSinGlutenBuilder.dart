@@ -2,6 +2,7 @@ import 'HamburguesaBuilder.dart';
 import 'Hamburguesa.dart';
 
 class HamburguesaSinGlutenBuilder extends HamburguesaBuilder {
+  @override
   Hamburguesa hamburguesa = Hamburguesa();
 
   @override

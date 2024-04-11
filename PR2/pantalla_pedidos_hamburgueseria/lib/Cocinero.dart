@@ -11,7 +11,7 @@ class Cocinero implements Subject {
   Pedido pedidoActual = Pedido();
 
   Cocinero(HamburguesaBuilder builder) {
-    this._builder = builder;
+    _builder = builder;
   }
 
   void buildHamburguesa() {

@@ -1,7 +1,31 @@
 import 'package:flutter/material.dart';
+import 'DisplayPedidos.dart';
+import 'Cocinero.dart';
+import 'HamburguesaNormalBuilder.dart';
+import 'HamburguesaSinGlutenBuilder.dart';
+import 'HamburguesaVeganaBuilder.dart';
+
 
 void main() {
-  runApp(const MyApp());
+  //runApp(const MyApp());
+
+  //Ceramos la "pantalla"
+  DisplayPedidos display = DisplayPedidos();
+
+  //Instanciamos uno de los builder, el de hamurguesa normal
+  HamburguesaNormalBuilder normal = HamburguesaNormalBuilder();
+
+  //Le pasamos la "receta al cocinero
+  Cocinero cocinero = Cocinero(normal);
+  cocinero.attach(display); // Si hubiera más de una pantalla para pedir pedidos le añadiríamos otra
+
+  //Si terminamos el pedido el cocinero comenzará a construirla (Imaginamos que hemos pedido dos hamburguesas normales)
+  cocinero.buildHamburguesa();
+  cocinero.buildHamburguesa();
+
+  //Alertamos al display (el suscriber)
+  cocinero.notify();//Esto muestra en la terminal tb el pedido listo
+
 }
 
 class MyApp extends StatelessWidget {
