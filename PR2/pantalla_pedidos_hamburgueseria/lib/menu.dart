@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
-class Menu extends StatefulWidget { // Necesitamos estado para actulizar el carrito
+class Menu extends StatefulWidget {
+  // Necesitamos estado para actulizar el carrito
   @override
   _MenuState createState() => _MenuState();
 }
 
 class _MenuState extends State<Menu> {
   int _carritoCount = 0; // Número de artículos en el carrito
-  List<Map<String, dynamic>> _hamburguesasEnCarrito = []; // Lista de hamburguesas en el carrito
+  List<Map<String, dynamic>> _hamburguesasEnCarrito =
+      []; // Lista de hamburguesas en el carrito
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +20,8 @@ class _MenuState extends State<Menu> {
           children: [
             Text('Bienvenido'),
             SizedBox(width: 8),
-            IconButton( // Cambiamos el texto por un IconButton para el carrito
+            IconButton(
+              // Cambiamos el texto por un IconButton para el carrito
               icon: Icon(Icons.shopping_cart),
               onPressed: () {
                 _mostrarPedido(context);
@@ -37,15 +40,18 @@ class _MenuState extends State<Menu> {
           ),
         ),
         child: Center(
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
               SizedBox(height: 20),
-              _botonHamburguesa('assets/normal.jpg', "Hamburguesa normal", 5.00),
+              _botonHamburguesa(
+                  'assets/normal.jpg', "Hamburguesa normal", 5.00),
               SizedBox(height: 20),
-              _botonHamburguesa("assets/normal.jpg", "Hamburguesa vegana", 5.50),
+              _botonHamburguesa(
+                  "assets/vegana.jpg", "Hamburguesa vegana", 5.50),
               SizedBox(height: 20),
-              _botonHamburguesa("assets/normal.jpg", "Hamburguesa sin gluten", 6.00),
+              _botonHamburguesa(
+                  "assets/singluten.jpg", "Hamburguesa sin gluten", 6.00),
             ],
           ),
         ),
@@ -53,28 +59,32 @@ class _MenuState extends State<Menu> {
     );
   }
 
-  Widget _botonHamburguesa(String hamburguesaImagePath, String nombre, double precio){
+  Widget _botonHamburguesa(
+      String hamburguesaImagePath, String nombre, double precio) {
     return Padding(
       padding: EdgeInsets.symmetric(vertical: 25.0, horizontal: 32.0),
       child: Stack(
-        alignment: Alignment.center,
+        alignment: Alignment.bottomCenter,
         children: [
           Container(
             decoration: BoxDecoration(
               image: DecorationImage(
                 image: AssetImage(hamburguesaImagePath),
-                fit: BoxFit.cover,
+                fit: BoxFit.fitHeight,
               ),
             ),
             height: 150,
           ),
-          ElevatedButton(
-            onPressed: () {
-              _agregarAlCarrito(nombre, precio);
-            },
-            child: Text(
-              nombre,
-              textAlign: TextAlign.center,
+          Align(
+            alignment: Alignment.bottomCenter,
+            child : ElevatedButton(
+              onPressed: () {
+                _agregarAlCarrito(nombre, precio);
+              },
+              child: Text(
+                nombre,
+                textAlign: TextAlign.center,
+              ),
             ),
           ),
         ],
@@ -103,8 +113,12 @@ class _MenuState extends State<Menu> {
     // Fold itera sobre los elementos de una lista
     // totalAcumulado valor hasta el momento del pedido
     // Hambuguesa elemento actual de la lista
-    double total = _hamburguesasEnCarrito.fold(0, (totalAcumulado, hamburguesa) => totalAcumulado + hamburguesa['precio']);
-    showDialog( // Abre la bentana para mostrar las hamburguesas en el pedido
+    double total = _hamburguesasEnCarrito.fold(
+        0,
+        (totalAcumulado, hamburguesa) =>
+            totalAcumulado + hamburguesa['precio']);
+    showDialog(
+      // Abre la bentana para mostrar las hamburguesas en el pedido
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
@@ -114,27 +128,32 @@ class _MenuState extends State<Menu> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 ..._hamburguesasEnCarrito.map((hamburguesa) {
-                    return Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween, // Distribuye los elementos a lo largo del espacio disponible
-                      children: [
-                        Text("${hamburguesa['nombre']}"),
-                        Text("${hamburguesa['precio']}\€"),
-                      ],
-                    );
+                  return Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    // Distribuye los elementos a lo largo del espacio disponible
+                    children: [
+                      Text("${hamburguesa['nombre']}"),
+                      Text("${hamburguesa['precio']}\€"),
+                    ],
+                  );
                 }).toList(), // Precio total
                 SizedBox(height: 20), // Margen
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     Text('Total:  '),
-                    Text('${total.toStringAsFixed(2)}\€', style: TextStyle(fontWeight: FontWeight.bold)),
+                    Text('${total.toStringAsFixed(2)}\€',
+                        style: TextStyle(fontWeight: FontWeight.bold)),
                   ],
                 ),
-                Center( // Centrar Finalizar pedido
+                Center(
+                  // Centrar Finalizar pedido
                   child: TextButton(
                     style: ButtonStyle(
-                      backgroundColor: MaterialStateProperty.all(Colors.redAccent), // Fondo rojo
-                      foregroundColor: MaterialStateProperty.all(Colors.black), // Texto negro
+                      backgroundColor: MaterialStateProperty.all(
+                          Colors.redAccent), // Fondo rojo
+                      foregroundColor: MaterialStateProperty.all(
+                          Colors.black), // Texto negro
                     ),
                     child: Text('Finalizar Pedido'),
                     onPressed: () {
@@ -151,7 +170,8 @@ class _MenuState extends State<Menu> {
     );
   }
 
-  void _finalizarPedido() { // Finalizar pedido, limpiar el carito y contador
+  void _finalizarPedido() {
+    // Finalizar pedido, limpiar el carito y contador
     setState(() {
       _hamburguesasEnCarrito.clear();
       _carritoCount = 0;
@@ -159,4 +179,3 @@ class _MenuState extends State<Menu> {
     mostrarSnackBar(context, 'Pedido finalizado');
   }
 }
-
