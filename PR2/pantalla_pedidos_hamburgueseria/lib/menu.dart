@@ -111,13 +111,25 @@ class _MenuState extends State<Menu> {
           title: Text('Hamburguesas en el carrito'),
           content: SingleChildScrollView(
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 ..._hamburguesasEnCarrito.map((hamburguesa) {
-                  return Text("${hamburguesa['nombre']}  . . . . . . .  \$${hamburguesa['precio']}");
-                }).toList(), // Iteramos sobre la mista para ir mostrando las hamburguesas como texto
-                SizedBox(height: 10), // Margen
-                Text('Total  . . .  \$${total.toStringAsFixed(2)}', style: TextStyle(fontWeight: FontWeight.bold)), // Precio total
+                    return Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween, // Distribuye los elementos a lo largo del espacio disponible
+                      children: [
+                        Text("${hamburguesa['nombre']}"),
+                        Text("${hamburguesa['precio']}\€"),
+                      ],
+                    );
+                }).toList(), // Precio total
                 SizedBox(height: 20), // Margen
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    Text('Total:  '),
+                    Text('${total.toStringAsFixed(2)}\€', style: TextStyle(fontWeight: FontWeight.bold)),
+                  ],
+                ),
                 Center( // Centrar Finalizar pedido
                   child: TextButton(
                     style: ButtonStyle(
