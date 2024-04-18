@@ -9,4 +9,4 @@ class BicicletaMontania(Bicicleta):
         print("Soy una bici de ", self.tipo,"\n")
 
     def clone(self):
-        return copy.copy(self)
+        return copy.deepcopy(self)

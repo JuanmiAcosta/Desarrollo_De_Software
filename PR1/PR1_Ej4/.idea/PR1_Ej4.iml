@@ -9,10 +9,14 @@
       <excludeFolder url="file://$MODULE_DIR$/env" />
     </content>
 <<<<<<< HEAD
+<<<<<<< HEAD
     <orderEntry type="inheritedJdk" />
 >>>>>>> master
 =======
     <orderEntry type="jdk" jdkName="Python 3.10" jdkType="Python SDK" />
+>>>>>>> origin
+=======
+    <orderEntry type="inheritedJdk" />
 >>>>>>> origin
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
