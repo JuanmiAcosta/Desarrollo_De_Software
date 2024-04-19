@@ -6,6 +6,10 @@ class HamburguesaVeganaBuilder extends HamburguesaBuilder {
   @override
   Hamburguesa hamburguesa = Hamburguesa() ;
 
+  HamburguesaVeganaBuilder(){
+    this.hamburguesa.nombre = "Hamburguesa vegana";
+  }
+
   @override
   void aniadePan() {
     hamburguesa.pan = "Pan normal";

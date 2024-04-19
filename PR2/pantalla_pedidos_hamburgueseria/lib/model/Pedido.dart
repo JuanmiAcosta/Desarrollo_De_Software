@@ -17,6 +17,15 @@ class Pedido {
     precio += hamburguesa.precio;
   }
 
+  double getPrecio(){
+    return this.precio;
+  }
+
+  List<Hamburguesa> getHamburguesas(){
+    return this.hamburguesas;
+  }
+
+
   @override
   String toString() {
     String cadena = "\nPedido $idPedido:\n";

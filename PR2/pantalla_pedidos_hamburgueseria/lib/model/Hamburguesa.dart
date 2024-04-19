@@ -1,6 +1,7 @@
 
 class Hamburguesa {
   String? pan;
+  String nombre="";
   String? lechuga;
   String? tomate;
   String? quesoCabra;
@@ -9,6 +10,14 @@ class Hamburguesa {
   String? bacon;
   String? carne;
   double precio = 0;
+
+  double getPrecio(){
+    return this.precio;
+  }
+
+  String getNombre(){
+    return this.nombre;
+  }
 
   @override
   String toString() {

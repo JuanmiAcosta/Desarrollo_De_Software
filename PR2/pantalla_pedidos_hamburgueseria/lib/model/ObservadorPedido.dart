@@ -1,6 +1,6 @@
 import 'Pedido.dart';
 
 abstract class ObservadorPedido {
-  void update(Pedido pedido);
+  String update(Pedido pedido);
 }
 

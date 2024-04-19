@@ -5,8 +5,8 @@ class DisplayPedidos implements ObservadorPedido {
   List<Pedido> historial = [];
 
   @override
-  void update(Pedido pedido) {
+  String update(Pedido pedido) {
     historial.add(pedido);
-    print('El pedido $pedido está listo!');
+    return 'El pedido $pedido está listo!';
   }
 }

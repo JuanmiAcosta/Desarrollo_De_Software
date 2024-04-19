@@ -5,6 +5,11 @@ class HamburguesaSinGlutenBuilder extends HamburguesaBuilder {
   @override
   Hamburguesa hamburguesa = Hamburguesa();
 
+  HamburguesaSinGlutenBuilder(){
+    this.hamburguesa.nombre = "Hamburguesa sin gluten";
+  }
+
+
   @override
   void aniadePan() {
     hamburguesa.pan = "Pan sin gluten";

@@ -10,7 +10,9 @@ class Cocinero implements Subject {
   List<ObservadorPedido> observers = [];
   Pedido pedidoActual = Pedido();
 
-  Cocinero(HamburguesaBuilder builder) {
+  Cocinero(){}
+
+  Cocinero.Parametros(HamburguesaBuilder builder) {
     _builder = builder;
   }
 
@@ -37,6 +39,10 @@ class Cocinero implements Subject {
     _builder = builder;
   }
 
+  Pedido getPedido(){
+    return this.pedidoActual;
+  }
+
   @override
   void attach(ObservadorPedido observer) {
     observers.add(observer);
@@ -48,10 +54,12 @@ class Cocinero implements Subject {
   }
 
   @override
-  void notify() {
+  String notify() {
+    String valor="";
     for (var notified in observers) {
-      notified.update(pedidoActual);
+       valor = notified.update(pedidoActual);
     }
     pedidoActual = Pedido();
+    return valor;
   }
 }
