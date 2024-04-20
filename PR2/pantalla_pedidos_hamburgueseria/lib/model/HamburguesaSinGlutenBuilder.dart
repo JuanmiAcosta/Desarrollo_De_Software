@@ -19,31 +19,31 @@ class HamburguesaSinGlutenBuilder extends HamburguesaBuilder {
   @override
   void aniadeLechuga() {
     hamburguesa.lechuga = "Lechuga verde";
-    sleep();
+    sleepLight();
   }
 
   @override
   void aniadeTomate() {
     hamburguesa.tomate = "Tomate pera";
-    sleep();
+    sleepLight();
   }
 
   @override
   void aniadeQuesoCabra() {
     hamburguesa.quesoCabra = "Queso de cabra (sin trazas)";
-    sleep();
+    sleepLight();
   }
 
   @override
   void aniadeCebolla() {
     hamburguesa.cebolla = "Cebolla llorosa";
-    sleep();
+    sleepLight();
   }
 
   @override
   void aniadePepinillos() {
     hamburguesa.pepinillos = "Pepinillos";
-    sleep();
+    sleepLight();
   }
 
   @override

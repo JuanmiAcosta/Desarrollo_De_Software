@@ -1,6 +1,8 @@
 import 'package:pantalla_pedidos_hamburgueseria/model/HamburguesaSinGlutenBuilder.dart';
 import 'package:pantalla_pedidos_hamburgueseria/model/HamburguesaVeganaBuilder.dart';
 
+import 'package:flutter/material.dart';
+
 import 'HamburguesaNormalBuilder.dart';
 import 'ObservadorPedido.dart';
 import 'Subject.dart';
@@ -20,7 +22,12 @@ class Cocinero implements Subject {
     _builder = builder;
   }
 
-  void cocinaPedido(List<String> hamburguesas) {
+  Future<void> startCooking(List<String> hamburguesas, BuildContext context)
+  {
+    return Future.delayed(const Duration(seconds: 2), () => cocinaPedido(hamburguesas, context));
+  }
+  
+  void cocinaPedido(List<String> hamburguesas, BuildContext context) {
 
     for (String hamburguesa in hamburguesas) {
       switch (hamburguesa) {
@@ -44,7 +51,7 @@ class Cocinero implements Subject {
       }
       buildHamburguesa();
     }
-    notify();
+    notify(context);
   }
 
   void buildHamburguesa() {
@@ -85,12 +92,10 @@ class Cocinero implements Subject {
   }
 
   @override
-  String notify() {
-    String valor="";
+  void notify(BuildContext context) {
     for (var notified in observers) {
-       valor = notified.update(pedidoActual);
+       notified.update(pedidoActual, context);
     }
     pedidoActual = Pedido();
-    return valor;
   }
 }

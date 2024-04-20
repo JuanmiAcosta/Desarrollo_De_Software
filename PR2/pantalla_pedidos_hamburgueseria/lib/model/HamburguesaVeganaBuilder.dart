@@ -13,31 +13,31 @@ class HamburguesaVeganaBuilder extends HamburguesaBuilder {
   @override
   void aniadePan() {
     hamburguesa.pan = "Pan normal";
-    sleep();
+    sleepLight();
   }
 
   @override
   void aniadeLechuga() {
     hamburguesa.lechuga = "Lechuga fresca";
-    sleep();
+    sleepLight();
   }
 
   @override
   void aniadeTomate() {
     hamburguesa.tomate = "Tomate pera";
-    sleep();
+    sleepLight();
   }
 
   @override
   void aniadeCebolla() {
     hamburguesa.cebolla = "Cebolla llorosa";
-    sleep();
+    sleepLight();
   }
 
   @override
   void aniadePepinillos() {
     hamburguesa.pepinillos = "Pepinillos";
-    sleep();
+    sleepLight();
   }
 
   @override

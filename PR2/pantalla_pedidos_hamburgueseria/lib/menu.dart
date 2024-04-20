@@ -17,15 +17,12 @@ class Menu extends StatefulWidget {
 
 class _MenuState extends State<Menu> {
   DisplayPedidos _display = DisplayPedidos();
-  Pedido _pedido = Pedido();
   int _cantidad = 0;
-  List<Hamburguesa> _hamburguesas = [];
   Cocinero _cocinero = Cocinero();
-
   List<String> _pedidoActual = [];
 
   @override
-  void initState(){
+  void initState() {
     super.initState();
     _cocinero.attach(_display);
   }
@@ -78,8 +75,8 @@ class _MenuState extends State<Menu> {
     );
   }
 
-  Widget _botonHamburguesa(
-      String hamburguesaImagePath, String nombre, double precio) {
+  // Crea widgets de los botones de las hamburguesas según los parámetros especificados
+  Widget _botonHamburguesa(String hamburguesaImagePath, String nombre, double precio) {
     return Padding(
       padding: EdgeInsets.symmetric(vertical: 25.0, horizontal: 32.0),
       child: Stack(
@@ -96,7 +93,7 @@ class _MenuState extends State<Menu> {
           ),
           Align(
             alignment: Alignment.bottomCenter,
-            child : ElevatedButton(
+            child: ElevatedButton(
               onPressed: () {
                 _agregarAlCarrito(nombre);
               },
@@ -111,51 +108,34 @@ class _MenuState extends State<Menu> {
     );
   }
 
-  void getPedidoActual(){
-    setState(() {
-      _pedido = _cocinero.getPedido();
-      _hamburguesas = _pedido.getHamburguesas();
-      _cantidad = _pedido.getHamburguesas().length;
-    });
-  }
-
+  // Muestra la barra emergente con la información que se le pase como argumento
   void mostrarSnackBar(BuildContext context, String mensaje) {
     final snackBar = SnackBar(
       content: Text(mensaje),
-      duration: Duration(seconds: 2), // Duración del snackbar
+      duration: Duration(milliseconds: 500), // Duración del snackbar
     );
     ScaffoldMessenger.of(context).showSnackBar(snackBar);
   }
 
+  // Cada vez que se pulse un botón de la hamburguesa, añadimos la hamburguesa al pedido que se está realizando
   void _agregarAlCarrito(String hamburguesa) {
     setState(() {
-      /* OLD CODE !!
-      if(hamburguesa == "Hamburguesa normal"){
-        _cocinero.cambiaReceta(HamburguesaNormalBuilder());
-      }else if(hamburguesa == "Hamburguesa vegana"){
-        _cocinero.cambiaReceta(HamburguesaVeganaBuilder());
-      }else if(hamburguesa == "Hamburguesa sin gluten"){
-        _cocinero.cambiaReceta(HamburguesaSinGlutenBuilder());
-      }
-      _cocinero.buildHamburguesa();
-      getPedidoActual();//Actualizamos valores de pedido
-      */
+
       this._pedidoActual.add(hamburguesa);
+      _cantidad++;
     });
     mostrarSnackBar(context, "Añadiendo al pedido una $hamburguesa ...");
   }
 
+  // Abre una ventana emergente mostrando los datos del pedido actual. Contiene los botones de finalizar pedido y de resetear pedido)
   void _mostrarPedido(BuildContext context) {
     // Precio total del carrito
     // Fold itera sobre los elementos de una lista
     // totalAcumulado valor hasta el momento del pedido
     // Hambuguesa elemento actual de la lista
-    double total = _hamburguesas.fold(
-        0,
-        (totalAcumulado, hamburguesa) =>
-            totalAcumulado + hamburguesa.getPrecio());
+    double total = _calculaTotalPedido(_pedidoActual);
     showDialog(
-      // Abre la bentana para mostrar las hamburguesas en el pedido
+      // Abre la ventana para mostrar las hamburguesas en el pedido
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
@@ -164,13 +144,13 @@ class _MenuState extends State<Menu> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                ..._hamburguesas.map((hamburguesa) {
+                ..._pedidoActual.map((hamburguesa) {
                   return Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     // Distribuye los elementos a lo largo del espacio disponible
                     children: [
-                      Text("${hamburguesa.getNombre()}"),
-                      Text("${hamburguesa.getPrecio()}\€"),
+                      Text("${hamburguesa}"),
+                      Text("${_getPrecioHamburguesa(hamburguesa)}\€"),
                     ],
                   );
                 }).toList(), // Precio total
@@ -194,7 +174,7 @@ class _MenuState extends State<Menu> {
                     ),
                     child: Text('Finalizar Pedido'),
                     onPressed: () {
-                      _finalizarPedido();
+                      _finalizarPedido(context);
                       Navigator.of(context).pop();
                     },
                   ),
@@ -207,22 +187,61 @@ class _MenuState extends State<Menu> {
     );
   }
 
-
-  void _finalizarPedido() {
+  // Cuando finalizamos el pedido, el cocinero empieza a cocinar. Reseteamos el carrito para poder empezar otro pedido mientras se va preparando el anterior.
+  void _finalizarPedido(BuildContext context) {
     // Finalizar pedido, limpiar el carrito y contador
-    mostrarSnackBar(context, _comprobarPedido());
     setState(() {
-      _hamburguesas.clear();
-      _cantidad=0;
+      if (_pedidoActual.length > 0) {
+        _cocinero.cocinaPedido(_pedidoActual, context);
+        _pedidoActual.clear();
+        _cantidad = 0;
+      }
+      else {
+        mostrarSnackBar(context, "El pedido está vacío");
+      }
     });
-
   }
 
-  String _comprobarPedido(){
-    if(_cocinero.getPedido().getHamburguesas().isEmpty){
-      return "El pedido actualmente se encuentra vacio";
-    }else{
-      return _cocinero.notify();
+  // Cuando pulsamos el botón de limpiar el carrito, para que reseteemos el pedido y podamos empezar desde 0
+  void _clearPedido() {
+    // Finalizar pedido, limpiar el carrito y contador
+    setState(() {
+      if (_pedidoActual.length > 0) {
+        _pedidoActual.clear();
+        _cantidad = 0;
+      }
+      else {
+        mostrarSnackBar(context, "El pedido está vacío");
+      }
+    });
+  }
+
+  // Calculo del precio de un pedido entero
+  double _calculaTotalPedido(List<String> pedido) {
+    double total = 0;
+    for (String hamburguesa in pedido) {
+      total += _getPrecioHamburguesa(hamburguesa);
+    }
+    return total;
+  }
+
+  // Obtener el precio de cada hamburguesa según el nombre. Si no está en la carta el precio es de 0
+  double _getPrecioHamburguesa(String hamburguesa) {
+    switch (hamburguesa) {
+      case "Hamburguesa normal":
+        {
+          return 5;
+        }
+      case "Hamburguesa vegana":
+        {
+          return 6;
+        }
+      case "Hamburguesa sin gluten":
+        {
+          return 5.5;
+        }
+      default:
+        return 0;
     }
   }
 }

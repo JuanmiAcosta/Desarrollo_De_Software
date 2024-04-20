@@ -1,6 +1,7 @@
 import 'Pedido.dart';
+import 'package:flutter/material.dart';
 
 abstract class ObservadorPedido {
-  String update(Pedido pedido);
+  void update(Pedido pedido, BuildContext context);
 }
 

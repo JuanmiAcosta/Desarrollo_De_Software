@@ -1,5 +1,7 @@
 import 'dart:async';
 import 'Hamburguesa.dart';
+import 'dart:io'; // For sleep
+import 'dart:async';
 
 abstract class HamburguesaBuilder {
 
@@ -21,13 +23,15 @@ abstract class HamburguesaBuilder {
 
   void aniadePrecio();
 
-  void sleep() {
-    // Simular una pausa de 0.1 segundos
-    Future.delayed(const Duration(milliseconds: 100));
+  void sleepLight() {
+    // Simular una pausa
+    sleep(const Duration(milliseconds: 100)); // Espera síncrona
+    //await Future.delayed(Duration(seconds: 1)); // Espera asíncrona
   }
 
   void sleepLong() {
-    // Simular una pausa de 0.8 segundos
-    Future.delayed(const Duration(milliseconds: 800));
+    // Simular una pausa de 2 segundos
+    // Future.delayed(const Duration(milliseconds: 2000));
+    sleep(const Duration(milliseconds: 200));
   }
 }
