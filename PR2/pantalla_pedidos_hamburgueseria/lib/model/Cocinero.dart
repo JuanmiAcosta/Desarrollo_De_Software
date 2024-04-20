@@ -1,8 +1,12 @@
+import 'package:pantalla_pedidos_hamburgueseria/model/HamburguesaSinGlutenBuilder.dart';
+import 'package:pantalla_pedidos_hamburgueseria/model/HamburguesaVeganaBuilder.dart';
+
 import 'HamburguesaNormalBuilder.dart';
 import 'ObservadorPedido.dart';
 import 'Subject.dart';
 import 'Pedido.dart';
 import 'HamburguesaBuilder.dart';
+import 'Hamburguesa.dart';
 
 class Cocinero implements Subject {
   late HamburguesaBuilder _builder;
@@ -14,6 +18,33 @@ class Cocinero implements Subject {
 
   Cocinero.Parametros(HamburguesaBuilder builder) {
     _builder = builder;
+  }
+
+  void cocinaPedido(List<String> hamburguesas) {
+
+    for (String hamburguesa in hamburguesas) {
+      switch (hamburguesa) {
+        case "Hamburguesa normal":
+          {
+            cambiaReceta(HamburguesaNormalBuilder());
+          }
+          break;
+
+        case "Hamburguesa vegana":
+          {
+            cambiaReceta(HamburguesaVeganaBuilder());
+          }
+          break;
+
+        case "Hamburguesa sin gluten":
+          {
+            cambiaReceta(HamburguesaSinGlutenBuilder());
+          }
+          break;
+      }
+      buildHamburguesa();
+    }
+    notify();
   }
 
   void buildHamburguesa() {

@@ -22,6 +22,8 @@ class _MenuState extends State<Menu> {
   List<Hamburguesa> _hamburguesas = [];
   Cocinero _cocinero = Cocinero();
 
+  List<String> _pedidoActual = [];
+
   @override
   void initState(){
     super.initState();
@@ -127,6 +129,7 @@ class _MenuState extends State<Menu> {
 
   void _agregarAlCarrito(String hamburguesa) {
     setState(() {
+      /* OLD CODE !!
       if(hamburguesa == "Hamburguesa normal"){
         _cocinero.cambiaReceta(HamburguesaNormalBuilder());
       }else if(hamburguesa == "Hamburguesa vegana"){
@@ -136,6 +139,8 @@ class _MenuState extends State<Menu> {
       }
       _cocinero.buildHamburguesa();
       getPedidoActual();//Actualizamos valores de pedido
+      */
+      this._pedidoActual.add(hamburguesa);
     });
     mostrarSnackBar(context, "Añadiendo al pedido una $hamburguesa ...");
   }
