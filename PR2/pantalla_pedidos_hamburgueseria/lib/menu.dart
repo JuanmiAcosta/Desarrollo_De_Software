@@ -246,11 +246,10 @@ class _MenuState extends State<Menu> {
     // Finalizar pedido, limpiar el carrito y contador
     if (_pedidoActual.isNotEmpty) {
       setState(() {
-        List<String> copiaPedidoActual = List.from(_pedidoActual);
         mostrarSnackBar(context, "Cocinando pedido...");
         _actualizarHistorial();
         Future.delayed(Duration(seconds: 5), () {
-          _cocinero.cocinaPedido(copiaPedidoActual, context);
+          _cocinero.cocinaPedido(_pedidoActual, context);
         });
         _pedidoActual.clear();
         _cantidad = 0;
