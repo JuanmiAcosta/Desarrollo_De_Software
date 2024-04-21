@@ -22,13 +22,7 @@ class Cocinero implements Subject {
     _builder = builder;
   }
 
-  Future<void> startCooking(List<String> hamburguesas, BuildContext context)
-  {
-    return Future.delayed(const Duration(seconds: 2), () => cocinaPedido(hamburguesas, context));
-  }
-  
-  void cocinaPedido(List<String> hamburguesas, BuildContext context) {
-
+  Future<void> cocinaPedido(List<String> hamburguesas, BuildContext context) async{
     for (String hamburguesa in hamburguesas) {
       switch (hamburguesa) {
         case "Hamburguesa normal":
@@ -48,13 +42,16 @@ class Cocinero implements Subject {
             cambiaReceta(HamburguesaSinGlutenBuilder());
           }
           break;
+
+        default:
+          throw Exception("Tipo de hamburguesa no válido");
       }
-      buildHamburguesa();
+      await buildHamburguesa(); // Esperar a que se cocine la hamburguesa actual antes de continuarbuildHamburguesa();
     }
     notify(context);
   }
 
-  void buildHamburguesa() {
+  Future<void> buildHamburguesa() async {
     status = "Cocinando";
 
     _builder.aniadePan();
@@ -70,6 +67,7 @@ class Cocinero implements Subject {
     _builder.aniadePrecio();
 
     pedidoActual.aniadeHamburguesa(_builder.hamburguesa);
+    pedidoActual.listo = true; // cambiar a true el pedido si esta listo
     status = "Tomando pedido";
   }
 

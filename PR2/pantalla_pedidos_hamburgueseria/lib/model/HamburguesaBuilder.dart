@@ -23,15 +23,12 @@ abstract class HamburguesaBuilder {
 
   void aniadePrecio();
 
-  void sleepLight() {
+  void sleepLight() async{
     // Simular una pausa
-    sleep(const Duration(milliseconds: 100)); // Espera síncrona
-    //await Future.delayed(Duration(seconds: 1)); // Espera asíncrona
+    await Future.delayed(Duration(seconds: 7)); // Espera asíncrona
   }
 
-  void sleepLong() {
-    // Simular una pausa de 2 segundos
-    // Future.delayed(const Duration(milliseconds: 2000));
-    sleep(const Duration(milliseconds: 200));
+  void sleepLong() async{
+    await Future.delayed(const Duration(seconds: 10));
   }
 }

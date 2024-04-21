@@ -16,7 +16,8 @@ class Menu extends StatefulWidget {
 }
 
 class _MenuState extends State<Menu> {
-  DisplayPedidos _display = DisplayPedidos();
+  List<Pedido> _historialPedidos = []; // Creamos una lista para el historial de pedidos
+  late DisplayPedidos _display;
   int _cantidad = 0;
   Cocinero _cocinero = Cocinero();
   List<String> _pedidoActual = [];
@@ -24,9 +25,12 @@ class _MenuState extends State<Menu> {
   @override
   void initState() {
     super.initState();
-    _cocinero.attach(_display);
+    _display = DisplayPedidos(_historialPedidos, _actualizarHistorial); // Inicializar _display en initState
+    WidgetsBinding.instance?.addPostFrameCallback((_) {
+      _display.init(context); // Inicializa DisplayPedidos con el BuildContext válido
+      _cocinero.attach(_display);
+    });
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -45,6 +49,50 @@ class _MenuState extends State<Menu> {
             ),
             SizedBox(width: 8),
             Text('$_cantidad'),
+          ],
+        ),
+      ),
+      endDrawer: Drawer(
+        // Agregamos el Drawer
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: [
+            SizedBox(
+              height: 60, // Ajusta la altura según tus necesidades
+              child: DrawerHeader(
+                decoration: BoxDecoration(
+                  color: Colors.red,
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  // Alinea los elementos al principio y al final
+                  children: [
+                    Text('Historial de Pedidos'),
+                    IconButton(
+                      icon: Icon(Icons.close_sharp),
+                      onPressed: () {
+                        Navigator.of(context).pop(); // Cierra el Drawer
+                      },
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            // Mostrar mensaje si no hay pedidos en el historial
+            if (_display.historial.isEmpty)
+              ListTile(
+                title: Text('No hay pedidos en el historial'),
+              )
+            else
+            // Mostrar la lista de pedidos del historial
+              ..._display.historial.map((pedido) {
+                return ListTile(
+                  title: Text(
+                    'Pedido: ${pedido.idPedido} listo',
+                    style: TextStyle(color: Colors.green),
+                  ),
+                );
+              }).toList(),
           ],
         ),
       ),
@@ -124,7 +172,7 @@ class _MenuState extends State<Menu> {
       this._pedidoActual.add(hamburguesa);
       _cantidad++;
     });
-    mostrarSnackBar(context, "Añadiendo al pedido una $hamburguesa ...");
+    //mostrarSnackBar(context, "Añadiendo al pedido una $hamburguesa ...");
   }
 
   // Abre una ventana emergente mostrando los datos del pedido actual. Contiene los botones de finalizar pedido y de resetear pedido)
@@ -158,26 +206,32 @@ class _MenuState extends State<Menu> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
+                    TextButton(
+                      onPressed: () {
+                        _clearPedido();
+                        Navigator.of(context).pop(); // Opcional: cerrar el diálogo después de limpiar el pedido
+                      },
+                      child: Icon(Icons.delete), // Icono de basura
+                    ),
+                    SizedBox(width: 10),
+                    TextButton(
+                      style: ButtonStyle(
+                        backgroundColor:
+                        MaterialStateProperty.all(Colors.redAccent), // Fondo rojo
+                        foregroundColor:
+                        MaterialStateProperty.all(Colors.black), // Texto negro
+                      ),
+                      child: Text('Finalizar Pedido'),
+                      onPressed: () {
+                        _finalizarPedido(context);
+                        Navigator.of(context).pop();
+                      },
+                    ),
+                    SizedBox(width: 20),
                     Text('Total:  '),
                     Text('${total.toStringAsFixed(2)}\€',
                         style: TextStyle(fontWeight: FontWeight.bold)),
                   ],
-                ),
-                Center(
-                  // Centrar Finalizar pedido
-                  child: TextButton(
-                    style: ButtonStyle(
-                      backgroundColor: MaterialStateProperty.all(
-                          Colors.redAccent), // Fondo rojo
-                      foregroundColor: MaterialStateProperty.all(
-                          Colors.black), // Texto negro
-                    ),
-                    child: Text('Finalizar Pedido'),
-                    onPressed: () {
-                      _finalizarPedido(context);
-                      Navigator.of(context).pop();
-                    },
-                  ),
                 ),
               ],
             ),
@@ -188,18 +242,23 @@ class _MenuState extends State<Menu> {
   }
 
   // Cuando finalizamos el pedido, el cocinero empieza a cocinar. Reseteamos el carrito para poder empezar otro pedido mientras se va preparando el anterior.
-  void _finalizarPedido(BuildContext context) {
+  void _finalizarPedido(BuildContext context) async{
     // Finalizar pedido, limpiar el carrito y contador
-    setState(() {
-      if (_pedidoActual.length > 0) {
-        _cocinero.cocinaPedido(_pedidoActual, context);
+    if (_pedidoActual.isNotEmpty) {
+      setState(() {
+        List<String> copiaPedidoActual = List.from(_pedidoActual);
+        mostrarSnackBar(context, "Cocinando pedido...");
+        _actualizarHistorial();
+        Future.delayed(Duration(seconds: 5), () {
+          _cocinero.cocinaPedido(copiaPedidoActual, context);
+        });
         _pedidoActual.clear();
         _cantidad = 0;
-      }
-      else {
-        mostrarSnackBar(context, "El pedido está vacío");
-      }
-    });
+      });
+    } else {
+      mostrarSnackBar(context, "El pedido está vacío");
+    }
+
   }
 
   // Cuando pulsamos el botón de limpiar el carrito, para que reseteemos el pedido y podamos empezar desde 0
@@ -209,6 +268,7 @@ class _MenuState extends State<Menu> {
       if (_pedidoActual.length > 0) {
         _pedidoActual.clear();
         _cantidad = 0;
+        mostrarSnackBar(context, "Limpiando pedido...");
       }
       else {
         mostrarSnackBar(context, "El pedido está vacío");
@@ -244,4 +304,9 @@ class _MenuState extends State<Menu> {
         return 0;
     }
   }
+
+  void _actualizarHistorial() {
+    setState(() {}); // Forzar la actualización del estado para reflejar los cambios en el historial de pedidos en el Drawer
+  }
+
 }

@@ -1,15 +1,19 @@
 import 'dart:core';
+import 'package:flutter/material.dart';
+
 import 'Hamburguesa.dart';
 
 class Pedido {
   late String idPedido;
   late List<Hamburguesa> hamburguesas;
   late double precio;
+  late bool listo; // Comprobar si el pedido está listo
 
   Pedido() {
     idPedido = DateTime.now().toString().split('.').last;
     hamburguesas = [];
     precio = 0;
+    listo = false; // por defecto false
   }
 
   void aniadeHamburguesa(Hamburguesa hamburguesa) {
