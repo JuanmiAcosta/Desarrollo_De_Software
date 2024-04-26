@@ -249,9 +249,9 @@ class _MenuState extends State<Menu> {
         mostrarSnackBar(context, "Cocinando pedido...");
         _actualizarHistorial();
         List<String> listAux = List<String>.from(_pedidoActual);
-
         Future.delayed(Duration(seconds: 5), () {
           _cocinero.cocinaPedido(listAux, context);
+
         });
         _pedidoActual.clear();
         _cantidad = 0;
