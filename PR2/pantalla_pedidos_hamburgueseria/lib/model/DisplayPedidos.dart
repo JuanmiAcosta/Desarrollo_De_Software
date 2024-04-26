@@ -30,7 +30,7 @@ class DisplayPedidos implements ObservadorPedido {
       return;
     }
     historial.add(pedido);
-    mostrarSnackBar(context, 'El pedido ${pedido.idPedido} está listo..\n${pedido.toString()}');
+    mostrarSnackBar(context, 'El pedido ${pedido.idPedido} está listo');
     _actualizarHistorial();
   }
 

@@ -79,6 +79,10 @@ class Cocinero implements Subject {
     return this.pedidoActual;
   }
 
+  HamburguesaBuilder getBuilder(){
+    return this._builder;
+  }
+
   @override
   void attach(ObservadorPedido observer) {
     observers.add(observer);
@@ -91,9 +95,9 @@ class Cocinero implements Subject {
 
   @override
   void notify(BuildContext context) {
+    pedidoActual = Pedido();
     for (var notified in observers) {
        notified.update(pedidoActual, context);
     }
-    pedidoActual = Pedido();
   }
 }
