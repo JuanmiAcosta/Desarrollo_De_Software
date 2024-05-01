@@ -17,25 +17,41 @@ void main() {
   
   group('Hamburguesas y recetas', () {
 
-    test('Receta normal', () {
-      HamburguesaNormalBuilder normalBuilder= HamburguesaNormalBuilder();
-      Cocinero cocinero = Cocinero.Parametros(normalBuilder);
-      expect(cocinero.getBuilder(), equals(normalBuilder));
+    late HamburguesaNormalBuilder normalBuilder;
+    late HamburguesaVeganaBuilder veganaBuilder ;
+    late HamburguesaSinGlutenBuilder sinGlutenBuilder;
+    late Pedido pedidoactual ;
+    late Cocinero cocinero ;
+
+    setUp(() {
+      normalBuilder= HamburguesaNormalBuilder();
+      veganaBuilder = HamburguesaVeganaBuilder();
+      sinGlutenBuilder= HamburguesaSinGlutenBuilder();
+      pedidoactual = Pedido();
+      cocinero = Cocinero();
     });
-    test('Receta vegana', () {
-      HamburguesaVeganaBuilder veganaBuilder = HamburguesaVeganaBuilder();
-      Cocinero cocinero = Cocinero.Parametros(veganaBuilder);
-      expect(cocinero.getBuilder(), equals(veganaBuilder));
+
+    test('Añadir receta', () {
+      final cocinero = Cocinero.Parametros(normalBuilder);
+      expect(cocinero.getBuilder(), normalBuilder);
     });
-    test('Receta sin gluten', () {
-      HamburguesaSinGlutenBuilder sinGlutenBuilder= HamburguesaSinGlutenBuilder();
-      Cocinero cocinero = Cocinero.Parametros(sinGlutenBuilder);
-      expect(cocinero.getBuilder(), equals(sinGlutenBuilder));
+
+    test('Cambio de receta', () {
+      cocinero = Cocinero.Parametros(veganaBuilder);
+      cocinero.cambiaReceta(sinGlutenBuilder);
+      expect(cocinero.getBuilder(), sinGlutenBuilder);
+    });
+
+    test('Comprobar queso de cabra en vegana', () { // Comprobamos que en vegana no metamos queso de cabra
+      cocinero = Cocinero.Parametros(veganaBuilder);
+      cocinero.buildHamburguesa();
+      pedidoactual = cocinero.getPedido();
+      expect(pedidoactual.hamburguesas[0].quesoCabra, null );
     });
 
     test('Hamburguesa normal', () {
-      HamburguesaNormalBuilder normalBuilder= HamburguesaNormalBuilder();
-      Cocinero cocinero = Cocinero.Parametros(normalBuilder);
+      normalBuilder= HamburguesaNormalBuilder();
+      cocinero = Cocinero.Parametros(normalBuilder);
       cocinero.buildHamburguesa();
       Pedido pedidoActual = cocinero.getPedido();
       expect(pedidoActual.listo, true);
