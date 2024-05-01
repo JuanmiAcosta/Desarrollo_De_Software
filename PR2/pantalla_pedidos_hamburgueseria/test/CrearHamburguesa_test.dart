@@ -49,34 +49,43 @@ void main() {
       expect(pedidoactual.hamburguesas[0].quesoCabra, null );
     });
 
-    test('Hamburguesa normal', () {
-      normalBuilder= HamburguesaNormalBuilder();
+    test('Se añaden hamburguesas al pedido', () {
+      normalBuilder = HamburguesaNormalBuilder();
       cocinero = Cocinero.Parametros(normalBuilder);
       cocinero.buildHamburguesa();
-      Pedido pedidoActual = cocinero.getPedido();
-      expect(pedidoActual.listo, true);
-      expect(pedidoActual.hamburguesas.length, 1);
-      expect(pedidoActual.hamburguesas[0].nombre, 'Hamburguesa normal');
+      cocinero.cambiaReceta(veganaBuilder);
+      cocinero.buildHamburguesa();
+      cocinero.cambiaReceta(sinGlutenBuilder);
+      cocinero.buildHamburguesa();
+      pedidoactual = cocinero.getPedido();
+      expect(pedidoactual.hamburguesas.length, 3);
     });
 
-    test('Hamburguesa vegana', () {
-      HamburguesaVeganaBuilder veganaBuilder= HamburguesaVeganaBuilder();
-      Cocinero cocinero = Cocinero.Parametros(veganaBuilder);
+    test('Se crea de forma correcta la hamburguesa', () {
+      Cocinero cocinero = Cocinero.Parametros(normalBuilder);
       cocinero.buildHamburguesa();
-      Pedido pedidoActual = cocinero.getPedido();
-      expect(pedidoActual.listo, true);
-      expect(pedidoActual.hamburguesas.length, 1);
-      expect(pedidoActual.hamburguesas[0].nombre, 'Hamburguesa vegana');
+      HamburguesaNormalBuilder normalBuilder2 = HamburguesaNormalBuilder();
+      normalBuilder2.aniadePan();
+      normalBuilder2.aniadeLechuga();
+      normalBuilder2.aniadeTomate();
+      normalBuilder2.aniadeQuesoCabra();
+      normalBuilder2.aniadeCebolla();
+      normalBuilder2.aniadePepinillos();
+      normalBuilder2.aniadeBacon();
+      normalBuilder2.aniadeCarne();
+      normalBuilder2.aniadePrecio();
+      expect(cocinero.pedidoActual.hamburguesas[0], normalBuilder2.hamburguesa);
     });
 
-    test('Hamburguesa sin gluten', () {
-      HamburguesaSinGlutenBuilder sinGlutenBuilder= HamburguesaSinGlutenBuilder();
-      Cocinero cocinero = Cocinero.Parametros(sinGlutenBuilder);
+    test('Precio de pedido es correcto', () {
+      cocinero = Cocinero.Parametros(sinGlutenBuilder);
       cocinero.buildHamburguesa();
-      Pedido pedidoActual = cocinero.getPedido();
-      expect(pedidoActual.listo, true);
-      expect(pedidoActual.hamburguesas.length, 1);
-      expect(pedidoActual.hamburguesas[0].nombre, 'Hamburguesa sin gluten');
+      cocinero.cambiaReceta(veganaBuilder);
+      cocinero.buildHamburguesa();
+      cocinero.cambiaReceta(normalBuilder);
+      cocinero.buildHamburguesa();
+      pedidoactual = cocinero.getPedido();
+      expect(pedidoactual.getPrecio(), sinGlutenBuilder.hamburguesa.precio+veganaBuilder.hamburguesa.precio+normalBuilder.hamburguesa.precio);
     });
 
   });

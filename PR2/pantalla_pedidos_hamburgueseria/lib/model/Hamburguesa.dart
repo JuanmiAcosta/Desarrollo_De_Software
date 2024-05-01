@@ -50,4 +50,20 @@ class Hamburguesa {
 
     return ingredientes;
   }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+
+    return other is Hamburguesa &&
+        other.nombre == this.nombre &&
+        other.pan == this.pan &&
+        other.lechuga == this.lechuga &&
+        other.tomate == this.tomate &&
+        other.quesoCabra == this.quesoCabra &&
+        other.cebolla == this.cebolla &&
+        other.pepinillos == this.pepinillos &&
+        other.bacon == this.bacon &&
+        other.carne == this.carne;
+  }
 }
