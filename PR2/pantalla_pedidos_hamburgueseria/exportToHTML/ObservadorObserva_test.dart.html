@@ -1,0 +1,107 @@
+<html>
+<head>
+<title>ObservadorObserva_test.dart</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #bcbec4;}
+.s1 { color: #6aab73;}
+.s2 { color: #bcbec4;}
+.s3 { color: #cf8e6d;}
+.s4 { color: #2aacb8;}
+</style>
+</head>
+<body bgcolor="#1e1f22">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+ObservadorObserva_test.dart</font>
+</center></td></tr></table>
+<pre><span class="s0">import </span><span class="s1">'package:flutter_test/flutter_test.dart'</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">'package:pantalla_pedidos_hamburgueseria/model/Cocinero.dart'</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">'package:pantalla_pedidos_hamburgueseria/model/HamburguesaNormalBuilder.dart'</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">'package:pantalla_pedidos_hamburgueseria/model/HamburguesaSinGlutenBuilder.dart'</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">'package:pantalla_pedidos_hamburgueseria/model/HamburguesaVeganaBuilder.dart'</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">'package:pantalla_pedidos_hamburgueseria/model/Pedido.dart'</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">'package:pantalla_pedidos_hamburgueseria/model/DisplayPedidos.dart'</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">'package:pantalla_pedidos_hamburgueseria/model/TerminalPedidos.dart'</span><span class="s2">;</span>
+
+
+<span class="s3">void </span><span class="s0">main</span><span class="s2">() {</span>
+
+  <span class="s0">group</span><span class="s2">(</span><span class="s1">'Observador Pedidos'</span><span class="s2">, () {</span>
+    <span class="s0">late HamburguesaNormalBuilder normalBuilder</span><span class="s2">;</span>
+    <span class="s0">late HamburguesaVeganaBuilder veganaBuilder </span><span class="s2">;</span>
+    <span class="s0">late HamburguesaSinGlutenBuilder sinGlutenBuilder</span><span class="s2">;</span>
+    <span class="s0">late Pedido pedidoactual </span><span class="s2">;</span>
+    <span class="s0">late Cocinero cocinero </span><span class="s2">;</span>
+    <span class="s0">late DisplayPedidos displayPedidos</span><span class="s2">;</span>
+    <span class="s0">late TerminalPedidos terminalPedidos</span><span class="s2">;</span>
+
+
+    <span class="s0">setUp</span><span class="s2">(() {</span>
+      <span class="s0">normalBuilder </span><span class="s2">= </span><span class="s0">HamburguesaNormalBuilder</span><span class="s2">();</span>
+      <span class="s0">veganaBuilder </span><span class="s2">= </span><span class="s0">HamburguesaVeganaBuilder</span><span class="s2">();</span>
+      <span class="s0">sinGlutenBuilder </span><span class="s2">= </span><span class="s0">HamburguesaSinGlutenBuilder</span><span class="s2">();</span>
+      <span class="s0">pedidoactual </span><span class="s2">= </span><span class="s0">Pedido</span><span class="s2">();</span>
+      <span class="s0">cocinero </span><span class="s2">= </span><span class="s0">Cocinero</span><span class="s2">();</span>
+      <span class="s0">displayPedidos </span><span class="s2">= </span><span class="s0">DisplayPedidos</span><span class="s2">();</span>
+      <span class="s0">terminalPedidos </span><span class="s2">= </span><span class="s0">TerminalPedidos</span><span class="s2">();</span>
+    <span class="s2">});</span>
+
+    <span class="s0">test</span><span class="s2">(</span><span class="s1">'Añadimos observador al cocinero'</span><span class="s2">, () {</span>
+      <span class="s0">cocinero</span><span class="s2">.</span><span class="s0">attach</span><span class="s2">(</span><span class="s0">displayPedidos</span><span class="s2">);</span>
+      <span class="s0">expect</span><span class="s2">(</span><span class="s0">cocinero</span><span class="s2">.</span><span class="s0">observers</span><span class="s2">.</span><span class="s0">length</span><span class="s2">, </span><span class="s4">1</span><span class="s2">);</span>
+    <span class="s2">});</span>
+
+    <span class="s0">test</span><span class="s2">(</span><span class="s1">'Eliminamos observador al cocinero'</span><span class="s2">, () {</span>
+      <span class="s0">cocinero</span><span class="s2">.</span><span class="s0">attach</span><span class="s2">(</span><span class="s0">displayPedidos</span><span class="s2">);</span>
+      <span class="s0">cocinero</span><span class="s2">.</span><span class="s0">detach</span><span class="s2">(</span><span class="s0">displayPedidos</span><span class="s2">);</span>
+      <span class="s0">expect</span><span class="s2">(</span><span class="s0">cocinero</span><span class="s2">.</span><span class="s0">observers</span><span class="s2">.</span><span class="s0">length</span><span class="s2">, </span><span class="s4">0</span><span class="s2">);</span>
+    <span class="s2">});</span>
+
+    <span class="s0">test</span><span class="s2">(</span><span class="s1">'Se notifica correctamente'</span><span class="s2">, () {</span>
+      <span class="s0">cocinero</span><span class="s2">.</span><span class="s0">cambiaReceta</span><span class="s2">(</span><span class="s0">veganaBuilder</span><span class="s2">);</span>
+      <span class="s0">cocinero</span><span class="s2">.</span><span class="s0">attach</span><span class="s2">(</span><span class="s0">displayPedidos</span><span class="s2">);</span>
+      <span class="s0">cocinero</span><span class="s2">.</span><span class="s0">buildHamburguesa</span><span class="s2">();</span>
+      <span class="s0">cocinero</span><span class="s2">.</span><span class="s0">notify</span><span class="s2">(</span><span class="s3">null</span><span class="s2">);</span>
+      <span class="s0">expect</span><span class="s2">(</span><span class="s0">displayPedidos</span><span class="s2">.</span><span class="s0">historial</span><span class="s2">.</span><span class="s0">length</span><span class="s2">, </span><span class="s4">1</span><span class="s2">);</span>
+    <span class="s2">});</span>
+
+    <span class="s0">test</span><span class="s2">(</span><span class="s1">'Se notifica correctamente a los distintos tipos de observers'</span><span class="s2">, () {</span>
+      <span class="s0">cocinero</span><span class="s2">.</span><span class="s0">cambiaReceta</span><span class="s2">(</span><span class="s0">veganaBuilder</span><span class="s2">);</span>
+      <span class="s0">cocinero</span><span class="s2">.</span><span class="s0">attach</span><span class="s2">(</span><span class="s0">displayPedidos</span><span class="s2">);</span>
+      <span class="s0">cocinero</span><span class="s2">.</span><span class="s0">attach</span><span class="s2">(</span><span class="s0">terminalPedidos</span><span class="s2">);</span>
+      <span class="s0">cocinero</span><span class="s2">.</span><span class="s0">buildHamburguesa</span><span class="s2">();</span>
+      <span class="s0">cocinero</span><span class="s2">.</span><span class="s0">notify</span><span class="s2">(</span><span class="s3">null</span><span class="s2">);</span>
+      <span class="s0">expect</span><span class="s2">(</span><span class="s0">displayPedidos</span><span class="s2">.</span><span class="s0">historial</span><span class="s2">.</span><span class="s0">length</span><span class="s2">, </span><span class="s4">1</span><span class="s2">);</span>
+      <span class="s0">expect</span><span class="s2">(</span><span class="s0">terminalPedidos</span><span class="s2">.</span><span class="s0">historial</span><span class="s2">.</span><span class="s0">length</span><span class="s2">, </span><span class="s4">1</span><span class="s2">);</span>
+    <span class="s2">});</span>
+
+    <span class="s0">test</span><span class="s2">(</span><span class="s1">'Pedido notificado es correcto'</span><span class="s2">, () {</span>
+      <span class="s0">cocinero</span><span class="s2">.</span><span class="s0">cambiaReceta</span><span class="s2">(</span><span class="s0">veganaBuilder</span><span class="s2">);</span>
+      <span class="s0">cocinero</span><span class="s2">.</span><span class="s0">attach</span><span class="s2">(</span><span class="s0">displayPedidos</span><span class="s2">);</span>
+      <span class="s0">cocinero</span><span class="s2">.</span><span class="s0">buildHamburguesa</span><span class="s2">();</span>
+      <span class="s0">pedidoactual </span><span class="s2">= </span><span class="s0">cocinero</span><span class="s2">.</span><span class="s0">pedidoActual</span><span class="s2">;</span>
+      <span class="s0">cocinero</span><span class="s2">.</span><span class="s0">notify</span><span class="s2">(</span><span class="s3">null</span><span class="s2">);</span>
+      <span class="s0">expect</span><span class="s2">(</span><span class="s0">displayPedidos</span><span class="s2">.</span><span class="s0">historial</span><span class="s2">[</span><span class="s4">0</span><span class="s2">], </span><span class="s0">pedidoactual</span><span class="s2">);</span>
+    <span class="s2">});</span>
+
+    <span class="s0">test</span><span class="s2">(</span><span class="s1">'Comprobar precio de pedido actual igual al precio del pedido del historial del observer'</span><span class="s2">, (){</span>
+      <span class="s0">cocinero </span><span class="s2">= </span><span class="s0">Cocinero</span><span class="s2">.</span><span class="s0">Parametros</span><span class="s2">(</span><span class="s0">sinGlutenBuilder</span><span class="s2">);</span>
+      <span class="s0">cocinero</span><span class="s2">.</span><span class="s0">attach</span><span class="s2">(</span><span class="s0">displayPedidos</span><span class="s2">);</span>
+      <span class="s0">cocinero</span><span class="s2">.</span><span class="s0">buildHamburguesa</span><span class="s2">();</span>
+      <span class="s0">cocinero</span><span class="s2">.</span><span class="s0">cambiaReceta</span><span class="s2">(</span><span class="s0">veganaBuilder</span><span class="s2">);</span>
+      <span class="s0">cocinero</span><span class="s2">.</span><span class="s0">buildHamburguesa</span><span class="s2">();</span>
+      <span class="s0">cocinero</span><span class="s2">.</span><span class="s0">cambiaReceta</span><span class="s2">(</span><span class="s0">normalBuilder</span><span class="s2">);</span>
+      <span class="s0">cocinero</span><span class="s2">.</span><span class="s0">buildHamburguesa</span><span class="s2">();</span>
+      <span class="s0">pedidoactual </span><span class="s2">= </span><span class="s0">cocinero</span><span class="s2">.</span><span class="s0">pedidoActual</span><span class="s2">;</span>
+      <span class="s0">cocinero</span><span class="s2">.</span><span class="s0">notify</span><span class="s2">(</span><span class="s3">null</span><span class="s2">);</span>
+      <span class="s0">expect</span><span class="s2">(</span><span class="s0">displayPedidos</span><span class="s2">.</span><span class="s0">historial</span><span class="s2">[</span><span class="s4">0</span><span class="s2">].</span><span class="s0">precio</span><span class="s2">, </span><span class="s0">pedidoactual</span><span class="s2">.</span><span class="s0">precio</span><span class="s2">);</span>
+    <span class="s2">});</span>
+
+
+  <span class="s2">});</span>
+<span class="s2">}</span>
+</pre>
+</body>
+</html>
