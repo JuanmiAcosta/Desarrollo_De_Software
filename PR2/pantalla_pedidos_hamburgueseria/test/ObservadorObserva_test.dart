@@ -75,7 +75,18 @@ void main() {
       expect(displayPedidos.historial[0], pedidoactual);
     });
 
-
+    test('Comprobar precio de pedido actual igual al precio del pedido del historial del observer', (){
+      cocinero = Cocinero.Parametros(sinGlutenBuilder);
+      cocinero.attach(displayPedidos);
+      cocinero.buildHamburguesa();
+      cocinero.cambiaReceta(veganaBuilder);
+      cocinero.buildHamburguesa();
+      cocinero.cambiaReceta(normalBuilder);
+      cocinero.buildHamburguesa();
+      pedidoactual = cocinero.pedidoActual;
+      cocinero.notify(null);
+      expect(displayPedidos.historial[0].precio, pedidoactual.precio);
+    });
 
 
   });
