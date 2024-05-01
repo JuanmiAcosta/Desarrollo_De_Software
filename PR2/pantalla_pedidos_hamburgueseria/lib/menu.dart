@@ -25,7 +25,7 @@ class _MenuState extends State<Menu> {
   @override
   void initState() {
     super.initState();
-    _display = DisplayPedidos(_historialPedidos, _actualizarHistorial); // Inicializar _display en initState
+    _display = DisplayPedidos.Parametros(_historialPedidos, _actualizarHistorial); // Inicializar _display en initState
     WidgetsBinding.instance?.addPostFrameCallback((_) {
       _display.init(context); // Inicializa DisplayPedidos con el BuildContext válido
       _cocinero.attach(_display);

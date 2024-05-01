@@ -6,9 +6,11 @@ class DisplayPedidos implements ObservadorPedido {
   List<Pedido> historial = [];
 
   late ScaffoldMessengerState _scaffoldMessengerState; // Referencia al ScaffoldMessenger
-  Function() _actualizarHistorial; // Agregar una función de actualización
+  late Function() _actualizarHistorial; // Agregar una función de actualización
 
-  DisplayPedidos(this.historial, this._actualizarHistorial);
+  DisplayPedidos(){}
+
+  DisplayPedidos.Parametros(this.historial, this._actualizarHistorial);
 
   void init(BuildContext context) {
     _scaffoldMessengerState = ScaffoldMessenger.of(context);
@@ -24,13 +26,13 @@ class DisplayPedidos implements ObservadorPedido {
   }
 
   @override
-  void update(Pedido pedido, BuildContext context) {
+  void update(Pedido pedido, BuildContext? context) {
     if (!_scaffoldMessengerState.mounted) {
       // Comprobar si el ScaffoldMessenger sigue montado antes de mostrar el SnackBar
       return;
     }
     historial.add(pedido);
-    mostrarSnackBar(context, 'El pedido ${pedido.idPedido} está listo');
+    if(context!=null) mostrarSnackBar(context, 'El pedido ${pedido.idPedido}\n $pedido está listo');
     _actualizarHistorial();
   }
 

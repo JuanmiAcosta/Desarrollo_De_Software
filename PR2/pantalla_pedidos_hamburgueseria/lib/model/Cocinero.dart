@@ -94,10 +94,10 @@ class Cocinero implements Subject {
   }
 
   @override
-  void notify(BuildContext context) {
-    pedidoActual = Pedido();
+  void notify(BuildContext? context) {
     for (var notified in observers) {
        notified.update(pedidoActual, context);
     }
+    pedidoActual = Pedido();
   }
 }

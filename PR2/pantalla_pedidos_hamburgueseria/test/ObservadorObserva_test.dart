@@ -16,23 +16,34 @@ import 'package:flutter/src/widgets/framework.dart';
 
 void main() {
 
-  List<Pedido> _historialPedidos = []; // Creamos una lista para el historial de pedidos
-  late Cocinero cocinero; // Definimos la variable cocinero fuera del setUp
-
   group('Observador Pedidos', () {
+    late HamburguesaNormalBuilder normalBuilder;
+    late HamburguesaVeganaBuilder veganaBuilder ;
+    late HamburguesaSinGlutenBuilder sinGlutenBuilder;
+    late Pedido pedidoactual ;
+    late Cocinero cocinero ;
+    late DisplayPedidos displayPedidos;
+
 
     setUp(() {
-      HamburguesaNormalBuilder normalBuilder= HamburguesaNormalBuilder();
-      cocinero = Cocinero.Parametros(normalBuilder); // Inicializamos la variable cocinero
+      normalBuilder = HamburguesaNormalBuilder();
+      veganaBuilder = HamburguesaVeganaBuilder();
+      sinGlutenBuilder = HamburguesaSinGlutenBuilder();
+      pedidoactual = Pedido();
+      cocinero = Cocinero();
+      displayPedidos = DisplayPedidos();
     });
 
-    test('Observando creacion del pedido', () {
-      DisplayPedidos display = DisplayPedidos(_historialPedidos, () => null);// Inicializa DisplayPedidos con el BuildContext válido
-      cocinero.attach(display);
-      cocinero.buildHamburguesa();
-      Pedido pedidoActual = cocinero.getPedido();
-      
-      //expect(display.historial, );
+    test('Añadimos observador al cocinero', () {
+      cocinero.attach(displayPedidos);
+      expect(cocinero.observers.length, 1);
     });
+
+    test('Se notifica correctamente', () {
+      cocinero.cambiaReceta(veganaBuilder);
+      cocinero.buildHamburguesa();
+      cocinero.notify(null);
+    });
+
   });
 }
