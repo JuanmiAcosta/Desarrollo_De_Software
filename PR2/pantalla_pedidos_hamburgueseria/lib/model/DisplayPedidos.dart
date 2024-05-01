@@ -27,13 +27,15 @@ class DisplayPedidos implements ObservadorPedido {
 
   @override
   void update(Pedido pedido, BuildContext? context) {
-    if (!_scaffoldMessengerState.mounted) {
-      // Comprobar si el ScaffoldMessenger sigue montado antes de mostrar el SnackBar
-      return;
+    if (context != null){
+      if (!_scaffoldMessengerState.mounted) {
+        // Comprobar si el ScaffoldMessenger sigue montado antes de mostrar el SnackBar
+        return;
+      }
+      mostrarSnackBar(context, 'El pedido ${pedido.idPedido}\n $pedido está listo');
+      _actualizarHistorial();
     }
     historial.add(pedido);
-    if(context!=null) mostrarSnackBar(context, 'El pedido ${pedido.idPedido}\n $pedido está listo');
-    _actualizarHistorial();
   }
 
 }
