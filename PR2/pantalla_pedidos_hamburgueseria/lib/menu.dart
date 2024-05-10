@@ -41,7 +41,6 @@ class _MenuState extends State<Menu> {
             Text('Bienvenido'),
             SizedBox(width: 8),
             IconButton(
-              // Cambiamos el texto por un IconButton para el carrito
               icon: Icon(Icons.shopping_cart),
               onPressed: () {
                 _mostrarPedido(context);
@@ -53,38 +52,34 @@ class _MenuState extends State<Menu> {
         ),
       ),
       endDrawer: Drawer(
-        // Agregamos el Drawer
         child: ListView(
           padding: EdgeInsets.zero,
           children: [
             SizedBox(
-              height: 60, // Ajusta la altura según tus necesidades
+              height: 60,
               child: DrawerHeader(
                 decoration: BoxDecoration(
                   color: Colors.red,
                 ),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  // Alinea los elementos al principio y al final
                   children: [
                     Text('Historial de Pedidos'),
                     IconButton(
                       icon: Icon(Icons.close_sharp),
                       onPressed: () {
-                        Navigator.of(context).pop(); // Cierra el Drawer
+                        Navigator.of(context).pop();
                       },
                     ),
                   ],
                 ),
               ),
             ),
-            // Mostrar mensaje si no hay pedidos en el historial
             if (_display.historial.isEmpty)
               ListTile(
                 title: Text('No hay pedidos en el historial'),
               )
             else
-            // Mostrar la lista de pedidos del historial
               ..._display.historial.map((pedido) {
                 return ListTile(
                   title: Text(
@@ -99,8 +94,8 @@ class _MenuState extends State<Menu> {
       body: Container(
         decoration: BoxDecoration(
           image: DecorationImage(
-            image: AssetImage('assets/fondo.jpg'), // Ruta de la imagen de fondo
-            fit: BoxFit.cover, // Ajuste de la imagen
+            image: AssetImage('assets/fondo.jpg'),
+            fit: BoxFit.cover,
           ),
         ),
         child: Center(
@@ -108,14 +103,20 @@ class _MenuState extends State<Menu> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               SizedBox(height: 20),
-              _botonHamburguesa(
-                  'assets/normal.jpg', "Hamburguesa normal", 5.00),
+              Expanded(
+                child: _botonHamburguesa(
+                    'assets/normal.jpg', "Hamburguesa normal", 5.00),
+              ),
               SizedBox(height: 20),
-              _botonHamburguesa(
-                  "assets/vegana.jpg", "Hamburguesa vegana", 5.50),
+              Expanded(
+                child: _botonHamburguesa(
+                    "assets/vegana.jpg", "Hamburguesa vegana", 5.50),
+              ),
               SizedBox(height: 20),
-              _botonHamburguesa(
-                  "assets/singluten.jpg", "Hamburguesa sin gluten", 6.00),
+              Expanded(
+                child: _botonHamburguesa(
+                    "assets/singluten.jpg", "Hamburguesa sin gluten", 6.00),
+              ),
             ],
           ),
         ),
