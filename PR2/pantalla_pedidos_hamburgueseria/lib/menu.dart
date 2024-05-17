@@ -11,13 +11,19 @@ class Menu extends StatefulWidget {
 }
 
 class _MenuState extends State<Menu> {
+
+  //Tema API Rest
+  final TextEditingController _controller = TextEditingController();
+
   List<Pedido> _historialPedidos = []; // Creamos una lista para el historial de pedidos
-  late DisplayPedidos _display;
+  late DisplayPedidos _display = DisplayPedidos();
   int _cantidad = 0;
   Cocinero _cocinero = Cocinero();
   List<String> _pedidoActual = [];
   late final List<String> users= ['Juanmi', 'David', 'Jesús', 'Raúl'];
-  late String dropdownValue = users.first;
+  late String currentUser = users.first;
+  late String dropdownValue = currentUser;
+
 
   @override
   void initState() {
@@ -26,9 +32,48 @@ class _MenuState extends State<Menu> {
     WidgetsBinding.instance?.addPostFrameCallback((_) {
       _display.init(context); // Inicializa DisplayPedidos con el BuildContext válido
       _cocinero.attach(_display);
-      users = ['Juanmi', 'David', 'Jesús', 'Raúl'];
-      dropdownValue = users.first;
+      _cargarPedidosIniciales();
     });
+  }
+
+  void _cargarPedidosIniciales() async {
+    try{
+      await _display.cargarPedidos(currentUser);
+      setState(() {
+
+      });
+    }catch (e){
+      print("Error cargando los pedidos: $e");
+    }
+  }
+
+  void _aniadirPedido(Pedido pedido) async {
+    if (pedido != null) {
+      try {
+        await _display.agregar(pedido);
+      } catch (e) {
+        print("Error aniadiendo pedido: $e");
+      }
+      setState(() {});
+    }
+  }
+
+  void _marcarFinalizado(Pedido pedido) async {
+    try {
+      await _display.marcarFinalizado(pedido);
+    } catch (e) {
+      print("Error marcar pedido como finalizado: $e");
+    }
+    setState(() {});
+  }
+
+  void _borrarPedido(Pedido pedido) async {
+    try {
+      await _display.eliminar(pedido);
+    } catch (e) {
+      print("Error borrando pedido: $e");
+    }
+    setState(() {});
   }
 
   @override
@@ -49,12 +94,15 @@ class _MenuState extends State<Menu> {
             Text('$_cantidad'),
             SizedBox(width: 75),
             DropdownButton<String>(
-              value: dropdownValue ?? users.first, // Safe
-              hint: Text('Select a user'),
+              value: currentUser,
+              icon: Icon(Icons.arrow_downward),
               onChanged: (String? newValue) {
-                setState(() {
-                  dropdownValue = newValue!;
-                });
+                if (newValue != null && newValue != currentUser) {
+                  setState(() {
+                    currentUser = newValue;
+                    _cargarPedidosIniciales();
+                  });
+                }
               },
               items: users.map<DropdownMenuItem<String>>((String value) {
                 return DropdownMenuItem<String>(
@@ -97,9 +145,23 @@ class _MenuState extends State<Menu> {
             else
               ..._display.historial.map((pedido) {
                 return ListTile(
-                  title: Text(
-                    'Pedido: ${pedido.idPedido} listo',
-                    style: TextStyle(color: Colors.green),
+                  title: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        'Pedido: ${pedido.idPedido} listo',
+                        style: TextStyle(color: Colors.green),
+                      ),
+                      IconButton(
+                        icon: Icon(Icons.delete),
+                        onPressed: () {
+                          setState(() {
+                            _borrarPedido(pedido);
+                            _display.historial.remove(pedido);
+                          });
+                        },
+                      ),
+                    ],
                   ),
                 );
               }).toList(),
@@ -262,12 +324,20 @@ class _MenuState extends State<Menu> {
     // Finalizar pedido, limpiar el carrito y contador
     if (_pedidoActual.isNotEmpty) {
       setState(() {
+
         mostrarSnackBar(context, "Cocinando pedido...");
         _actualizarHistorial();
         List<String> listAux = List<String>.from(_pedidoActual);
-        Future.delayed(Duration(seconds: 5), () {
+        double precio = _calculaTotalPedido(_pedidoActual);
+        Future.delayed(Duration(seconds: 7), () {
+          Future.delayed(Duration(seconds:5), (){
+            _marcarFinalizado(_cocinero.pedidoActual);
+          });
           _cocinero.cocinaPedido(listAux, context);
-
+          _cocinero.setPrecioPedido(precio);
+          //GUARDAMOS EN BASE DE DATOS -> PEDIDO.LISTO = FALSE
+          _aniadirPedido(_cocinero.pedidoActual);
+          //--------------------------------------------------
         });
         _pedidoActual.clear();
         _cantidad = 0;

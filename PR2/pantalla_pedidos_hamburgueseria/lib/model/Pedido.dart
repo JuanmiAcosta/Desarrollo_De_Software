@@ -4,35 +4,43 @@ import 'package:flutter/material.dart';
 import 'Hamburguesa.dart';
 
 class Pedido {
+  late int? id;
   late String? idPedido;
   late List<Hamburguesa> hamburguesas;
   late double precio;
   late bool listo; // Comprobar si el pedido está listo
+  late String? usuario;
 
   Pedido() {
     idPedido = DateTime.now().toString().split('.').last;
     hamburguesas = [];
     precio = 0.0;
     listo = false; // por defecto false
+    usuario = "";
   }
 
   Pedido.json({
+    this.id,
     this.idPedido,
     List<Hamburguesa>? hamburguesas,
     double? precio,
     bool? listo,
+    String? usuario,
   })  : hamburguesas = hamburguesas ?? [],
         precio = precio ?? 0.0,
-        listo = listo ?? false;
+        listo = listo ?? false,
+        usuario = usuario ?? "";
 
   factory Pedido.fromJson(Map<String, dynamic> json) {
     return Pedido.json(
+      id : json['id'] as int?,
       idPedido: json['idPedido'] as String?,
       hamburguesas: (json['hamburguesas'] as List<dynamic>?)
           ?.map((e) => Hamburguesa.fromJson(e as Map<String, dynamic>))
           .toList(),
       precio: (json['precio'] as num?)?.toDouble(),
       listo: json['listo'] as bool?,
+      usuario: json['usuario'] as String?,
     );
   }
 
@@ -42,7 +50,12 @@ class Pedido {
       if (hamburguesas.isNotEmpty) 'hamburguesas': hamburguesas.map((e) => e.toJson()).toList(),
       'precio': precio,
       'listo': listo,
+      'usuario' : usuario,
     };
+  }
+
+  void aniadirUsuario(String usuario){
+    this.usuario=usuario;
   }
 
   void aniadeHamburguesa(Hamburguesa hamburguesa) {
