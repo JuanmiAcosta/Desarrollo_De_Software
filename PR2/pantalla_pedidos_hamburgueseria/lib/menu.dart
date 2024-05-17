@@ -16,8 +16,8 @@ class _MenuState extends State<Menu> {
   int _cantidad = 0;
   Cocinero _cocinero = Cocinero();
   List<String> _pedidoActual = [];
-  late final List<String> users;
-  late String dropdownValue;
+  late final List<String> users= ['Juanmi', 'David', 'Jesús', 'Raúl'];
+  late String dropdownValue = users.first;
 
   @override
   void initState() {
@@ -48,16 +48,19 @@ class _MenuState extends State<Menu> {
             SizedBox(width: 8),
             Text('$_cantidad'),
             SizedBox(width: 75),
-            DropdownMenu<String>(
-              initialSelection: users.first,
-              onSelected: (String? value) {
-                // This is called when the user selects an item.
+            DropdownButton<String>(
+              value: dropdownValue ?? users.first, // Safe
+              hint: Text('Select a user'),
+              onChanged: (String? newValue) {
                 setState(() {
-                  dropdownValue = value!;
+                  dropdownValue = newValue!;
                 });
               },
-              dropdownMenuEntries: users.map<DropdownMenuEntry<String>>((String value) {
-                return DropdownMenuEntry<String>(value: value, label: value);
+              items: users.map<DropdownMenuItem<String>>((String value) {
+                return DropdownMenuItem<String>(
+                  value: value,
+                  child: Text(value),
+                );
               }).toList(),
             ),
           ],
