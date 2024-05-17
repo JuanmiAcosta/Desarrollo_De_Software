@@ -66,38 +66,38 @@ class DisplayPedidos implements ObservadorPedido {
     if (response.statusCode == 201) {
       historial.add(Pedido.fromJson(json.decode(response.body)));
     } else {
-      throw Exception('Failed to add task: ${response.body}');
+      throw Exception('Fallo añadiendo pedido: ${response.body}');
     }
   }
 
   Future<void> eliminar(Pedido pedido) async {
     final response = await http.delete(
-      Uri.parse('$apiUrl/${pedido.idPedido}'),
+      Uri.parse('$apiUrl/${pedido.id}'),
     );
     if (response.statusCode == 200) {
-      historial.removeWhere((p) => p.idPedido == pedido.idPedido);
+      historial.removeWhere((p) => p.id == pedido.id);
     } else {
-      throw Exception('Failed to delete task');
+      throw Exception('Falló borrando pedido');
     }
   }
 
-  Future<void> marcarCompletada(Pedido pedido) async {
+  Future<void> marcarFinalizado(Pedido pedido) async {
     bool nuevoEstadoFinalizado = !(pedido.listo);
 
     final response = await http.patch(
-      Uri.parse('$apiUrl/${pedido.idPedido}'),
+      Uri.parse('$apiUrl/${pedido.id}'),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },
       body: jsonEncode({
-        'completada': nuevoEstadoFinalizado,
+        'listo': nuevoEstadoFinalizado,
       }),
     );
 
     if (response.statusCode == 200) {
       pedido.listo = nuevoEstadoFinalizado;
     } else {
-      throw Exception('Failed to update task');
+      throw Exception('Fallo al actualizar pedido');
     }
   }
 

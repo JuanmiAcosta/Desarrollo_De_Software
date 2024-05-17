@@ -67,7 +67,7 @@ class Cocinero implements Subject {
     _builder.aniadePrecio();
 
     pedidoActual.aniadeHamburguesa(_builder.hamburguesa);
-    pedidoActual.listo = true; // cambiar a true el pedido si esta listo
+    //pedidoActual.listo = true; // cambiar a true el pedido si esta listo
     status = "Tomando pedido";
   }
 
@@ -99,5 +99,9 @@ class Cocinero implements Subject {
        notified.update(pedidoActual, context);
     }
     pedidoActual = Pedido();
+  }
+
+  void setPrecioPedido(double precio) {
+    this.pedidoActual.precio=precio;
   }
 }
