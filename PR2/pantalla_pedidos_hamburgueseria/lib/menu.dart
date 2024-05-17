@@ -18,7 +18,7 @@ class _MenuState extends State<Menu> {
   List<String> _pedidoActual = [];
   late final List<String> users;
   late String dropdownValue;
-  
+
   @override
   void initState() {
     super.initState();
@@ -324,4 +324,3 @@ class _MenuState extends State<Menu> {
   }
 
 }
-
