@@ -1,0 +1,129 @@
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::InternalMetadata Create (0.1ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ('environment', 'development', '2024-05-17 14:08:04.583938', '2024-05-17 14:08:04.583940') RETURNING "key"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateHamburguesas (20240517140730)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE TABLE "hamburguesas" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "pan" varchar, "nombre" varchar, "tomate" varchar, "quesoCabra" varchar, "cebolla" varchar, "pepinillos" varchar, "bacon" varchar, "carne" varchar, "precio" float, "Pedido_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_6e85b6578d"
+FOREIGN KEY ("Pedido_id")
+  REFERENCES "Pedidos" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_hamburguesas_on_Pedido_id" ON "hamburguesas" ("Pedido_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20240517140730') RETURNING "version"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreatePedidos (20240517140739)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE TABLE "pedidos" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "idPedido" varchar, "usuario" varchar, "precio" float, "listo" boolean, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20240517140739') RETURNING "version"[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/pedidos" for 127.0.0.1 at 2024-05-17 16:11:03 +0200
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActionController::RoutingError (No route matches [GET] "/pedidos"):
+  
+Started GET "/favicon.ico" for 127.0.0.1 at 2024-05-17 16:11:03 +0200
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/pedidos" for 127.0.0.1 at 2024-05-17 16:11:57 +0200
+Processing by PedidosController#index as HTML
+Cargando pedidos para el usuario 
+  [1m[36mPedido Load (0.2ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."usuarios" IS NULL[0m
+  ↳ app/controllers/pedidos_controller.rb:5:in `index'
+Completed 500 Internal Server Error in 17ms (ActiveRecord: 1.2ms | Allocations: 11499)
+
+
+  
+ActiveRecord::StatementInvalid (SQLite3::SQLException: no such column: pedidos.usuarios):
+  
+Started GET "/pedidos" for 127.0.0.1 at 2024-05-17 16:12:28 +0200
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PedidosController#index as HTML
+Cargando pedidos para el usuario 
+  [1m[36mPedido Load (0.2ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."usuarios" IS NULL[0m
+  ↳ app/controllers/pedidos_controller.rb:5:in `index'
+Completed 500 Internal Server Error in 10ms (ActiveRecord: 1.1ms | Allocations: 10223)
+
+
+  
+ActiveRecord::StatementInvalid (SQLite3::SQLException: no such column: pedidos.usuarios):
+  
+Started GET "/pedidos" for 127.0.0.1 at 2024-05-17 16:12:29 +0200
+Processing by PedidosController#index as HTML
+Cargando pedidos para el usuario 
+  [1m[36mPedido Load (0.2ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."usuarios" IS NULL[0m
+  ↳ app/controllers/pedidos_controller.rb:5:in `index'
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.2ms | Allocations: 711)
+
+
+  
+ActiveRecord::StatementInvalid (SQLite3::SQLException: no such column: pedidos.usuarios):
+  
+Started GET "/pedidos" for 127.0.0.1 at 2024-05-17 16:15:38 +0200
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PedidosController#index as HTML
+Cargando pedidos para el usuario 
+  [1m[36mPedido Load (0.2ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."usuarios" IS NULL[0m
+  ↳ app/controllers/pedidos_controller.rb:5:in `index'
+Completed 500 Internal Server Error in 10ms (ActiveRecord: 1.1ms | Allocations: 10223)
+
+
+  
+ActiveRecord::StatementInvalid (SQLite3::SQLException: no such column: pedidos.usuarios):
+  
+Started GET "/pedidos" for 127.0.0.1 at 2024-05-17 16:16:07 +0200
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PedidosController#index as HTML
+Cargando pedidos para el usuario 
+  [1m[36mPedido Load (0.1ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."usuario" IS NULL[0m
+  ↳ app/controllers/pedidos_controller.rb:5:in `index'
+Completed 200 OK in 20ms (Views: 0.7ms | ActiveRecord: 0.9ms | Allocations: 10180)
+
+
+Started GET "/pedidos?usuario=Juanmi" for 127.0.0.1 at 2024-05-17 16:16:34 +0200
+Processing by PedidosController#index as HTML
+  Parameters: {"usuario"=>"Juanmi"}
+Cargando pedidos para el usuario Juanmi
+  [1m[36mPedido Load (0.1ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."usuario" = ?[0m  [["usuario", "Juanmi"]]
+  ↳ app/controllers/pedidos_controller.rb:5:in `index'
+Completed 200 OK in 1ms (Views: 0.9ms | ActiveRecord: 0.1ms | Allocations: 756)
+
+
+Started POST "/pedidos" for 127.0.0.1 at 2024-05-17 16:16:48 +0200
+Processing by PedidosController#create as HTML
+  Parameters: {"idPedido"=>"853691", "hamburguesas"=>[{"nombre"=>"Hamburguesa normal", "pan"=>"Pan normal", "lechuga"=>"Lechuga fresca", "tomate"=>"Tomate pera", "quesoCabra"=>"Queso de cabra recién cortado", "cebolla"=>"Cebolla llorosa", "pepinillos"=>"Pepinillos", "bacon"=>"Bacon grasiento", "carne"=>"Carne Wagyu", "precio"=>5.0}], "precio"=>20.0, "listo"=>false, "usuario"=>"", "pedido"=>{"idPedido"=>"853691", "usuario"=>"", "precio"=>20.0, "listo"=>false}}
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/pedidos_controller.rb:10:in `create'
+  [1m[36mPedido Create (2.6ms)[0m  [1m[32mINSERT INTO "pedidos" ("idPedido", "usuario", "precio", "listo", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["idPedido", "853691"], ["usuario", ""], ["precio", 20.0], ["listo", 0], ["created_at", "2024-05-17 14:16:48.794498"], ["updated_at", "2024-05-17 14:16:48.794498"]]
+  ↳ app/controllers/pedidos_controller.rb:10:in `create'
+  [1m[36mTRANSACTION (5.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/pedidos_controller.rb:10:in `create'
+Completed 201 Created in 32ms (Views: 0.3ms | ActiveRecord: 8.7ms | Allocations: 13368)
+
+
+Started GET "/pedidos" for 127.0.0.1 at 2024-05-17 16:16:52 +0200
+Processing by PedidosController#index as HTML
+Cargando pedidos para el usuario 
+  [1m[36mPedido Load (0.0ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."usuario" IS NULL[0m
+  ↳ app/controllers/pedidos_controller.rb:5:in `index'
+Completed 200 OK in 4ms (Views: 3.4ms | ActiveRecord: 0.0ms | Allocations: 604)
+
+
+Started GET "/pedidos" for 127.0.0.1 at 2024-05-17 16:16:53 +0200
+Processing by PedidosController#index as HTML
+Cargando pedidos para el usuario 
+  [1m[36mPedido Load (0.0ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."usuario" IS NULL[0m
+  ↳ app/controllers/pedidos_controller.rb:5:in `index'
+Completed 200 OK in 3ms (Views: 1.8ms | ActiveRecord: 0.0ms | Allocations: 616)
+
+
+Started GET "/pedidos" for 127.0.0.1 at 2024-05-17 16:16:53 +0200
+Processing by PedidosController#index as HTML
+Cargando pedidos para el usuario 
+  [1m[36mPedido Load (0.0ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."usuario" IS NULL[0m
+  ↳ app/controllers/pedidos_controller.rb:5:in `index'
+Completed 200 OK in 1ms (Views: 0.6ms | ActiveRecord: 0.0ms | Allocations: 605)
+
+
