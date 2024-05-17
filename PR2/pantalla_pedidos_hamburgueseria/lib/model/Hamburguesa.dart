@@ -1,7 +1,7 @@
 
 class Hamburguesa {
   String? pan;
-  String nombre="";
+  String? nombre = "";
   String? lechuga;
   String? tomate;
   String? quesoCabra;
@@ -9,13 +9,26 @@ class Hamburguesa {
   String? pepinillos;
   String? bacon;
   String? carne;
-  double precio = 0;
+  double? precio = 0;
 
-  double getPrecio(){
+  Hamburguesa({
+    this.pan,
+    this.nombre,
+    this.lechuga,
+    this.tomate,
+    this.quesoCabra,
+    this.cebolla,
+    this.pepinillos,
+    this.bacon,
+    this.carne,
+    this.precio
+  });
+
+  double? getPrecio() {
     return this.precio;
   }
 
-  String getNombre(){
+  String? getNombre() {
     return this.nombre;
   }
 
@@ -65,5 +78,20 @@ class Hamburguesa {
         other.pepinillos == this.pepinillos &&
         other.bacon == this.bacon &&
         other.carne == this.carne;
+  }
+
+  factory Hamburguesa.fromJson(Map<String, dynamic> json) {
+    return Hamburguesa(
+      pan: json['pan'] as String?,
+      nombre: json['nombre'] as String?,
+      lechuga: json['lechuga'] as String?,
+      tomate: json['tomate'] as String?,
+      quesoCabra: json['quesoCabra'] as String?,
+      cebolla: json['cebolla'] as String?,
+      pepinillos: json['pepinillos'] as String?,
+      bacon: json['bacon'] as String?,
+      carne: json['carne'] as String?,
+      precio: json['precio'] as double?,
+    );
   }
 }
