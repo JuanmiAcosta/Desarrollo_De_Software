@@ -43,15 +43,61 @@ class DisplayPedidos implements ObservadorPedido {
   }
 
   //Parte API Rest
-  Future<void> cargarPedidos(String usuarios) async {
-    final response = http.get(Uri.parse('$apiUrl?usuario=$usuario'));
+  Future<void> cargarPedidos(String usuario) async {
+    final response = await http.get(Uri.parse('$apiUrl?usuario=$usuario'));
     if (response.statusCode == 200) {
-      List<dynamic> pedidosJson = json.decode(respose.body);
+      List<dynamic> pedidosJson = json.decode(response.body);
 
       historial.clear();
       historial.addAll(pedidosJson.map((json) => Pedido.fromJson(json)).toList());
     } else {
       throw Exception('Fallo al cargar pedidos');
+    }
+  }
+
+  Future<void> agregar(Pedido pedido) async {
+    final response = await http.post(
+      Uri.parse(apiUrl),
+      headers: <String, String>{
+        'Content-Type': 'application/json; charset=UTF-8',
+      },
+      body: jsonEncode(pedido.toJson()),
+    );
+    if (response.statusCode == 201) {
+      historial.add(Pedido.fromJson(json.decode(response.body)));
+    } else {
+      throw Exception('Failed to add task: ${response.body}');
+    }
+  }
+
+  Future<void> eliminar(Pedido pedido) async {
+    final response = await http.delete(
+      Uri.parse('$apiUrl/${pedido.idPedido}'),
+    );
+    if (response.statusCode == 200) {
+      historial.removeWhere((p) => p.idPedido == pedido.idPedido);
+    } else {
+      throw Exception('Failed to delete task');
+    }
+  }
+
+  Future<void> marcarCompletada(Pedido pedido) async {
+    bool nuevoEstadoFinalizado = !(pedido.listo);
+
+    final response = await http.patch(
+      Uri.parse('$apiUrl/${pedido.idPedido}'),
+      headers: <String, String>{
+        'Content-Type': 'application/json; charset=UTF-8',
+      },
+      body: jsonEncode({
+        'completada': nuevoEstadoFinalizado,
+      }),
+    );
+
+    if (response.statusCode == 200) {
+      pedido.listo = nuevoEstadoFinalizado;
+    } else {
+      throw Exception('Failed to update task');
     }
   }
 

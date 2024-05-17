@@ -21,6 +21,8 @@ class _MenuState extends State<Menu> {
   int _cantidad = 0;
   Cocinero _cocinero = Cocinero();
   List<String> _pedidoActual = [];
+  late final List<String> users;
+  late String dropdownValue;
 
   @override
   void initState() {
@@ -29,6 +31,8 @@ class _MenuState extends State<Menu> {
     WidgetsBinding.instance?.addPostFrameCallback((_) {
       _display.init(context); // Inicializa DisplayPedidos con el BuildContext válido
       _cocinero.attach(_display);
+      users = ['Juanmi', 'David', 'Jesús', 'Raúl'];
+      dropdownValue = users.first;
     });
   }
 
@@ -48,6 +52,19 @@ class _MenuState extends State<Menu> {
             ),
             SizedBox(width: 8),
             Text('$_cantidad'),
+            SizedBox(width: 75),
+            DropdownMenu<String>(
+              initialSelection: users.first,
+              onSelected: (String? value) {
+                // This is called when the user selects an item.
+                setState(() {
+                  dropdownValue = value!;
+                });
+              },
+              dropdownMenuEntries: users.map<DropdownMenuEntry<String>>((String value) {
+                return DropdownMenuEntry<String>(value: value, label: value);
+              }).toList(),
+            ),
           ],
         ),
       ),
