@@ -20,7 +20,7 @@ class _MenuState extends State<Menu> {
   int _cantidad = 0;
   Cocinero _cocinero = Cocinero();
   List<String> _pedidoActual = [];
-  late final List<String> users= ['Juanmi', 'David', 'Jesús', 'Raúl'];
+  late final List<String> users= ['juanmi', 'david', 'jesus', 'raul'];
   late String currentUser = users.first;
   late String dropdownValue = currentUser;
 
@@ -158,6 +158,7 @@ class _MenuState extends State<Menu> {
                         icon: Icon(Icons.delete),
                         onPressed: () {
                           setState(() {
+                            print(pedido.id);
                             _borrarPedido(pedido);
                             _display.historial.remove(pedido);
                           });
@@ -322,32 +323,48 @@ class _MenuState extends State<Menu> {
   }
 
   // Cuando finalizamos el pedido, el cocinero empieza a cocinar. Reseteamos el carrito para poder empezar otro pedido mientras se va preparando el anterior.
-  void _finalizarPedido(BuildContext context) async{
+  void _finalizarPedido(BuildContext context) async {
     // Finalizar pedido, limpiar el carrito y contador
     if (_pedidoActual.isNotEmpty) {
       setState(() {
-
         mostrarSnackBar(context, "Cocinando pedido...");
         _actualizarHistorial();
-        List<String> listAux = List<String>.from(_pedidoActual);
-        double precio = _calculaTotalPedido(_pedidoActual);
-        Future.delayed(Duration(seconds: 7), () {
-          Future.delayed(Duration(seconds:5), (){
-            _marcarFinalizado(_cocinero.pedidoActual);
-          });
+      });
+
+      List<String> listAux = List<String>.from(_pedidoActual);
+      double precio = _calculaTotalPedido(_pedidoActual);
+
+      try {
+        // Esperar 5 segundos antes de comenzar
+        await Future.delayed(Duration(seconds: 5));
+
+        setState(() {
           _cocinero.cocinaPedido(listAux, context);
           _cocinero.setPrecioPedido(precio);
-          //GUARDAMOS EN BASE DE DATOS -> PEDIDO.LISTO = FALSE
-          _aniadirPedido(_cocinero.pedidoActual);
-          //--------------------------------------------------
+          _cocinero.pedidoActual.usuario = currentUser;
         });
-        _pedidoActual.clear();
-        _cantidad = 0;
-      });
+
+        // Guardar en base de datos y asegurarse que se complete antes de continuar
+        _aniadirPedido(_cocinero.pedidoActual);
+
+        // Esperar 7 segundos adicionales antes de marcar como finalizado
+        await Future.delayed(Duration(seconds: 7));
+
+        // Marcar el pedido como finalizado
+        print(_cocinero.pedidoActual.id);
+        _marcarFinalizado(_display.historial.last);
+
+        setState(() {
+          _pedidoActual.clear();
+          _cantidad = 0;
+        });
+      } catch (e) {
+        mostrarSnackBar(context, "Error procesando el pedido: $e");
+        print('Error procesando el pedido: $e');
+      }
     } else {
       mostrarSnackBar(context, "El pedido está vacío");
     }
-
   }
 
   // Cuando pulsamos el botón de limpiar el carrito, para que reseteemos el pedido y podamos empezar desde 0

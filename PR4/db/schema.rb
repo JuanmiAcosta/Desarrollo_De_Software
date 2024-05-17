@@ -21,10 +21,10 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_17_140739) do
     t.string "bacon"
     t.string "carne"
     t.float "precio"
-    t.integer "Pedido_id", null: false
+    t.integer "pedido_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["Pedido_id"], name: "index_hamburguesas_on_Pedido_id"
+    t.index ["pedido_id"], name: "index_hamburguesas_on_pedido_id"
   end
 
   create_table "pedidos", force: :cascade do |t|
@@ -36,5 +36,5 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_17_140739) do
     t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "hamburguesas", "Pedidos"
+  add_foreign_key "hamburguesas", "pedidos"
 end

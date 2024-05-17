@@ -6,7 +6,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 class DisplayPedidos implements ObservadorPedido {
-  List<Pedido> historial = [];
+  List<Pedido> historial= [];
   final String apiUrl = "http://localhost:3000/pedidos";
 
   late ScaffoldMessengerState _scaffoldMessengerState; // Referencia al ScaffoldMessenger
@@ -82,7 +82,6 @@ class DisplayPedidos implements ObservadorPedido {
   }
 
   Future<void> marcarFinalizado(Pedido pedido) async {
-    bool nuevoEstadoFinalizado = !(pedido.listo);
 
     final response = await http.patch(
       Uri.parse('$apiUrl/${pedido.id}'),
@@ -90,12 +89,12 @@ class DisplayPedidos implements ObservadorPedido {
         'Content-Type': 'application/json; charset=UTF-8',
       },
       body: jsonEncode({
-        'listo': nuevoEstadoFinalizado,
+        'listo': true,
       }),
     );
 
     if (response.statusCode == 200) {
-      pedido.listo = nuevoEstadoFinalizado;
+      pedido.listo = true;
     } else {
       throw Exception('Fallo al actualizar pedido');
     }

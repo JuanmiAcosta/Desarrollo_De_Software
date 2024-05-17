@@ -30,7 +30,7 @@ class Pedido {
   })  : hamburguesas = hamburguesas ?? [],
         precio = precio ?? 0.0,
         listo = listo ?? false,
-        usuario = usuario ?? "";
+        usuario = usuario ?? "Juanmi";
 
   factory Pedido.fromJson(Map<String, dynamic> json) {
     return Pedido.json(

@@ -1,6 +1,7 @@
 class PedidosController < ApplicationController
     def index
         @pedidos = Pedido.where(usuario: params[:usuario])
+        #@pedidos = Pedido.all
         logger.info "Cargando pedidos para el usuario #{params[:usuario]}"
         render json: @pedidos
     end
@@ -35,6 +36,6 @@ class PedidosController < ApplicationController
     private
 
     def pedido_params
-        params.require(:pedido).permit(:idPedido, :precio, :listo, :usuario)
+        params.require(:pedido).permit(:idPedido, :precio, :listo, :usuario, hamburguesas_attributes: [:nombre, :pan, :lechuga, :tomate, :quesoCabra, :cebolla, :pepinillos, :bacon, :carne, :precio])
     end
 end

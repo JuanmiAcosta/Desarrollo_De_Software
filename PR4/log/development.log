@@ -127,3 +127,2322 @@ Cargando pedidos para el usuario
 Completed 200 OK in 1ms (Views: 0.6ms | ActiveRecord: 0.0ms | Allocations: 605)
 
 
+Started GET "/pedidos" for ::1 at 2024-05-17 16:32:02 +0200
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PedidosController#index as HTML
+Cargando pedidos para el usuario 
+  [1m[36mPedido Load (0.1ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."usuario" IS NULL[0m
+  ↳ app/controllers/pedidos_controller.rb:5:in `index'
+Completed 200 OK in 25ms (Views: 1.3ms | ActiveRecord: 1.5ms | Allocations: 13695)
+
+
+Started GET "/favicon.ico" for ::1 at 2024-05-17 16:32:02 +0200
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/pedidos?usuario=Juanmi" for 127.0.0.1 at 2024-05-17 16:32:47 +0200
+Processing by PedidosController#index as HTML
+  Parameters: {"usuario"=>"Juanmi"}
+Cargando pedidos para el usuario Juanmi
+  [1m[36mPedido Load (0.2ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."usuario" = ?[0m  [["usuario", "Juanmi"]]
+  ↳ app/controllers/pedidos_controller.rb:5:in `index'
+Completed 200 OK in 2ms (Views: 1.2ms | ActiveRecord: 0.2ms | Allocations: 1062)
+
+
+Started POST "/pedidos" for 127.0.0.1 at 2024-05-17 16:33:01 +0200
+Processing by PedidosController#create as HTML
+  Parameters: {"id"=>0, "idPedido"=>"376683", "hamburguesas"=>[{"nombre"=>"Hamburguesa normal", "pan"=>"Pan normal", "lechuga"=>"Lechuga fresca", "tomate"=>"Tomate pera", "quesoCabra"=>"Queso de cabra recién cortado", "cebolla"=>"Cebolla llorosa", "pepinillos"=>"Pepinillos", "bacon"=>"Bacon grasiento", "carne"=>"Carne Wagyu", "precio"=>5.0}], "precio"=>15.0, "listo"=>false, "usuario"=>"", "pedido"=>{"id"=>0, "idPedido"=>"376683", "usuario"=>"", "precio"=>15.0, "listo"=>false}}
+[31mUnpermitted parameter: :id. Context: { controller: PedidosController, action: create, request: #<ActionDispatch::Request:0x00007dbab86e02a8>, params: {"id"=>0, "idPedido"=>"376683", "hamburguesas"=>[{"nombre"=>"Hamburguesa normal", "pan"=>"Pan normal", "lechuga"=>"Lechuga fresca", "tomate"=>"Tomate pera", "quesoCabra"=>"Queso de cabra recién cortado", "cebolla"=>"Cebolla llorosa", "pepinillos"=>"Pepinillos", "bacon"=>"Bacon grasiento", "carne"=>"Carne Wagyu", "precio"=>5.0}], "precio"=>15.0, "listo"=>false, "usuario"=>"", "controller"=>"pedidos", "action"=>"create", "pedido"=>{"id"=>0, "idPedido"=>"376683", "usuario"=>"", "precio"=>15.0, "listo"=>false}} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/pedidos_controller.rb:10:in `create'
+  [1m[36mPedido Create (1.2ms)[0m  [1m[32mINSERT INTO "pedidos" ("idPedido", "usuario", "precio", "listo", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["idPedido", "376683"], ["usuario", ""], ["precio", 15.0], ["listo", 0], ["created_at", "2024-05-17 14:33:01.293035"], ["updated_at", "2024-05-17 14:33:01.293035"]]
+  ↳ app/controllers/pedidos_controller.rb:10:in `create'
+  [1m[36mTRANSACTION (3.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/pedidos_controller.rb:10:in `create'
+Completed 201 Created in 19ms (Views: 0.5ms | ActiveRecord: 4.7ms | Allocations: 12098)
+
+
+Started PATCH "/pedidos/0" for 127.0.0.1 at 2024-05-17 16:33:06 +0200
+Processing by PedidosController#update as HTML
+  Parameters: {"listo"=>true, "id"=>"0", "pedido"=>{"listo"=>true}}
+  [1m[36mPedido Load (0.1ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."id" = ? LIMIT ?[0m  [["id", 0], ["LIMIT", 1]]
+  ↳ app/controllers/pedidos_controller.rb:18:in `update'
+Completed 404 Not Found in 2ms (ActiveRecord: 0.1ms | Allocations: 1005)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Pedido with 'id'=0):
+  
+app/controllers/pedidos_controller.rb:18:in `update'
+Started GET "/pedidos" for ::1 at 2024-05-17 16:33:10 +0200
+Processing by PedidosController#index as HTML
+Cargando pedidos para el usuario 
+  [1m[36mPedido Load (0.1ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."usuario" IS NULL[0m
+  ↳ app/controllers/pedidos_controller.rb:5:in `index'
+Completed 200 OK in 1ms (Views: 1.0ms | ActiveRecord: 0.1ms | Allocations: 875)
+
+
+Started GET "/favicon.ico" for ::1 at 2024-05-17 16:33:10 +0200
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/pedidos" for ::1 at 2024-05-17 16:33:11 +0200
+Processing by PedidosController#index as HTML
+Cargando pedidos para el usuario 
+  [1m[36mPedido Load (0.1ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."usuario" IS NULL[0m
+  ↳ app/controllers/pedidos_controller.rb:5:in `index'
+Completed 200 OK in 2ms (Views: 1.2ms | ActiveRecord: 0.1ms | Allocations: 732)
+
+
+Started GET "/favicon.ico" for ::1 at 2024-05-17 16:33:11 +0200
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/pedidos" for ::1 at 2024-05-17 16:33:11 +0200
+Processing by PedidosController#index as HTML
+Cargando pedidos para el usuario 
+  [1m[36mPedido Load (0.1ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."usuario" IS NULL[0m
+  ↳ app/controllers/pedidos_controller.rb:5:in `index'
+Completed 200 OK in 1ms (Views: 0.9ms | ActiveRecord: 0.1ms | Allocations: 747)
+
+
+Started GET "/favicon.ico" for ::1 at 2024-05-17 16:33:11 +0200
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/pedidos" for ::1 at 2024-05-17 16:33:11 +0200
+Processing by PedidosController#index as HTML
+Cargando pedidos para el usuario 
+  [1m[36mPedido Load (0.1ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."usuario" IS NULL[0m
+  ↳ app/controllers/pedidos_controller.rb:5:in `index'
+Completed 200 OK in 1ms (Views: 0.9ms | ActiveRecord: 0.1ms | Allocations: 732)
+
+
+Started GET "/favicon.ico" for ::1 at 2024-05-17 16:33:11 +0200
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/pedidos" for ::1 at 2024-05-17 16:33:12 +0200
+Processing by PedidosController#index as HTML
+Cargando pedidos para el usuario 
+  [1m[36mPedido Load (0.1ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."usuario" IS NULL[0m
+  ↳ app/controllers/pedidos_controller.rb:5:in `index'
+Completed 200 OK in 2ms (Views: 1.1ms | ActiveRecord: 0.1ms | Allocations: 732)
+
+
+Started GET "/favicon.ico" for ::1 at 2024-05-17 16:33:12 +0200
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/pedidos" for ::1 at 2024-05-17 16:33:12 +0200
+Processing by PedidosController#index as HTML
+Cargando pedidos para el usuario 
+  [1m[36mPedido Load (0.1ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."usuario" IS NULL[0m
+  ↳ app/controllers/pedidos_controller.rb:5:in `index'
+Completed 200 OK in 1ms (Views: 0.9ms | ActiveRecord: 0.1ms | Allocations: 732)
+
+
+Started GET "/favicon.ico" for ::1 at 2024-05-17 16:33:12 +0200
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/pedidos" for ::1 at 2024-05-17 16:33:12 +0200
+Processing by PedidosController#index as HTML
+Cargando pedidos para el usuario 
+  [1m[36mPedido Load (0.1ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."usuario" IS NULL[0m
+  ↳ app/controllers/pedidos_controller.rb:5:in `index'
+Completed 200 OK in 2ms (Views: 1.2ms | ActiveRecord: 0.1ms | Allocations: 732)
+
+
+Started GET "/favicon.ico" for ::1 at 2024-05-17 16:33:12 +0200
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/pedidos" for ::1 at 2024-05-17 16:33:12 +0200
+Processing by PedidosController#index as HTML
+Cargando pedidos para el usuario 
+  [1m[36mPedido Load (0.1ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."usuario" IS NULL[0m
+  ↳ app/controllers/pedidos_controller.rb:5:in `index'
+Completed 200 OK in 1ms (Views: 1.1ms | ActiveRecord: 0.1ms | Allocations: 732)
+
+
+Started GET "/favicon.ico" for ::1 at 2024-05-17 16:33:12 +0200
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/pedidos" for ::1 at 2024-05-17 16:33:12 +0200
+Processing by PedidosController#index as HTML
+Cargando pedidos para el usuario 
+  [1m[36mPedido Load (0.1ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."usuario" IS NULL[0m
+  ↳ app/controllers/pedidos_controller.rb:5:in `index'
+Completed 200 OK in 1ms (Views: 1.0ms | ActiveRecord: 0.1ms | Allocations: 732)
+
+
+Started GET "/favicon.ico" for ::1 at 2024-05-17 16:33:12 +0200
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/pedidos" for ::1 at 2024-05-17 16:33:14 +0200
+Processing by PedidosController#index as HTML
+Cargando pedidos para el usuario 
+  [1m[36mPedido Load (0.1ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."usuario" IS NULL[0m
+  ↳ app/controllers/pedidos_controller.rb:5:in `index'
+Completed 200 OK in 1ms (Views: 1.0ms | ActiveRecord: 0.1ms | Allocations: 745)
+
+
+Started GET "/favicon.ico" for ::1 at 2024-05-17 16:33:14 +0200
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/pedidos" for ::1 at 2024-05-17 16:33:14 +0200
+Processing by PedidosController#index as HTML
+Cargando pedidos para el usuario 
+  [1m[36mPedido Load (0.1ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."usuario" IS NULL[0m
+  ↳ app/controllers/pedidos_controller.rb:5:in `index'
+Completed 200 OK in 1ms (Views: 1.0ms | ActiveRecord: 0.1ms | Allocations: 732)
+
+
+Started GET "/favicon.ico" for ::1 at 2024-05-17 16:33:14 +0200
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/pedidos" for ::1 at 2024-05-17 16:33:14 +0200
+Processing by PedidosController#index as HTML
+Cargando pedidos para el usuario 
+  [1m[36mPedido Load (0.1ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."usuario" IS NULL[0m
+  ↳ app/controllers/pedidos_controller.rb:5:in `index'
+Completed 200 OK in 2ms (Views: 1.9ms | ActiveRecord: 0.1ms | Allocations: 733)
+
+
+Started GET "/favicon.ico" for ::1 at 2024-05-17 16:33:14 +0200
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/pedidos" for ::1 at 2024-05-17 16:33:15 +0200
+Processing by PedidosController#index as HTML
+Cargando pedidos para el usuario 
+  [1m[36mPedido Load (0.1ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."usuario" IS NULL[0m
+  ↳ app/controllers/pedidos_controller.rb:5:in `index'
+Completed 200 OK in 2ms (Views: 1.0ms | ActiveRecord: 0.1ms | Allocations: 733)
+
+
+Started GET "/favicon.ico" for ::1 at 2024-05-17 16:33:15 +0200
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/pedidos" for ::1 at 2024-05-17 16:33:15 +0200
+Processing by PedidosController#index as HTML
+Cargando pedidos para el usuario 
+  [1m[36mPedido Load (0.1ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."usuario" IS NULL[0m
+  ↳ app/controllers/pedidos_controller.rb:5:in `index'
+Completed 200 OK in 2ms (Views: 0.9ms | ActiveRecord: 0.1ms | Allocations: 732)
+
+
+Started GET "/favicon.ico" for ::1 at 2024-05-17 16:33:15 +0200
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started DELETE "/pedidos/0" for 127.0.0.1 at 2024-05-17 16:33:27 +0200
+Processing by PedidosController#destroy as HTML
+  Parameters: {"id"=>"0"}
+  [1m[36mPedido Load (0.1ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."id" = ? LIMIT ?[0m  [["id", 0], ["LIMIT", 1]]
+  ↳ app/controllers/pedidos_controller.rb:27:in `destroy'
+Completed 404 Not Found in 1ms (ActiveRecord: 0.1ms | Allocations: 608)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Pedido with 'id'=0):
+  
+app/controllers/pedidos_controller.rb:27:in `destroy'
+Started DELETE "/pedidos/2" for 127.0.0.1 at 2024-05-17 16:33:31 +0200
+Processing by PedidosController#destroy as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mPedido Load (0.1ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/pedidos_controller.rb:27:in `destroy'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/pedidos_controller.rb:28:in `destroy'
+  [1m[36mPedido Destroy (0.9ms)[0m  [1m[31mDELETE FROM "pedidos" WHERE "pedidos"."id" = ?[0m  [["id", 2]]
+  ↳ app/controllers/pedidos_controller.rb:28:in `destroy'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/pedidos_controller.rb:28:in `destroy'
+Completed 200 OK in 4ms (ActiveRecord: 1.2ms | Allocations: 2243)
+
+
+Started GET "/pedidos" for ::1 at 2024-05-17 16:37:28 +0200
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PedidosController#index as HTML
+Cargando pedidos para el usuario 
+  [1m[36mPedido Load (0.1ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos"[0m
+  ↳ app/controllers/pedidos_controller.rb:6:in `index'
+Completed 200 OK in 21ms (Views: 8.4ms | ActiveRecord: 2.1ms | Allocations: 17699)
+
+
+Started GET "/pedidos?usuario=Juanmi" for 127.0.0.1 at 2024-05-17 16:37:43 +0200
+Processing by PedidosController#index as HTML
+  Parameters: {"usuario"=>"Juanmi"}
+Cargando pedidos para el usuario Juanmi
+  [1m[36mPedido Load (0.1ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos"[0m
+  ↳ app/controllers/pedidos_controller.rb:6:in `index'
+Completed 200 OK in 2ms (Views: 1.2ms | ActiveRecord: 0.1ms | Allocations: 911)
+
+
+Started POST "/pedidos" for 127.0.0.1 at 2024-05-17 16:38:01 +0200
+Processing by PedidosController#create as HTML
+  Parameters: {"id"=>0, "idPedido"=>"804724", "hamburguesas"=>[{"nombre"=>"Hamburguesa normal", "pan"=>"Pan normal", "lechuga"=>"Lechuga fresca", "tomate"=>"Tomate pera", "quesoCabra"=>"Queso de cabra recién cortado", "cebolla"=>"Cebolla llorosa", "pepinillos"=>"Pepinillos", "bacon"=>"Bacon grasiento", "carne"=>"Carne Wagyu", "precio"=>5.0}], "precio"=>15.0, "listo"=>false, "usuario"=>"", "pedido"=>{"id"=>0, "idPedido"=>"804724", "usuario"=>"", "precio"=>15.0, "listo"=>false}}
+[31mUnpermitted parameter: :id. Context: { controller: PedidosController, action: create, request: #<ActionDispatch::Request:0x00007bae35c94b90>, params: {"id"=>0, "idPedido"=>"804724", "hamburguesas"=>[{"nombre"=>"Hamburguesa normal", "pan"=>"Pan normal", "lechuga"=>"Lechuga fresca", "tomate"=>"Tomate pera", "quesoCabra"=>"Queso de cabra recién cortado", "cebolla"=>"Cebolla llorosa", "pepinillos"=>"Pepinillos", "bacon"=>"Bacon grasiento", "carne"=>"Carne Wagyu", "precio"=>5.0}], "precio"=>15.0, "listo"=>false, "usuario"=>"", "controller"=>"pedidos", "action"=>"create", "pedido"=>{"id"=>0, "idPedido"=>"804724", "usuario"=>"", "precio"=>15.0, "listo"=>false}} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/pedidos_controller.rb:11:in `create'
+  [1m[36mPedido Create (1.3ms)[0m  [1m[32mINSERT INTO "pedidos" ("idPedido", "usuario", "precio", "listo", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["idPedido", "804724"], ["usuario", ""], ["precio", 15.0], ["listo", 0], ["created_at", "2024-05-17 14:38:01.336782"], ["updated_at", "2024-05-17 14:38:01.336782"]]
+  ↳ app/controllers/pedidos_controller.rb:11:in `create'
+  [1m[36mTRANSACTION (3.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/pedidos_controller.rb:11:in `create'
+Completed 201 Created in 8ms (Views: 0.3ms | ActiveRecord: 5.2ms | Allocations: 2972)
+
+
+Started PATCH "/pedidos/0" for 127.0.0.1 at 2024-05-17 16:38:06 +0200
+Processing by PedidosController#update as HTML
+  Parameters: {"listo"=>true, "id"=>"0", "pedido"=>{"listo"=>true}}
+  [1m[36mPedido Load (0.1ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."id" = ? LIMIT ?[0m  [["id", 0], ["LIMIT", 1]]
+  ↳ app/controllers/pedidos_controller.rb:19:in `update'
+Completed 404 Not Found in 5ms (ActiveRecord: 0.1ms | Allocations: 2298)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Pedido with 'id'=0):
+  
+app/controllers/pedidos_controller.rb:19:in `update'
+Started GET "/pedidos" for ::1 at 2024-05-17 16:38:10 +0200
+Processing by PedidosController#index as HTML
+Cargando pedidos para el usuario 
+  [1m[36mPedido Load (0.1ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos"[0m
+  ↳ app/controllers/pedidos_controller.rb:6:in `index'
+Completed 200 OK in 2ms (Views: 1.5ms | ActiveRecord: 0.1ms | Allocations: 1030)
+
+
+Started GET "/pedidos?usuario=Jes%C3%BAs" for 127.0.0.1 at 2024-05-17 16:39:15 +0200
+Processing by PedidosController#index as HTML
+  Parameters: {"usuario"=>"Jesús"}
+Cargando pedidos para el usuario Jesús
+  [1m[36mPedido Load (0.1ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos"[0m
+  ↳ app/controllers/pedidos_controller.rb:6:in `index'
+Completed 200 OK in 2ms (Views: 1.8ms | ActiveRecord: 0.1ms | Allocations: 864)
+
+
+Started POST "/pedidos" for 127.0.0.1 at 2024-05-17 16:39:29 +0200
+Processing by PedidosController#create as HTML
+  Parameters: {"id"=>0, "idPedido"=>"311629", "hamburguesas"=>[{"nombre"=>"Hamburguesa normal", "pan"=>"Pan normal", "lechuga"=>"Lechuga fresca", "tomate"=>"Tomate pera", "quesoCabra"=>"Queso de cabra recién cortado", "cebolla"=>"Cebolla llorosa", "pepinillos"=>"Pepinillos", "bacon"=>"Bacon grasiento", "carne"=>"Carne Wagyu", "precio"=>5.0}], "precio"=>20.0, "listo"=>false, "usuario"=>"", "pedido"=>{"id"=>0, "idPedido"=>"311629", "usuario"=>"", "precio"=>20.0, "listo"=>false}}
+[31mUnpermitted parameter: :id. Context: { controller: PedidosController, action: create, request: #<ActionDispatch::Request:0x00007bae26f390a8>, params: {"id"=>0, "idPedido"=>"311629", "hamburguesas"=>[{"nombre"=>"Hamburguesa normal", "pan"=>"Pan normal", "lechuga"=>"Lechuga fresca", "tomate"=>"Tomate pera", "quesoCabra"=>"Queso de cabra recién cortado", "cebolla"=>"Cebolla llorosa", "pepinillos"=>"Pepinillos", "bacon"=>"Bacon grasiento", "carne"=>"Carne Wagyu", "precio"=>5.0}], "precio"=>20.0, "listo"=>false, "usuario"=>"", "controller"=>"pedidos", "action"=>"create", "pedido"=>{"id"=>0, "idPedido"=>"311629", "usuario"=>"", "precio"=>20.0, "listo"=>false}} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/pedidos_controller.rb:11:in `create'
+  [1m[36mPedido Create (0.9ms)[0m  [1m[32mINSERT INTO "pedidos" ("idPedido", "usuario", "precio", "listo", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["idPedido", "311629"], ["usuario", ""], ["precio", 20.0], ["listo", 0], ["created_at", "2024-05-17 14:39:29.257658"], ["updated_at", "2024-05-17 14:39:29.257658"]]
+  ↳ app/controllers/pedidos_controller.rb:11:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/pedidos_controller.rb:11:in `create'
+Completed 201 Created in 3ms (Views: 0.2ms | ActiveRecord: 1.1ms | Allocations: 2262)
+
+
+Started PATCH "/pedidos/0" for 127.0.0.1 at 2024-05-17 16:39:34 +0200
+Processing by PedidosController#update as HTML
+  Parameters: {"listo"=>true, "id"=>"0", "pedido"=>{"listo"=>true}}
+  [1m[36mPedido Load (0.1ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."id" = ? LIMIT ?[0m  [["id", 0], ["LIMIT", 1]]
+  ↳ app/controllers/pedidos_controller.rb:19:in `update'
+Completed 404 Not Found in 1ms (ActiveRecord: 0.1ms | Allocations: 596)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Pedido with 'id'=0):
+  
+app/controllers/pedidos_controller.rb:19:in `update'
+Started GET "/pedidos" for ::1 at 2024-05-17 16:39:39 +0200
+Processing by PedidosController#index as HTML
+Cargando pedidos para el usuario 
+  [1m[36mPedido Load (0.1ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos"[0m
+  ↳ app/controllers/pedidos_controller.rb:6:in `index'
+Completed 200 OK in 2ms (Views: 1.4ms | ActiveRecord: 0.1ms | Allocations: 939)
+
+
+Started GET "/pedidos?usuario=Ra%C3%BAl" for 127.0.0.1 at 2024-05-17 16:41:37 +0200
+Processing by PedidosController#index as HTML
+  Parameters: {"usuario"=>"Raúl"}
+Cargando pedidos para el usuario Raúl
+  [1m[36mPedido Load (0.1ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."usuario" = ?[0m  [["usuario", "Raúl"]]
+  ↳ app/controllers/pedidos_controller.rb:6:in `index'
+Completed 200 OK in 4ms (Views: 1.0ms | ActiveRecord: 1.4ms | Allocations: 2557)
+
+
+Started POST "/pedidos" for 127.0.0.1 at 2024-05-17 16:41:48 +0200
+Processing by PedidosController#create as HTML
+  Parameters: {"id"=>0, "idPedido"=>"252432", "hamburguesas"=>[{"nombre"=>"Hamburguesa normal", "pan"=>"Pan normal", "lechuga"=>"Lechuga fresca", "tomate"=>"Tomate pera", "quesoCabra"=>"Queso de cabra recién cortado", "cebolla"=>"Cebolla llorosa", "pepinillos"=>"Pepinillos", "bacon"=>"Bacon grasiento", "carne"=>"Carne Wagyu", "precio"=>5.0}], "precio"=>10.0, "listo"=>false, "usuario"=>"Raúl", "pedido"=>{"id"=>0, "idPedido"=>"252432", "usuario"=>"Raúl", "precio"=>10.0, "listo"=>false}}
+[31mUnpermitted parameter: :id. Context: { controller: PedidosController, action: create, request: #<ActionDispatch::Request:0x00007bae26ef3878>, params: {"id"=>0, "idPedido"=>"252432", "hamburguesas"=>[{"nombre"=>"Hamburguesa normal", "pan"=>"Pan normal", "lechuga"=>"Lechuga fresca", "tomate"=>"Tomate pera", "quesoCabra"=>"Queso de cabra recién cortado", "cebolla"=>"Cebolla llorosa", "pepinillos"=>"Pepinillos", "bacon"=>"Bacon grasiento", "carne"=>"Carne Wagyu", "precio"=>5.0}], "precio"=>10.0, "listo"=>false, "usuario"=>"Raúl", "controller"=>"pedidos", "action"=>"create", "pedido"=>{"id"=>0, "idPedido"=>"252432", "usuario"=>"Raúl", "precio"=>10.0, "listo"=>false}} }[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/pedidos_controller.rb:11:in `create'
+  [1m[36mPedido Create (0.7ms)[0m  [1m[32mINSERT INTO "pedidos" ("idPedido", "usuario", "precio", "listo", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["idPedido", "252432"], ["usuario", "Raúl"], ["precio", 10.0], ["listo", 0], ["created_at", "2024-05-17 14:41:48.245567"], ["updated_at", "2024-05-17 14:41:48.245567"]]
+  ↳ app/controllers/pedidos_controller.rb:11:in `create'
+  [1m[36mTRANSACTION (3.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/pedidos_controller.rb:11:in `create'
+Completed 201 Created in 9ms (Views: 0.3ms | ActiveRecord: 4.8ms | Allocations: 5173)
+
+
+Started GET "/pedidos" for ::1 at 2024-05-17 16:41:50 +0200
+Processing by PedidosController#index as HTML
+Cargando pedidos para el usuario 
+  [1m[36mPedido Load (0.2ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."usuario" IS NULL[0m
+  ↳ app/controllers/pedidos_controller.rb:6:in `index'
+Completed 200 OK in 1ms (Views: 1.0ms | ActiveRecord: 0.1ms | Allocations: 770)
+
+
+Started GET "/pedidos" for ::1 at 2024-05-17 16:41:51 +0200
+Processing by PedidosController#index as HTML
+Cargando pedidos para el usuario 
+  [1m[36mPedido Load (0.1ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."usuario" IS NULL[0m
+  ↳ app/controllers/pedidos_controller.rb:6:in `index'
+Completed 200 OK in 2ms (Views: 1.1ms | ActiveRecord: 0.1ms | Allocations: 737)
+
+
+Started GET "/pedidos" for ::1 at 2024-05-17 16:41:52 +0200
+Processing by PedidosController#index as HTML
+Cargando pedidos para el usuario 
+  [1m[36mPedido Load (0.1ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."usuario" IS NULL[0m
+  ↳ app/controllers/pedidos_controller.rb:6:in `index'
+Completed 200 OK in 1ms (Views: 1.0ms | ActiveRecord: 0.1ms | Allocations: 737)
+
+
+Started GET "/pedidos" for ::1 at 2024-05-17 16:41:52 +0200
+Processing by PedidosController#index as HTML
+Cargando pedidos para el usuario 
+  [1m[36mPedido Load (0.1ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."usuario" IS NULL[0m
+  ↳ app/controllers/pedidos_controller.rb:6:in `index'
+Completed 200 OK in 2ms (Views: 1.0ms | ActiveRecord: 0.1ms | Allocations: 737)
+
+
+Started GET "/pedidos" for ::1 at 2024-05-17 16:41:52 +0200
+Processing by PedidosController#index as HTML
+Cargando pedidos para el usuario 
+  [1m[36mPedido Load (0.2ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."usuario" IS NULL[0m
+  ↳ app/controllers/pedidos_controller.rb:6:in `index'
+Completed 200 OK in 2ms (Views: 1.1ms | ActiveRecord: 0.2ms | Allocations: 737)
+
+
+Started GET "/pedidos" for ::1 at 2024-05-17 16:41:52 +0200
+Processing by PedidosController#index as HTML
+Cargando pedidos para el usuario 
+  [1m[36mPedido Load (0.1ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."usuario" IS NULL[0m
+  ↳ app/controllers/pedidos_controller.rb:6:in `index'
+Completed 200 OK in 2ms (Views: 1.3ms | ActiveRecord: 0.1ms | Allocations: 737)
+
+
+Started GET "/pedidos" for ::1 at 2024-05-17 16:41:53 +0200
+Processing by PedidosController#index as HTML
+Cargando pedidos para el usuario 
+  [1m[36mPedido Load (0.1ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."usuario" IS NULL[0m
+  ↳ app/controllers/pedidos_controller.rb:6:in `index'
+Completed 200 OK in 1ms (Views: 1.1ms | ActiveRecord: 0.1ms | Allocations: 737)
+
+
+Started PATCH "/pedidos/0" for 127.0.0.1 at 2024-05-17 16:41:53 +0200
+Processing by PedidosController#update as HTML
+  Parameters: {"listo"=>true, "id"=>"0", "pedido"=>{"listo"=>true}}
+  [1m[36mPedido Load (0.2ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."id" = ? LIMIT ?[0m  [["id", 0], ["LIMIT", 1]]
+  ↳ app/controllers/pedidos_controller.rb:19:in `update'
+Completed 404 Not Found in 2ms (ActiveRecord: 0.2ms | Allocations: 761)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Pedido with 'id'=0):
+  
+app/controllers/pedidos_controller.rb:19:in `update'
+Started GET "/pedidos" for ::1 at 2024-05-17 16:41:53 +0200
+Processing by PedidosController#index as HTML
+Cargando pedidos para el usuario 
+  [1m[36mPedido Load (0.1ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."usuario" IS NULL[0m
+  ↳ app/controllers/pedidos_controller.rb:6:in `index'
+Completed 200 OK in 2ms (Views: 1.6ms | ActiveRecord: 0.1ms | Allocations: 751)
+
+
+Started GET "/pedidos" for ::1 at 2024-05-17 16:41:53 +0200
+Processing by PedidosController#index as HTML
+Cargando pedidos para el usuario 
+  [1m[36mPedido Load (0.1ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."usuario" IS NULL[0m
+  ↳ app/controllers/pedidos_controller.rb:6:in `index'
+Completed 200 OK in 1ms (Views: 1.0ms | ActiveRecord: 0.1ms | Allocations: 737)
+
+
+Started GET "/pedidos?usuario=Juanmi" for 127.0.0.1 at 2024-05-17 16:42:02 +0200
+Processing by PedidosController#index as HTML
+  Parameters: {"usuario"=>"Juanmi"}
+Cargando pedidos para el usuario Juanmi
+  [1m[36mPedido Load (0.1ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."usuario" = ?[0m  [["usuario", "Juanmi"]]
+  ↳ app/controllers/pedidos_controller.rb:6:in `index'
+Completed 200 OK in 2ms (Views: 1.2ms | ActiveRecord: 0.1ms | Allocations: 753)
+
+
+Started GET "/pedidos?usuario=David" for 127.0.0.1 at 2024-05-17 16:42:05 +0200
+Processing by PedidosController#index as HTML
+  Parameters: {"usuario"=>"David"}
+Cargando pedidos para el usuario David
+  [1m[36mPedido Load (0.1ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."usuario" = ?[0m  [["usuario", "David"]]
+  ↳ app/controllers/pedidos_controller.rb:6:in `index'
+Completed 200 OK in 2ms (Views: 1.2ms | ActiveRecord: 0.1ms | Allocations: 751)
+
+
+Started GET "/pedidos?usuario=Jes%C3%BAs" for 127.0.0.1 at 2024-05-17 16:42:09 +0200
+Processing by PedidosController#index as HTML
+  Parameters: {"usuario"=>"Jesús"}
+Cargando pedidos para el usuario Jesús
+  [1m[36mPedido Load (0.1ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."usuario" = ?[0m  [["usuario", "Jesús"]]
+  ↳ app/controllers/pedidos_controller.rb:6:in `index'
+Completed 200 OK in 4ms (Views: 3.7ms | ActiveRecord: 0.1ms | Allocations: 753)
+
+
+Started GET "/pedidos?usuario=Ra%C3%BAl" for 127.0.0.1 at 2024-05-17 16:42:13 +0200
+Processing by PedidosController#index as HTML
+  Parameters: {"usuario"=>"Raúl"}
+Cargando pedidos para el usuario Raúl
+  [1m[36mPedido Load (0.1ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."usuario" = ?[0m  [["usuario", "Raúl"]]
+  ↳ app/controllers/pedidos_controller.rb:6:in `index'
+Completed 200 OK in 2ms (Views: 1.9ms | ActiveRecord: 0.1ms | Allocations: 857)
+
+
+Started GET "/pedidos?usuario=raul" for ::1 at 2024-05-17 16:42:29 +0200
+Processing by PedidosController#index as HTML
+  Parameters: {"usuario"=>"raul"}
+Cargando pedidos para el usuario raul
+  [1m[36mPedido Load (0.1ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."usuario" = ?[0m  [["usuario", "raul"]]
+  ↳ app/controllers/pedidos_controller.rb:6:in `index'
+Completed 200 OK in 2ms (Views: 1.3ms | ActiveRecord: 0.1ms | Allocations: 751)
+
+
+Started GET "/pedidos?usuario=Ra%C3%BAl" for ::1 at 2024-05-17 16:42:35 +0200
+Processing by PedidosController#index as HTML
+  Parameters: {"usuario"=>"Raúl"}
+Cargando pedidos para el usuario Raúl
+  [1m[36mPedido Load (0.1ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."usuario" = ?[0m  [["usuario", "Raúl"]]
+  ↳ app/controllers/pedidos_controller.rb:6:in `index'
+Completed 200 OK in 2ms (Views: 1.7ms | ActiveRecord: 0.1ms | Allocations: 837)
+
+
+Started GET "/pedidos?usuario=Jes%C3%BAs" for 127.0.0.1 at 2024-05-17 16:43:05 +0200
+Processing by PedidosController#index as HTML
+  Parameters: {"usuario"=>"Jesús"}
+Cargando pedidos para el usuario Jesús
+  [1m[36mPedido Load (0.1ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."usuario" = ?[0m  [["usuario", "Jesús"]]
+  ↳ app/controllers/pedidos_controller.rb:6:in `index'
+Completed 200 OK in 2ms (Views: 1.3ms | ActiveRecord: 0.1ms | Allocations: 752)
+
+
+Started GET "/pedidos?usuario=Ra%C3%BAl" for 127.0.0.1 at 2024-05-17 16:43:09 +0200
+Processing by PedidosController#index as HTML
+  Parameters: {"usuario"=>"Raúl"}
+Cargando pedidos para el usuario Raúl
+  [1m[36mPedido Load (0.1ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."usuario" = ?[0m  [["usuario", "Raúl"]]
+  ↳ app/controllers/pedidos_controller.rb:6:in `index'
+Completed 200 OK in 2ms (Views: 1.4ms | ActiveRecord: 0.1ms | Allocations: 837)
+
+
+Started GET "/pedidos?usuario=Juanmi" for 127.0.0.1 at 2024-05-17 16:43:19 +0200
+Processing by PedidosController#index as HTML
+  Parameters: {"usuario"=>"Juanmi"}
+Cargando pedidos para el usuario Juanmi
+  [1m[36mPedido Load (0.1ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."usuario" = ?[0m  [["usuario", "Juanmi"]]
+  ↳ app/controllers/pedidos_controller.rb:6:in `index'
+Completed 200 OK in 2ms (Views: 1.2ms | ActiveRecord: 0.1ms | Allocations: 751)
+
+
+Started POST "/pedidos" for 127.0.0.1 at 2024-05-17 16:44:33 +0200
+Processing by PedidosController#create as HTML
+  Parameters: {"id"=>0, "idPedido"=>"237797", "hamburguesas"=>[{"nombre"=>"Hamburguesa sin gluten", "pan"=>"Pan sin gluten", "lechuga"=>"Lechuga verde", "tomate"=>"Tomate pera", "quesoCabra"=>nil, "cebolla"=>"Cebolla llorosa", "pepinillos"=>"Pepinillos", "bacon"=>"Bacon grasiento", "carne"=>"Carne Wagyu (sin trazas)", "precio"=>6.0}], "precio"=>16.5, "listo"=>false, "usuario"=>"Juanmi", "pedido"=>{"id"=>0, "idPedido"=>"237797", "usuario"=>"Juanmi", "precio"=>16.5, "listo"=>false}}
+[31mUnpermitted parameter: :id. Context: { controller: PedidosController, action: create, request: #<ActionDispatch::Request:0x00007bae340a44d0>, params: {"id"=>0, "idPedido"=>"237797", "hamburguesas"=>[{"nombre"=>"Hamburguesa sin gluten", "pan"=>"Pan sin gluten", "lechuga"=>"Lechuga verde", "tomate"=>"Tomate pera", "quesoCabra"=>nil, "cebolla"=>"Cebolla llorosa", "pepinillos"=>"Pepinillos", "bacon"=>"Bacon grasiento", "carne"=>"Carne Wagyu (sin trazas)", "precio"=>6.0}], "precio"=>16.5, "listo"=>false, "usuario"=>"Juanmi", "controller"=>"pedidos", "action"=>"create", "pedido"=>{"id"=>0, "idPedido"=>"237797", "usuario"=>"Juanmi", "precio"=>16.5, "listo"=>false}} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/pedidos_controller.rb:11:in `create'
+  [1m[36mPedido Create (0.6ms)[0m  [1m[32mINSERT INTO "pedidos" ("idPedido", "usuario", "precio", "listo", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["idPedido", "237797"], ["usuario", "Juanmi"], ["precio", 16.5], ["listo", 0], ["created_at", "2024-05-17 14:44:33.403493"], ["updated_at", "2024-05-17 14:44:33.403493"]]
+  ↳ app/controllers/pedidos_controller.rb:11:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/pedidos_controller.rb:11:in `create'
+Completed 201 Created in 3ms (Views: 0.2ms | ActiveRecord: 0.8ms | Allocations: 2158)
+
+
+Started PATCH "/pedidos/0" for 127.0.0.1 at 2024-05-17 16:44:38 +0200
+Processing by PedidosController#update as HTML
+  Parameters: {"listo"=>true, "id"=>"0", "pedido"=>{"listo"=>true}}
+  [1m[36mPedido Load (0.1ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."id" = ? LIMIT ?[0m  [["id", 0], ["LIMIT", 1]]
+  ↳ app/controllers/pedidos_controller.rb:19:in `update'
+Completed 404 Not Found in 1ms (ActiveRecord: 0.1ms | Allocations: 573)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Pedido with 'id'=0):
+  
+app/controllers/pedidos_controller.rb:19:in `update'
+Started GET "/pedidos?usuario=juanmi" for ::1 at 2024-05-17 16:44:39 +0200
+Processing by PedidosController#index as HTML
+  Parameters: {"usuario"=>"juanmi"}
+Cargando pedidos para el usuario juanmi
+  [1m[36mPedido Load (0.1ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."usuario" = ?[0m  [["usuario", "juanmi"]]
+  ↳ app/controllers/pedidos_controller.rb:6:in `index'
+Completed 200 OK in 2ms (Views: 1.1ms | ActiveRecord: 0.1ms | Allocations: 751)
+
+
+Started GET "/pedidos?usuario=juanmi" for ::1 at 2024-05-17 16:44:44 +0200
+Processing by PedidosController#index as HTML
+  Parameters: {"usuario"=>"juanmi"}
+Cargando pedidos para el usuario juanmi
+  [1m[36mPedido Load (0.1ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."usuario" = ?[0m  [["usuario", "juanmi"]]
+  ↳ app/controllers/pedidos_controller.rb:6:in `index'
+Completed 200 OK in 1ms (Views: 0.9ms | ActiveRecord: 0.1ms | Allocations: 751)
+
+
+Started GET "/pedidos?usuario=juanmi" for ::1 at 2024-05-17 16:44:51 +0200
+Processing by PedidosController#index as HTML
+  Parameters: {"usuario"=>"juanmi"}
+Cargando pedidos para el usuario juanmi
+  [1m[36mPedido Load (0.1ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."usuario" = ?[0m  [["usuario", "juanmi"]]
+  ↳ app/controllers/pedidos_controller.rb:6:in `index'
+Completed 200 OK in 1ms (Views: 1.0ms | ActiveRecord: 0.1ms | Allocations: 751)
+
+
+Started GET "/pedidos?usuario=Ra%C3%BAl" for 127.0.0.1 at 2024-05-17 16:44:58 +0200
+Processing by PedidosController#index as HTML
+  Parameters: {"usuario"=>"Raúl"}
+Cargando pedidos para el usuario Raúl
+  [1m[36mPedido Load (0.1ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."usuario" = ?[0m  [["usuario", "Raúl"]]
+  ↳ app/controllers/pedidos_controller.rb:6:in `index'
+Completed 200 OK in 2ms (Views: 1.7ms | ActiveRecord: 0.1ms | Allocations: 838)
+
+
+Started GET "/pedidos?usuario=Jes%C3%BAs" for 127.0.0.1 at 2024-05-17 16:45:01 +0200
+Processing by PedidosController#index as HTML
+  Parameters: {"usuario"=>"Jesús"}
+Cargando pedidos para el usuario Jesús
+  [1m[36mPedido Load (0.2ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."usuario" = ?[0m  [["usuario", "Jesús"]]
+  ↳ app/controllers/pedidos_controller.rb:6:in `index'
+Completed 200 OK in 2ms (Views: 1.7ms | ActiveRecord: 0.2ms | Allocations: 752)
+
+
+Started GET "/pedidos?usuario=Juanmi" for 127.0.0.1 at 2024-05-17 16:45:04 +0200
+Processing by PedidosController#index as HTML
+  Parameters: {"usuario"=>"Juanmi"}
+Cargando pedidos para el usuario Juanmi
+  [1m[36mPedido Load (0.1ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."usuario" = ?[0m  [["usuario", "Juanmi"]]
+  ↳ app/controllers/pedidos_controller.rb:6:in `index'
+Completed 200 OK in 2ms (Views: 2.0ms | ActiveRecord: 0.1ms | Allocations: 836)
+
+
+Started GET "/pedidos?usuario=juanmi" for ::1 at 2024-05-17 16:49:02 +0200
+Processing by PedidosController#index as HTML
+  Parameters: {"usuario"=>"juanmi"}
+Cargando pedidos para el usuario juanmi
+  [1m[36mPedido Load (0.1ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."usuario" = ?[0m  [["usuario", "juanmi"]]
+  ↳ app/controllers/pedidos_controller.rb:6:in `index'
+Completed 200 OK in 1ms (Views: 1.0ms | ActiveRecord: 0.1ms | Allocations: 751)
+
+
+Started GET "/pedidos?usuario=Ra%C3%BAl" for ::1 at 2024-05-17 16:49:08 +0200
+Processing by PedidosController#index as HTML
+  Parameters: {"usuario"=>"Raúl"}
+Cargando pedidos para el usuario Raúl
+  [1m[36mPedido Load (0.1ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."usuario" = ?[0m  [["usuario", "Raúl"]]
+  ↳ app/controllers/pedidos_controller.rb:6:in `index'
+Completed 200 OK in 2ms (Views: 1.3ms | ActiveRecord: 0.1ms | Allocations: 837)
+
+
+Started GET "/pedidos?usuario=juanmi" for 127.0.0.1 at 2024-05-17 16:53:24 +0200
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PedidosController#index as HTML
+  Parameters: {"usuario"=>"juanmi"}
+Cargando pedidos para el usuario juanmi
+  [1m[36mPedido Load (0.2ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."usuario" = ?[0m  [["usuario", "juanmi"]]
+  ↳ app/controllers/pedidos_controller.rb:6:in `index'
+Completed 200 OK in 21ms (Views: 2.3ms | ActiveRecord: 2.9ms | Allocations: 11301)
+
+
+Started GET "/pedidos?usuario=raul" for 127.0.0.1 at 2024-05-17 16:53:26 +0200
+Processing by PedidosController#index as HTML
+  Parameters: {"usuario"=>"raul"}
+Cargando pedidos para el usuario raul
+  [1m[36mPedido Load (0.1ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."usuario" = ?[0m  [["usuario", "raul"]]
+  ↳ app/controllers/pedidos_controller.rb:6:in `index'
+Completed 200 OK in 1ms (Views: 1.0ms | ActiveRecord: 0.1ms | Allocations: 809)
+
+
+Started GET "/pedidos?usuario=Ra%C3%BAl" for ::1 at 2024-05-17 16:53:43 +0200
+Processing by PedidosController#index as HTML
+  Parameters: {"usuario"=>"Raúl"}
+Cargando pedidos para el usuario Raúl
+  [1m[36mPedido Load (0.2ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."usuario" = ?[0m  [["usuario", "Raúl"]]
+  ↳ app/controllers/pedidos_controller.rb:6:in `index'
+Completed 200 OK in 36ms (Views: 35.2ms | ActiveRecord: 0.4ms | Allocations: 9483)
+
+
+Started GET "/pedidos?usuario=Ra%C3%BAl" for ::1 at 2024-05-17 16:53:43 +0200
+Processing by PedidosController#index as HTML
+  Parameters: {"usuario"=>"Raúl"}
+Cargando pedidos para el usuario Raúl
+  [1m[36mPedido Load (0.2ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."usuario" = ?[0m  [["usuario", "Raúl"]]
+  ↳ app/controllers/pedidos_controller.rb:6:in `index'
+Completed 200 OK in 3ms (Views: 2.1ms | ActiveRecord: 0.2ms | Allocations: 987)
+
+
+Started GET "/pedidos?usuario=Ra%C3%BAl" for ::1 at 2024-05-17 16:53:44 +0200
+Processing by PedidosController#index as HTML
+  Parameters: {"usuario"=>"Raúl"}
+Cargando pedidos para el usuario Raúl
+  [1m[36mPedido Load (0.1ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."usuario" = ?[0m  [["usuario", "Raúl"]]
+  ↳ app/controllers/pedidos_controller.rb:6:in `index'
+Completed 200 OK in 2ms (Views: 1.7ms | ActiveRecord: 0.1ms | Allocations: 857)
+
+
+Started GET "/pedidos?usuario=Ra%C3%BAl" for ::1 at 2024-05-17 16:53:44 +0200
+Processing by PedidosController#index as HTML
+  Parameters: {"usuario"=>"Raúl"}
+Cargando pedidos para el usuario Raúl
+  [1m[36mPedido Load (0.1ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."usuario" = ?[0m  [["usuario", "Raúl"]]
+  ↳ app/controllers/pedidos_controller.rb:6:in `index'
+Completed 200 OK in 2ms (Views: 1.6ms | ActiveRecord: 0.1ms | Allocations: 837)
+
+
+Started GET "/pedidos?usuario=Ra%C3%BAl" for ::1 at 2024-05-17 16:53:44 +0200
+Processing by PedidosController#index as HTML
+  Parameters: {"usuario"=>"Raúl"}
+Cargando pedidos para el usuario Raúl
+  [1m[36mPedido Load (0.1ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."usuario" = ?[0m  [["usuario", "Raúl"]]
+  ↳ app/controllers/pedidos_controller.rb:6:in `index'
+Completed 200 OK in 2ms (Views: 1.4ms | ActiveRecord: 0.1ms | Allocations: 837)
+
+
+Started GET "/pedidos?usuario=Ra%C3%BAl" for ::1 at 2024-05-17 16:53:44 +0200
+Processing by PedidosController#index as HTML
+  Parameters: {"usuario"=>"Raúl"}
+Cargando pedidos para el usuario Raúl
+  [1m[36mPedido Load (0.1ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."usuario" = ?[0m  [["usuario", "Raúl"]]
+  ↳ app/controllers/pedidos_controller.rb:6:in `index'
+Completed 200 OK in 2ms (Views: 1.3ms | ActiveRecord: 0.1ms | Allocations: 837)
+
+
+Started GET "/pedidos?usuario=Ra%C3%BAl" for ::1 at 2024-05-17 16:53:44 +0200
+Processing by PedidosController#index as HTML
+  Parameters: {"usuario"=>"Raúl"}
+Cargando pedidos para el usuario Raúl
+  [1m[36mPedido Load (0.1ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."usuario" = ?[0m  [["usuario", "Raúl"]]
+  ↳ app/controllers/pedidos_controller.rb:6:in `index'
+Completed 200 OK in 2ms (Views: 1.5ms | ActiveRecord: 0.1ms | Allocations: 837)
+
+
+Started GET "/pedidos?usuario=Ra%C3%BAl" for ::1 at 2024-05-17 16:53:44 +0200
+Processing by PedidosController#index as HTML
+  Parameters: {"usuario"=>"Raúl"}
+Cargando pedidos para el usuario Raúl
+  [1m[36mPedido Load (0.1ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."usuario" = ?[0m  [["usuario", "Raúl"]]
+  ↳ app/controllers/pedidos_controller.rb:6:in `index'
+Completed 200 OK in 2ms (Views: 1.5ms | ActiveRecord: 0.1ms | Allocations: 837)
+
+
+Started GET "/pedidos?usuario=Ra%C3%BAl" for ::1 at 2024-05-17 16:53:45 +0200
+Processing by PedidosController#index as HTML
+  Parameters: {"usuario"=>"Raúl"}
+Cargando pedidos para el usuario Raúl
+  [1m[36mPedido Load (0.2ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."usuario" = ?[0m  [["usuario", "Raúl"]]
+  ↳ app/controllers/pedidos_controller.rb:6:in `index'
+Completed 200 OK in 2ms (Views: 1.3ms | ActiveRecord: 0.1ms | Allocations: 838)
+
+
+Started GET "/pedidos?usuario=Ra%C3%BAl" for ::1 at 2024-05-17 16:59:27 +0200
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PedidosController#index as HTML
+  Parameters: {"usuario"=>"Raúl"}
+Cargando pedidos para el usuario Raúl
+  [1m[36mPedido Load (0.1ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."usuario" = ?[0m  [["usuario", "Raúl"]]
+  ↳ app/controllers/pedidos_controller.rb:6:in `index'
+Completed 200 OK in 20ms (Views: 6.4ms | ActiveRecord: 1.8ms | Allocations: 18841)
+
+
+Started GET "/pedidos?usuario=Ra%C3%BAl" for ::1 at 2024-05-17 16:59:27 +0200
+Processing by PedidosController#index as HTML
+  Parameters: {"usuario"=>"Raúl"}
+Cargando pedidos para el usuario Raúl
+  [1m[36mPedido Load (0.1ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."usuario" = ?[0m  [["usuario", "Raúl"]]
+  ↳ app/controllers/pedidos_controller.rb:6:in `index'
+Completed 200 OK in 18ms (Views: 18.0ms | ActiveRecord: 0.1ms | Allocations: 990)
+
+
+Started GET "/pedidos?usuario=Ra%C3%BAl" for ::1 at 2024-05-17 16:59:28 +0200
+Processing by PedidosController#index as HTML
+  Parameters: {"usuario"=>"Raúl"}
+Cargando pedidos para el usuario Raúl
+  [1m[36mPedido Load (0.1ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."usuario" = ?[0m  [["usuario", "Raúl"]]
+  ↳ app/controllers/pedidos_controller.rb:6:in `index'
+Completed 200 OK in 2ms (Views: 1.8ms | ActiveRecord: 0.1ms | Allocations: 858)
+
+
+Started GET "/pedidos?usuario=Ra%C3%BAl" for ::1 at 2024-05-17 16:59:28 +0200
+Processing by PedidosController#index as HTML
+  Parameters: {"usuario"=>"Raúl"}
+Cargando pedidos para el usuario Raúl
+  [1m[36mPedido Load (0.1ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."usuario" = ?[0m  [["usuario", "Raúl"]]
+  ↳ app/controllers/pedidos_controller.rb:6:in `index'
+Completed 200 OK in 2ms (Views: 1.6ms | ActiveRecord: 0.1ms | Allocations: 837)
+
+
+Started GET "/pedidos?usuario=Ra%C3%BAl" for ::1 at 2024-05-17 16:59:28 +0200
+Processing by PedidosController#index as HTML
+  Parameters: {"usuario"=>"Raúl"}
+Cargando pedidos para el usuario Raúl
+  [1m[36mPedido Load (0.1ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."usuario" = ?[0m  [["usuario", "Raúl"]]
+  ↳ app/controllers/pedidos_controller.rb:6:in `index'
+Completed 200 OK in 2ms (Views: 1.4ms | ActiveRecord: 0.1ms | Allocations: 837)
+
+
+Started GET "/pedidos?usuario=Ra%C3%BAl" for ::1 at 2024-05-17 16:59:29 +0200
+Processing by PedidosController#index as HTML
+  Parameters: {"usuario"=>"Raúl"}
+Cargando pedidos para el usuario Raúl
+  [1m[36mPedido Load (0.1ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."usuario" = ?[0m  [["usuario", "Raúl"]]
+  ↳ app/controllers/pedidos_controller.rb:6:in `index'
+Completed 200 OK in 2ms (Views: 1.5ms | ActiveRecord: 0.1ms | Allocations: 852)
+
+
+Started GET "/pedidos?usuario=Ra%C3%BAl" for ::1 at 2024-05-17 16:59:29 +0200
+Processing by PedidosController#index as HTML
+  Parameters: {"usuario"=>"Raúl"}
+Cargando pedidos para el usuario Raúl
+  [1m[36mPedido Load (0.2ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."usuario" = ?[0m  [["usuario", "Raúl"]]
+  ↳ app/controllers/pedidos_controller.rb:6:in `index'
+Completed 200 OK in 2ms (Views: 1.3ms | ActiveRecord: 0.2ms | Allocations: 837)
+
+
+Started GET "/" for ::1 at 2024-05-17 16:59:45 +0200
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /var/lib/gems/3.1.0/gems/railties-7.1.3.3/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /var/lib/gems/3.1.0/gems/railties-7.1.3.3/lib/rails/templates/rails/welcome/index.html.erb (Duration: 1.5ms | Allocations: 353)
+Completed 200 OK in 12ms (Views: 4.3ms | ActiveRecord: 0.0ms | Allocations: 4362)
+
+
+Started GET "/pedidos?usuario=juanmi" for ::1 at 2024-05-17 16:59:57 +0200
+Processing by PedidosController#index as HTML
+  Parameters: {"usuario"=>"juanmi"}
+Cargando pedidos para el usuario juanmi
+  [1m[36mPedido Load (0.1ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."usuario" = ?[0m  [["usuario", "juanmi"]]
+  ↳ app/controllers/pedidos_controller.rb:6:in `index'
+Completed 200 OK in 2ms (Views: 1.3ms | ActiveRecord: 0.1ms | Allocations: 915)
+
+
+Started GET "/favicon.ico" for ::1 at 2024-05-17 16:59:57 +0200
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/pedidos?usuario=juanmi" for ::1 at 2024-05-17 16:59:59 +0200
+Processing by PedidosController#index as HTML
+  Parameters: {"usuario"=>"juanmi"}
+Cargando pedidos para el usuario juanmi
+  [1m[36mPedido Load (0.1ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."usuario" = ?[0m  [["usuario", "juanmi"]]
+  ↳ app/controllers/pedidos_controller.rb:6:in `index'
+Completed 200 OK in 2ms (Views: 1.2ms | ActiveRecord: 0.1ms | Allocations: 932)
+
+
+Started GET "/pedidos?usuario=raul" for ::1 at 2024-05-17 17:00:04 +0200
+Processing by PedidosController#index as HTML
+  Parameters: {"usuario"=>"raul"}
+Cargando pedidos para el usuario raul
+  [1m[36mPedido Load (0.1ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."usuario" = ?[0m  [["usuario", "raul"]]
+  ↳ app/controllers/pedidos_controller.rb:6:in `index'
+Completed 200 OK in 2ms (Views: 1.4ms | ActiveRecord: 0.1ms | Allocations: 751)
+
+
+Started GET "/pedidos?usuario=juanmi" for 127.0.0.1 at 2024-05-17 17:00:10 +0200
+Processing by PedidosController#index as HTML
+  Parameters: {"usuario"=>"juanmi"}
+Cargando pedidos para el usuario juanmi
+  [1m[36mPedido Load (0.1ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."usuario" = ?[0m  [["usuario", "juanmi"]]
+  ↳ app/controllers/pedidos_controller.rb:6:in `index'
+Completed 200 OK in 2ms (Views: 1.4ms | ActiveRecord: 0.1ms | Allocations: 767)
+
+
+Started POST "/pedidos" for 127.0.0.1 at 2024-05-17 17:00:23 +0200
+Processing by PedidosController#create as HTML
+  Parameters: {"id"=>0, "idPedido"=>"093143", "hamburguesas"=>[{"nombre"=>"Hamburguesa normal", "pan"=>"Pan normal", "lechuga"=>"Lechuga fresca", "tomate"=>"Tomate pera", "quesoCabra"=>"Queso de cabra recién cortado", "cebolla"=>"Cebolla llorosa", "pepinillos"=>"Pepinillos", "bacon"=>"Bacon grasiento", "carne"=>"Carne Wagyu", "precio"=>5.0}], "precio"=>15.0, "listo"=>false, "usuario"=>"juanmi", "pedido"=>{"id"=>0, "idPedido"=>"093143", "usuario"=>"juanmi", "precio"=>15.0, "listo"=>false}}
+[31mUnpermitted parameter: :id. Context: { controller: PedidosController, action: create, request: #<ActionDispatch::Request:0x00007352b12df448>, params: {"id"=>0, "idPedido"=>"093143", "hamburguesas"=>[{"nombre"=>"Hamburguesa normal", "pan"=>"Pan normal", "lechuga"=>"Lechuga fresca", "tomate"=>"Tomate pera", "quesoCabra"=>"Queso de cabra recién cortado", "cebolla"=>"Cebolla llorosa", "pepinillos"=>"Pepinillos", "bacon"=>"Bacon grasiento", "carne"=>"Carne Wagyu", "precio"=>5.0}], "precio"=>15.0, "listo"=>false, "usuario"=>"juanmi", "controller"=>"pedidos", "action"=>"create", "pedido"=>{"id"=>0, "idPedido"=>"093143", "usuario"=>"juanmi", "precio"=>15.0, "listo"=>false}} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/pedidos_controller.rb:11:in `create'
+  [1m[36mPedido Create (0.7ms)[0m  [1m[32mINSERT INTO "pedidos" ("idPedido", "usuario", "precio", "listo", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["idPedido", "093143"], ["usuario", "juanmi"], ["precio", 15.0], ["listo", 0], ["created_at", "2024-05-17 15:00:23.075690"], ["updated_at", "2024-05-17 15:00:23.075690"]]
+  ↳ app/controllers/pedidos_controller.rb:11:in `create'
+  [1m[36mTRANSACTION (3.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/pedidos_controller.rb:11:in `create'
+Completed 201 Created in 8ms (Views: 0.3ms | ActiveRecord: 4.2ms | Allocations: 3082)
+
+
+Started PATCH "/pedidos/0" for 127.0.0.1 at 2024-05-17 17:00:28 +0200
+Processing by PedidosController#update as HTML
+  Parameters: {"listo"=>true, "id"=>"0", "pedido"=>{"listo"=>true}}
+  [1m[36mPedido Load (0.1ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."id" = ? LIMIT ?[0m  [["id", 0], ["LIMIT", 1]]
+  ↳ app/controllers/pedidos_controller.rb:19:in `update'
+Completed 404 Not Found in 2ms (ActiveRecord: 0.1ms | Allocations: 907)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Pedido with 'id'=0):
+  
+app/controllers/pedidos_controller.rb:19:in `update'
+Started GET "/pedidos?usuario=juanmi" for ::1 at 2024-05-17 17:00:29 +0200
+Processing by PedidosController#index as HTML
+  Parameters: {"usuario"=>"juanmi"}
+Cargando pedidos para el usuario juanmi
+  [1m[36mPedido Load (0.1ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."usuario" = ?[0m  [["usuario", "juanmi"]]
+  ↳ app/controllers/pedidos_controller.rb:6:in `index'
+Completed 200 OK in 2ms (Views: 1.6ms | ActiveRecord: 0.1ms | Allocations: 1034)
+
+
+Started DELETE "/pedidos/7" for 127.0.0.1 at 2024-05-17 17:00:40 +0200
+Processing by PedidosController#destroy as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mPedido Load (0.1ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/pedidos_controller.rb:28:in `destroy'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/pedidos_controller.rb:29:in `destroy'
+  [1m[36mPedido Destroy (0.6ms)[0m  [1m[31mDELETE FROM "pedidos" WHERE "pedidos"."id" = ?[0m  [["id", 7]]
+  ↳ app/controllers/pedidos_controller.rb:29:in `destroy'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/pedidos_controller.rb:29:in `destroy'
+Completed 200 OK in 3ms (ActiveRecord: 0.9ms | Allocations: 2228)
+
+
+Started DELETE "/pedidos/0" for 127.0.0.1 at 2024-05-17 17:00:45 +0200
+Processing by PedidosController#destroy as HTML
+  Parameters: {"id"=>"0"}
+  [1m[36mPedido Load (0.1ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."id" = ? LIMIT ?[0m  [["id", 0], ["LIMIT", 1]]
+  ↳ app/controllers/pedidos_controller.rb:28:in `destroy'
+Completed 404 Not Found in 1ms (ActiveRecord: 0.1ms | Allocations: 579)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Pedido with 'id'=0):
+  
+app/controllers/pedidos_controller.rb:28:in `destroy'
+Started GET "/pedidos?usuario=david" for 127.0.0.1 at 2024-05-17 17:00:50 +0200
+Processing by PedidosController#index as HTML
+  Parameters: {"usuario"=>"david"}
+Cargando pedidos para el usuario david
+  [1m[36mPedido Load (0.1ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."usuario" = ?[0m  [["usuario", "david"]]
+  ↳ app/controllers/pedidos_controller.rb:6:in `index'
+Completed 200 OK in 2ms (Views: 1.2ms | ActiveRecord: 0.1ms | Allocations: 751)
+
+
+Started GET "/pedidos?usuario=juanmi" for 127.0.0.1 at 2024-05-17 17:00:52 +0200
+Processing by PedidosController#index as HTML
+  Parameters: {"usuario"=>"juanmi"}
+Cargando pedidos para el usuario juanmi
+  [1m[36mPedido Load (0.1ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."usuario" = ?[0m  [["usuario", "juanmi"]]
+  ↳ app/controllers/pedidos_controller.rb:6:in `index'
+Completed 200 OK in 2ms (Views: 1.1ms | ActiveRecord: 0.1ms | Allocations: 751)
+
+
+Started GET "/pedidos?usuario=raul" for 127.0.0.1 at 2024-05-17 17:00:56 +0200
+Processing by PedidosController#index as HTML
+  Parameters: {"usuario"=>"raul"}
+Cargando pedidos para el usuario raul
+  [1m[36mPedido Load (0.1ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."usuario" = ?[0m  [["usuario", "raul"]]
+  ↳ app/controllers/pedidos_controller.rb:6:in `index'
+Completed 200 OK in 1ms (Views: 1.0ms | ActiveRecord: 0.1ms | Allocations: 751)
+
+
+Started GET "/pedidos?usuario=juanmi" for ::1 at 2024-05-17 17:01:00 +0200
+Processing by PedidosController#index as HTML
+  Parameters: {"usuario"=>"juanmi"}
+Cargando pedidos para el usuario juanmi
+  [1m[36mPedido Load (0.1ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."usuario" = ?[0m  [["usuario", "juanmi"]]
+  ↳ app/controllers/pedidos_controller.rb:6:in `index'
+Completed 200 OK in 1ms (Views: 1.0ms | ActiveRecord: 0.1ms | Allocations: 751)
+
+
+Started GET "/pedidos?usuario=juanmi" for ::1 at 2024-05-17 17:01:01 +0200
+Processing by PedidosController#index as HTML
+  Parameters: {"usuario"=>"juanmi"}
+Cargando pedidos para el usuario juanmi
+  [1m[36mPedido Load (0.1ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."usuario" = ?[0m  [["usuario", "juanmi"]]
+  ↳ app/controllers/pedidos_controller.rb:6:in `index'
+Completed 200 OK in 1ms (Views: 0.9ms | ActiveRecord: 0.1ms | Allocations: 751)
+
+
+Started GET "/pedidos?usuario=juanmi" for 127.0.0.1 at 2024-05-17 17:01:05 +0200
+Processing by PedidosController#index as HTML
+  Parameters: {"usuario"=>"juanmi"}
+Cargando pedidos para el usuario juanmi
+  [1m[36mPedido Load (0.1ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."usuario" = ?[0m  [["usuario", "juanmi"]]
+  ↳ app/controllers/pedidos_controller.rb:6:in `index'
+Completed 200 OK in 1ms (Views: 1.1ms | ActiveRecord: 0.1ms | Allocations: 752)
+
+
+Started POST "/pedidos" for 127.0.0.1 at 2024-05-17 17:01:22 +0200
+Processing by PedidosController#create as HTML
+  Parameters: {"id"=>0, "idPedido"=>"068514", "hamburguesas"=>[{"nombre"=>"Hamburguesa normal", "pan"=>"Pan normal", "lechuga"=>"Lechuga fresca", "tomate"=>"Tomate pera", "quesoCabra"=>"Queso de cabra recién cortado", "cebolla"=>"Cebolla llorosa", "pepinillos"=>"Pepinillos", "bacon"=>"Bacon grasiento", "carne"=>"Carne Wagyu", "precio"=>5.0}], "precio"=>20.0, "listo"=>false, "usuario"=>"juanmi", "pedido"=>{"id"=>0, "idPedido"=>"068514", "usuario"=>"juanmi", "precio"=>20.0, "listo"=>false}}
+[31mUnpermitted parameter: :id. Context: { controller: PedidosController, action: create, request: #<ActionDispatch::Request:0x00007352b2d3b1e8>, params: {"id"=>0, "idPedido"=>"068514", "hamburguesas"=>[{"nombre"=>"Hamburguesa normal", "pan"=>"Pan normal", "lechuga"=>"Lechuga fresca", "tomate"=>"Tomate pera", "quesoCabra"=>"Queso de cabra recién cortado", "cebolla"=>"Cebolla llorosa", "pepinillos"=>"Pepinillos", "bacon"=>"Bacon grasiento", "carne"=>"Carne Wagyu", "precio"=>5.0}], "precio"=>20.0, "listo"=>false, "usuario"=>"juanmi", "controller"=>"pedidos", "action"=>"create", "pedido"=>{"id"=>0, "idPedido"=>"068514", "usuario"=>"juanmi", "precio"=>20.0, "listo"=>false}} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/pedidos_controller.rb:11:in `create'
+  [1m[36mPedido Create (0.7ms)[0m  [1m[32mINSERT INTO "pedidos" ("idPedido", "usuario", "precio", "listo", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["idPedido", "068514"], ["usuario", "juanmi"], ["precio", 20.0], ["listo", 0], ["created_at", "2024-05-17 15:01:22.711927"], ["updated_at", "2024-05-17 15:01:22.711927"]]
+  ↳ app/controllers/pedidos_controller.rb:11:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/pedidos_controller.rb:11:in `create'
+Completed 201 Created in 3ms (Views: 0.2ms | ActiveRecord: 0.8ms | Allocations: 2278)
+
+
+Started PATCH "/pedidos/0" for 127.0.0.1 at 2024-05-17 17:01:27 +0200
+Processing by PedidosController#update as HTML
+  Parameters: {"listo"=>true, "id"=>"0", "pedido"=>{"listo"=>true}}
+  [1m[36mPedido Load (0.1ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."id" = ? LIMIT ?[0m  [["id", 0], ["LIMIT", 1]]
+  ↳ app/controllers/pedidos_controller.rb:19:in `update'
+Completed 404 Not Found in 1ms (ActiveRecord: 0.1ms | Allocations: 574)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Pedido with 'id'=0):
+  
+app/controllers/pedidos_controller.rb:19:in `update'
+Started GET "/pedidos?usuario=juanmi" for ::1 at 2024-05-17 17:01:44 +0200
+Processing by PedidosController#index as HTML
+  Parameters: {"usuario"=>"juanmi"}
+Cargando pedidos para el usuario juanmi
+  [1m[36mPedido Load (0.1ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."usuario" = ?[0m  [["usuario", "juanmi"]]
+  ↳ app/controllers/pedidos_controller.rb:6:in `index'
+Completed 200 OK in 2ms (Views: 1.9ms | ActiveRecord: 0.1ms | Allocations: 843)
+
+
+Started GET "/pedidos?usuario=david" for 127.0.0.1 at 2024-05-17 17:02:14 +0200
+Processing by PedidosController#index as HTML
+  Parameters: {"usuario"=>"david"}
+Cargando pedidos para el usuario david
+  [1m[36mPedido Load (0.1ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."usuario" = ?[0m  [["usuario", "david"]]
+  ↳ app/controllers/pedidos_controller.rb:6:in `index'
+Completed 200 OK in 1ms (Views: 1.1ms | ActiveRecord: 0.1ms | Allocations: 751)
+
+
+Started GET "/pedidos?usuario=juanmi" for 127.0.0.1 at 2024-05-17 17:02:16 +0200
+Processing by PedidosController#index as HTML
+  Parameters: {"usuario"=>"juanmi"}
+Cargando pedidos para el usuario juanmi
+  [1m[36mPedido Load (0.1ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."usuario" = ?[0m  [["usuario", "juanmi"]]
+  ↳ app/controllers/pedidos_controller.rb:6:in `index'
+Completed 200 OK in 2ms (Views: 1.2ms | ActiveRecord: 0.1ms | Allocations: 837)
+
+
+Started GET "/pedidos?usuario=david" for 127.0.0.1 at 2024-05-17 17:07:56 +0200
+Processing by PedidosController#index as HTML
+  Parameters: {"usuario"=>"david"}
+Cargando pedidos para el usuario david
+  [1m[36mPedido Load (0.8ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."usuario" = ?[0m  [["usuario", "david"]]
+  ↳ app/controllers/pedidos_controller.rb:6:in `index'
+Completed 200 OK in 3ms (Views: 1.0ms | ActiveRecord: 1.3ms | Allocations: 1060)
+
+
+Started POST "/pedidos" for 127.0.0.1 at 2024-05-17 17:07:56 +0200
+Processing by PedidosController#create as HTML
+  Parameters: {"id"=>0, "idPedido"=>"707065", "hamburguesas"=>[{"nombre"=>"Hamburguesa normal", "pan"=>"Pan normal", "lechuga"=>"Lechuga fresca", "tomate"=>"Tomate pera", "quesoCabra"=>"Queso de cabra recién cortado", "cebolla"=>"Cebolla llorosa", "pepinillos"=>"Pepinillos", "bacon"=>"Bacon grasiento", "carne"=>"Carne Wagyu", "precio"=>5.0}], "precio"=>20.0, "listo"=>false, "usuario"=>"david", "pedido"=>{"id"=>0, "idPedido"=>"707065", "usuario"=>"david", "precio"=>20.0, "listo"=>false}}
+[31mUnpermitted parameter: :id. Context: { controller: PedidosController, action: create, request: #<ActionDispatch::Request:0x00007352b2ccc568>, params: {"id"=>0, "idPedido"=>"707065", "hamburguesas"=>[{"nombre"=>"Hamburguesa normal", "pan"=>"Pan normal", "lechuga"=>"Lechuga fresca", "tomate"=>"Tomate pera", "quesoCabra"=>"Queso de cabra recién cortado", "cebolla"=>"Cebolla llorosa", "pepinillos"=>"Pepinillos", "bacon"=>"Bacon grasiento", "carne"=>"Carne Wagyu", "precio"=>5.0}], "precio"=>20.0, "listo"=>false, "usuario"=>"david", "controller"=>"pedidos", "action"=>"create", "pedido"=>{"id"=>0, "idPedido"=>"707065", "usuario"=>"david", "precio"=>20.0, "listo"=>false}} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/pedidos_controller.rb:11:in `create'
+  [1m[36mPedido Create (0.9ms)[0m  [1m[32mINSERT INTO "pedidos" ("idPedido", "usuario", "precio", "listo", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["idPedido", "707065"], ["usuario", "david"], ["precio", 20.0], ["listo", 0], ["created_at", "2024-05-17 15:07:56.252003"], ["updated_at", "2024-05-17 15:07:56.252003"]]
+  ↳ app/controllers/pedidos_controller.rb:11:in `create'
+  [1m[36mTRANSACTION (4.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/pedidos_controller.rb:11:in `create'
+Completed 201 Created in 8ms (Views: 0.4ms | ActiveRecord: 4.9ms | Allocations: 2232)
+
+
+Started GET "/pedidos?usuario=juanmi" for 127.0.0.1 at 2024-05-17 17:07:57 +0200
+Processing by PedidosController#index as HTML
+  Parameters: {"usuario"=>"juanmi"}
+Cargando pedidos para el usuario juanmi
+  [1m[36mPedido Load (0.1ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."usuario" = ?[0m  [["usuario", "juanmi"]]
+  ↳ app/controllers/pedidos_controller.rb:6:in `index'
+Completed 200 OK in 2ms (Views: 1.4ms | ActiveRecord: 0.1ms | Allocations: 836)
+
+
+Started PATCH "/pedidos/0" for 127.0.0.1 at 2024-05-17 17:08:01 +0200
+Processing by PedidosController#update as HTML
+  Parameters: {"listo"=>true, "id"=>"0", "pedido"=>{"listo"=>true}}
+  [1m[36mPedido Load (0.1ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."id" = ? LIMIT ?[0m  [["id", 0], ["LIMIT", 1]]
+  ↳ app/controllers/pedidos_controller.rb:19:in `update'
+Completed 404 Not Found in 1ms (ActiveRecord: 0.1ms | Allocations: 608)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Pedido with 'id'=0):
+  
+app/controllers/pedidos_controller.rb:19:in `update'
+Started GET "/pedidos?usuario=juanmi" for 127.0.0.1 at 2024-05-17 17:08:45 +0200
+Processing by PedidosController#index as HTML
+  Parameters: {"usuario"=>"juanmi"}
+Cargando pedidos para el usuario juanmi
+  [1m[36mPedido Load (0.1ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."usuario" = ?[0m  [["usuario", "juanmi"]]
+  ↳ app/controllers/pedidos_controller.rb:6:in `index'
+Completed 200 OK in 2ms (Views: 1.3ms | ActiveRecord: 0.1ms | Allocations: 836)
+
+
+Started GET "/pedidos?usuario=juanmi" for ::1 at 2024-05-17 17:08:49 +0200
+Processing by PedidosController#index as HTML
+  Parameters: {"usuario"=>"juanmi"}
+Cargando pedidos para el usuario juanmi
+  [1m[36mPedido Load (0.1ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."usuario" = ?[0m  [["usuario", "juanmi"]]
+  ↳ app/controllers/pedidos_controller.rb:6:in `index'
+Completed 200 OK in 2ms (Views: 1.2ms | ActiveRecord: 0.1ms | Allocations: 836)
+
+
+Started GET "/pedidos?usuario=juanmi" for ::1 at 2024-05-17 17:08:49 +0200
+Processing by PedidosController#index as HTML
+  Parameters: {"usuario"=>"juanmi"}
+Cargando pedidos para el usuario juanmi
+  [1m[36mPedido Load (0.1ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."usuario" = ?[0m  [["usuario", "juanmi"]]
+  ↳ app/controllers/pedidos_controller.rb:6:in `index'
+Completed 200 OK in 2ms (Views: 1.5ms | ActiveRecord: 0.1ms | Allocations: 836)
+
+
+Started DELETE "/pedidos/8" for 127.0.0.1 at 2024-05-17 17:08:52 +0200
+Processing by PedidosController#destroy as HTML
+  Parameters: {"id"=>"8"}
+  [1m[36mPedido Load (0.1ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/pedidos_controller.rb:28:in `destroy'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/pedidos_controller.rb:29:in `destroy'
+  [1m[36mPedido Destroy (0.5ms)[0m  [1m[31mDELETE FROM "pedidos" WHERE "pedidos"."id" = ?[0m  [["id", 8]]
+  ↳ app/controllers/pedidos_controller.rb:29:in `destroy'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/pedidos_controller.rb:29:in `destroy'
+Completed 200 OK in 3ms (ActiveRecord: 0.7ms | Allocations: 2081)
+
+
+Started GET "/pedidos?usuario=juanmi" for ::1 at 2024-05-17 17:08:58 +0200
+Processing by PedidosController#index as HTML
+  Parameters: {"usuario"=>"juanmi"}
+Cargando pedidos para el usuario juanmi
+  [1m[36mPedido Load (0.3ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."usuario" = ?[0m  [["usuario", "juanmi"]]
+  ↳ app/controllers/pedidos_controller.rb:6:in `index'
+Completed 200 OK in 2ms (Views: 1.5ms | ActiveRecord: 0.2ms | Allocations: 751)
+
+
+Started POST "/pedidos" for 127.0.0.1 at 2024-05-17 17:09:16 +0200
+Processing by PedidosController#create as HTML
+  Parameters: {"id"=>0, "idPedido"=>"891480", "hamburguesas"=>[{"nombre"=>"Hamburguesa vegana", "pan"=>"Pan normal", "lechuga"=>"Lechuga fresca", "tomate"=>"Tomate pera", "quesoCabra"=>nil, "cebolla"=>"Cebolla llorosa", "pepinillos"=>"Pepinillos", "bacon"=>"Bacon Vegano reseco", "carne"=>"Carne Vegana de dudosa procedencia", "precio"=>5.5}], "precio"=>24.0, "listo"=>false, "usuario"=>"juanmi", "pedido"=>{"id"=>0, "idPedido"=>"891480", "usuario"=>"juanmi", "precio"=>24.0, "listo"=>false}}
+[31mUnpermitted parameter: :id. Context: { controller: PedidosController, action: create, request: #<ActionDispatch::Request:0x00007352b12fb828>, params: {"id"=>0, "idPedido"=>"891480", "hamburguesas"=>[{"nombre"=>"Hamburguesa vegana", "pan"=>"Pan normal", "lechuga"=>"Lechuga fresca", "tomate"=>"Tomate pera", "quesoCabra"=>nil, "cebolla"=>"Cebolla llorosa", "pepinillos"=>"Pepinillos", "bacon"=>"Bacon Vegano reseco", "carne"=>"Carne Vegana de dudosa procedencia", "precio"=>5.5}], "precio"=>24.0, "listo"=>false, "usuario"=>"juanmi", "controller"=>"pedidos", "action"=>"create", "pedido"=>{"id"=>0, "idPedido"=>"891480", "usuario"=>"juanmi", "precio"=>24.0, "listo"=>false}} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/pedidos_controller.rb:11:in `create'
+  [1m[36mPedido Create (0.9ms)[0m  [1m[32mINSERT INTO "pedidos" ("idPedido", "usuario", "precio", "listo", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["idPedido", "891480"], ["usuario", "juanmi"], ["precio", 24.0], ["listo", 0], ["created_at", "2024-05-17 15:09:16.304452"], ["updated_at", "2024-05-17 15:09:16.304452"]]
+  ↳ app/controllers/pedidos_controller.rb:11:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/pedidos_controller.rb:11:in `create'
+Completed 201 Created in 3ms (Views: 0.2ms | ActiveRecord: 1.0ms | Allocations: 2225)
+
+
+Started PATCH "/pedidos/0" for 127.0.0.1 at 2024-05-17 17:09:21 +0200
+Processing by PedidosController#update as HTML
+  Parameters: {"listo"=>true, "id"=>"0", "pedido"=>{"listo"=>true}}
+  [1m[36mPedido Load (0.1ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."id" = ? LIMIT ?[0m  [["id", 0], ["LIMIT", 1]]
+  ↳ app/controllers/pedidos_controller.rb:19:in `update'
+Completed 404 Not Found in 1ms (ActiveRecord: 0.1ms | Allocations: 573)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Pedido with 'id'=0):
+  
+app/controllers/pedidos_controller.rb:19:in `update'
+Started GET "/pedidos?usuario=juanmi" for ::1 at 2024-05-17 17:09:26 +0200
+Processing by PedidosController#index as HTML
+  Parameters: {"usuario"=>"juanmi"}
+Cargando pedidos para el usuario juanmi
+  [1m[36mPedido Load (0.1ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."usuario" = ?[0m  [["usuario", "juanmi"]]
+  ↳ app/controllers/pedidos_controller.rb:6:in `index'
+Completed 200 OK in 2ms (Views: 1.7ms | ActiveRecord: 0.1ms | Allocations: 836)
+
+
+Started GET "/pedidos?usuario=juanmi" for ::1 at 2024-05-17 17:09:29 +0200
+Processing by PedidosController#index as HTML
+  Parameters: {"usuario"=>"juanmi"}
+Cargando pedidos para el usuario juanmi
+  [1m[36mPedido Load (0.1ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."usuario" = ?[0m  [["usuario", "juanmi"]]
+  ↳ app/controllers/pedidos_controller.rb:6:in `index'
+Completed 200 OK in 2ms (Views: 1.5ms | ActiveRecord: 0.1ms | Allocations: 836)
+
+
+Started GET "/pedidos?usuario=juanmi" for ::1 at 2024-05-17 17:09:29 +0200
+Processing by PedidosController#index as HTML
+  Parameters: {"usuario"=>"juanmi"}
+Cargando pedidos para el usuario juanmi
+  [1m[36mPedido Load (0.1ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."usuario" = ?[0m  [["usuario", "juanmi"]]
+  ↳ app/controllers/pedidos_controller.rb:6:in `index'
+Completed 200 OK in 2ms (Views: 1.5ms | ActiveRecord: 0.1ms | Allocations: 836)
+
+
+Started GET "/pedidos?usuario=juanmi" for ::1 at 2024-05-17 17:09:29 +0200
+Processing by PedidosController#index as HTML
+  Parameters: {"usuario"=>"juanmi"}
+Cargando pedidos para el usuario juanmi
+  [1m[36mPedido Load (0.1ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."usuario" = ?[0m  [["usuario", "juanmi"]]
+  ↳ app/controllers/pedidos_controller.rb:6:in `index'
+Completed 200 OK in 2ms (Views: 1.5ms | ActiveRecord: 0.1ms | Allocations: 836)
+
+
+Started GET "/pedidos?usuario=juanmi" for ::1 at 2024-05-17 17:09:29 +0200
+Processing by PedidosController#index as HTML
+  Parameters: {"usuario"=>"juanmi"}
+Cargando pedidos para el usuario juanmi
+  [1m[36mPedido Load (0.3ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."usuario" = ?[0m  [["usuario", "juanmi"]]
+  ↳ app/controllers/pedidos_controller.rb:6:in `index'
+Completed 200 OK in 2ms (Views: 1.7ms | ActiveRecord: 0.3ms | Allocations: 836)
+
+
+Started GET "/pedidos?usuario=juanmi" for 127.0.0.1 at 2024-05-17 17:11:48 +0200
+Processing by PedidosController#index as HTML
+  Parameters: {"usuario"=>"juanmi"}
+Cargando pedidos para el usuario juanmi
+  [1m[36mPedido Load (0.1ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."usuario" = ?[0m  [["usuario", "juanmi"]]
+  ↳ app/controllers/pedidos_controller.rb:6:in `index'
+Completed 200 OK in 2ms (Views: 1.2ms | ActiveRecord: 0.1ms | Allocations: 836)
+
+
+Started GET "/pedidos?usuario=juanmi" for ::1 at 2024-05-17 17:11:52 +0200
+Processing by PedidosController#index as HTML
+  Parameters: {"usuario"=>"juanmi"}
+Cargando pedidos para el usuario juanmi
+  [1m[36mPedido Load (0.1ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."usuario" = ?[0m  [["usuario", "juanmi"]]
+  ↳ app/controllers/pedidos_controller.rb:6:in `index'
+Completed 200 OK in 2ms (Views: 1.3ms | ActiveRecord: 0.1ms | Allocations: 836)
+
+
+Started GET "/pedidos?usuario=juanmi" for ::1 at 2024-05-17 17:11:53 +0200
+Processing by PedidosController#index as HTML
+  Parameters: {"usuario"=>"juanmi"}
+Cargando pedidos para el usuario juanmi
+  [1m[36mPedido Load (0.1ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."usuario" = ?[0m  [["usuario", "juanmi"]]
+  ↳ app/controllers/pedidos_controller.rb:6:in `index'
+Completed 200 OK in 2ms (Views: 1.2ms | ActiveRecord: 0.1ms | Allocations: 836)
+
+
+Started POST "/pedidos" for 127.0.0.1 at 2024-05-17 17:12:03 +0200
+Processing by PedidosController#create as HTML
+  Parameters: {"id"=>0, "idPedido"=>"663099", "hamburguesas"=>[{"nombre"=>"Hamburguesa normal", "pan"=>"Pan normal", "lechuga"=>"Lechuga fresca", "tomate"=>"Tomate pera", "quesoCabra"=>"Queso de cabra recién cortado", "cebolla"=>"Cebolla llorosa", "pepinillos"=>"Pepinillos", "bacon"=>"Bacon grasiento", "carne"=>"Carne Wagyu", "precio"=>5.0}], "precio"=>20.0, "listo"=>false, "usuario"=>"juanmi", "pedido"=>{"id"=>0, "idPedido"=>"663099", "usuario"=>"juanmi", "precio"=>20.0, "listo"=>false}}
+[31mUnpermitted parameter: :id. Context: { controller: PedidosController, action: create, request: #<ActionDispatch::Request:0x00007352b1118ce0>, params: {"id"=>0, "idPedido"=>"663099", "hamburguesas"=>[{"nombre"=>"Hamburguesa normal", "pan"=>"Pan normal", "lechuga"=>"Lechuga fresca", "tomate"=>"Tomate pera", "quesoCabra"=>"Queso de cabra recién cortado", "cebolla"=>"Cebolla llorosa", "pepinillos"=>"Pepinillos", "bacon"=>"Bacon grasiento", "carne"=>"Carne Wagyu", "precio"=>5.0}], "precio"=>20.0, "listo"=>false, "usuario"=>"juanmi", "controller"=>"pedidos", "action"=>"create", "pedido"=>{"id"=>0, "idPedido"=>"663099", "usuario"=>"juanmi", "precio"=>20.0, "listo"=>false}} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/pedidos_controller.rb:11:in `create'
+  [1m[36mPedido Create (1.1ms)[0m  [1m[32mINSERT INTO "pedidos" ("idPedido", "usuario", "precio", "listo", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["idPedido", "663099"], ["usuario", "juanmi"], ["precio", 20.0], ["listo", 0], ["created_at", "2024-05-17 15:12:03.540372"], ["updated_at", "2024-05-17 15:12:03.540372"]]
+  ↳ app/controllers/pedidos_controller.rb:11:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/pedidos_controller.rb:11:in `create'
+Completed 201 Created in 4ms (Views: 0.2ms | ActiveRecord: 1.3ms | Allocations: 2229)
+
+
+Started PATCH "/pedidos/0?listo=true" for 127.0.0.1 at 2024-05-17 17:12:08 +0200
+Processing by PedidosController#update as HTML
+  Parameters: {"listo"=>"true", "id"=>"0", "pedido"=>{"listo"=>"true"}}
+  [1m[36mPedido Load (0.1ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."id" = ? LIMIT ?[0m  [["id", 0], ["LIMIT", 1]]
+  ↳ app/controllers/pedidos_controller.rb:19:in `update'
+Completed 404 Not Found in 1ms (ActiveRecord: 0.1ms | Allocations: 573)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Pedido with 'id'=0):
+  
+app/controllers/pedidos_controller.rb:19:in `update'
+Started GET "/pedidos?usuario=juanmi" for ::1 at 2024-05-17 17:12:13 +0200
+Processing by PedidosController#index as HTML
+  Parameters: {"usuario"=>"juanmi"}
+Cargando pedidos para el usuario juanmi
+  [1m[36mPedido Load (0.1ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."usuario" = ?[0m  [["usuario", "juanmi"]]
+  ↳ app/controllers/pedidos_controller.rb:6:in `index'
+Completed 200 OK in 2ms (Views: 1.5ms | ActiveRecord: 0.1ms | Allocations: 911)
+
+
+Started GET "/pedidos?usuario=juanmi" for 127.0.0.1 at 2024-05-17 17:13:43 +0200
+Processing by PedidosController#index as HTML
+  Parameters: {"usuario"=>"juanmi"}
+Cargando pedidos para el usuario juanmi
+  [1m[36mPedido Load (0.1ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."usuario" = ?[0m  [["usuario", "juanmi"]]
+  ↳ app/controllers/pedidos_controller.rb:6:in `index'
+Completed 200 OK in 1ms (Views: 0.9ms | ActiveRecord: 0.1ms | Allocations: 911)
+
+
+Started POST "/pedidos" for 127.0.0.1 at 2024-05-17 17:13:51 +0200
+Processing by PedidosController#create as HTML
+  Parameters: {"id"=>0, "idPedido"=>"906340", "hamburguesas"=>[{"nombre"=>"Hamburguesa normal", "pan"=>"Pan normal", "lechuga"=>"Lechuga fresca", "tomate"=>"Tomate pera", "quesoCabra"=>"Queso de cabra recién cortado", "cebolla"=>"Cebolla llorosa", "pepinillos"=>"Pepinillos", "bacon"=>"Bacon grasiento", "carne"=>"Carne Wagyu", "precio"=>5.0}], "precio"=>30.0, "listo"=>false, "usuario"=>"juanmi", "pedido"=>{"id"=>0, "idPedido"=>"906340", "usuario"=>"juanmi", "precio"=>30.0, "listo"=>false}}
+[31mUnpermitted parameter: :id. Context: { controller: PedidosController, action: create, request: #<ActionDispatch::Request:0x00007352b2c572b8>, params: {"id"=>0, "idPedido"=>"906340", "hamburguesas"=>[{"nombre"=>"Hamburguesa normal", "pan"=>"Pan normal", "lechuga"=>"Lechuga fresca", "tomate"=>"Tomate pera", "quesoCabra"=>"Queso de cabra recién cortado", "cebolla"=>"Cebolla llorosa", "pepinillos"=>"Pepinillos", "bacon"=>"Bacon grasiento", "carne"=>"Carne Wagyu", "precio"=>5.0}], "precio"=>30.0, "listo"=>false, "usuario"=>"juanmi", "controller"=>"pedidos", "action"=>"create", "pedido"=>{"id"=>0, "idPedido"=>"906340", "usuario"=>"juanmi", "precio"=>30.0, "listo"=>false}} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/pedidos_controller.rb:11:in `create'
+  [1m[36mPedido Create (1.0ms)[0m  [1m[32mINSERT INTO "pedidos" ("idPedido", "usuario", "precio", "listo", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["idPedido", "906340"], ["usuario", "juanmi"], ["precio", 30.0], ["listo", 0], ["created_at", "2024-05-17 15:13:51.808241"], ["updated_at", "2024-05-17 15:13:51.808241"]]
+  ↳ app/controllers/pedidos_controller.rb:11:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/pedidos_controller.rb:11:in `create'
+Completed 201 Created in 3ms (Views: 0.2ms | ActiveRecord: 1.1ms | Allocations: 2225)
+
+
+Started PATCH "/pedidos/0" for 127.0.0.1 at 2024-05-17 17:14:00 +0200
+Processing by PedidosController#update as HTML
+  Parameters: {"listo"=>true, "id"=>"0", "pedido"=>{"listo"=>true}}
+  [1m[36mPedido Load (0.1ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."id" = ? LIMIT ?[0m  [["id", 0], ["LIMIT", 1]]
+  ↳ app/controllers/pedidos_controller.rb:19:in `update'
+Completed 404 Not Found in 1ms (ActiveRecord: 0.1ms | Allocations: 573)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Pedido with 'id'=0):
+  
+app/controllers/pedidos_controller.rb:19:in `update'
+Started GET "/pedidos?usuario=david" for 127.0.0.1 at 2024-05-17 17:14:09 +0200
+Processing by PedidosController#index as HTML
+  Parameters: {"usuario"=>"david"}
+Cargando pedidos para el usuario david
+  [1m[36mPedido Load (0.1ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."usuario" = ?[0m  [["usuario", "david"]]
+  ↳ app/controllers/pedidos_controller.rb:6:in `index'
+Completed 200 OK in 2ms (Views: 1.5ms | ActiveRecord: 0.1ms | Allocations: 836)
+
+
+Started GET "/pedidos?usuario=juanmi" for 127.0.0.1 at 2024-05-17 17:14:10 +0200
+Processing by PedidosController#index as HTML
+  Parameters: {"usuario"=>"juanmi"}
+Cargando pedidos para el usuario juanmi
+  [1m[36mPedido Load (0.1ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."usuario" = ?[0m  [["usuario", "juanmi"]]
+  ↳ app/controllers/pedidos_controller.rb:6:in `index'
+Completed 200 OK in 2ms (Views: 1.7ms | ActiveRecord: 0.1ms | Allocations: 986)
+
+
+Started GET "/pedidos?usuario=juanmi" for ::1 at 2024-05-17 17:14:12 +0200
+Processing by PedidosController#index as HTML
+  Parameters: {"usuario"=>"juanmi"}
+Cargando pedidos para el usuario juanmi
+  [1m[36mPedido Load (0.1ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."usuario" = ?[0m  [["usuario", "juanmi"]]
+  ↳ app/controllers/pedidos_controller.rb:6:in `index'
+Completed 200 OK in 3ms (Views: 1.8ms | ActiveRecord: 0.1ms | Allocations: 986)
+
+
+Started GET "/pedidos?usuario=juanmi" for 127.0.0.1 at 2024-05-17 17:19:14 +0200
+Processing by PedidosController#index as HTML
+  Parameters: {"usuario"=>"juanmi"}
+Cargando pedidos para el usuario juanmi
+  [1m[36mPedido Load (0.1ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."usuario" = ?[0m  [["usuario", "juanmi"]]
+  ↳ app/controllers/pedidos_controller.rb:6:in `index'
+Completed 200 OK in 1ms (Views: 1.2ms | ActiveRecord: 0.1ms | Allocations: 987)
+
+
+Started POST "/pedidos" for 127.0.0.1 at 2024-05-17 17:19:25 +0200
+Processing by PedidosController#create as HTML
+  Parameters: {"id"=>0, "idPedido"=>"374627", "hamburguesas"=>[{"nombre"=>"Hamburguesa vegana", "pan"=>"Pan normal", "lechuga"=>"Lechuga fresca", "tomate"=>"Tomate pera", "quesoCabra"=>nil, "cebolla"=>"Cebolla llorosa", "pepinillos"=>"Pepinillos", "bacon"=>"Bacon Vegano reseco", "carne"=>"Carne Vegana de dudosa procedencia", "precio"=>5.5}], "precio"=>18.0, "listo"=>false, "usuario"=>"juanmi", "pedido"=>{"id"=>0, "idPedido"=>"374627", "usuario"=>"juanmi", "precio"=>18.0, "listo"=>false}}
+[31mUnpermitted parameter: :id. Context: { controller: PedidosController, action: create, request: #<ActionDispatch::Request:0x00007352b3b26118>, params: {"id"=>0, "idPedido"=>"374627", "hamburguesas"=>[{"nombre"=>"Hamburguesa vegana", "pan"=>"Pan normal", "lechuga"=>"Lechuga fresca", "tomate"=>"Tomate pera", "quesoCabra"=>nil, "cebolla"=>"Cebolla llorosa", "pepinillos"=>"Pepinillos", "bacon"=>"Bacon Vegano reseco", "carne"=>"Carne Vegana de dudosa procedencia", "precio"=>5.5}], "precio"=>18.0, "listo"=>false, "usuario"=>"juanmi", "controller"=>"pedidos", "action"=>"create", "pedido"=>{"id"=>0, "idPedido"=>"374627", "usuario"=>"juanmi", "precio"=>18.0, "listo"=>false}} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/pedidos_controller.rb:11:in `create'
+  [1m[36mPedido Create (0.7ms)[0m  [1m[32mINSERT INTO "pedidos" ("idPedido", "usuario", "precio", "listo", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["idPedido", "374627"], ["usuario", "juanmi"], ["precio", 18.0], ["listo", 0], ["created_at", "2024-05-17 15:19:25.223220"], ["updated_at", "2024-05-17 15:19:25.223220"]]
+  ↳ app/controllers/pedidos_controller.rb:11:in `create'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/pedidos_controller.rb:11:in `create'
+Completed 201 Created in 4ms (Views: 0.2ms | ActiveRecord: 1.1ms | Allocations: 2225)
+
+
+Started GET "/pedidos?usuario=juanmi" for ::1 at 2024-05-17 17:19:26 +0200
+Processing by PedidosController#index as HTML
+  Parameters: {"usuario"=>"juanmi"}
+Cargando pedidos para el usuario juanmi
+  [1m[36mPedido Load (0.1ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."usuario" = ?[0m  [["usuario", "juanmi"]]
+  ↳ app/controllers/pedidos_controller.rb:6:in `index'
+Completed 200 OK in 2ms (Views: 1.5ms | ActiveRecord: 0.1ms | Allocations: 1062)
+
+
+Started PATCH "/pedidos/0" for 127.0.0.1 at 2024-05-17 17:19:32 +0200
+Processing by PedidosController#update as HTML
+  Parameters: {"listo"=>true, "id"=>"0", "pedido"=>{"listo"=>true}}
+  [1m[36mPedido Load (0.1ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."id" = ? LIMIT ?[0m  [["id", 0], ["LIMIT", 1]]
+  ↳ app/controllers/pedidos_controller.rb:19:in `update'
+Completed 404 Not Found in 1ms (ActiveRecord: 0.1ms | Allocations: 573)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Pedido with 'id'=0):
+  
+app/controllers/pedidos_controller.rb:19:in `update'
+Started GET "/pedidos?usuario=juanmi" for 127.0.0.1 at 2024-05-17 17:21:14 +0200
+Processing by PedidosController#index as HTML
+  Parameters: {"usuario"=>"juanmi"}
+Cargando pedidos para el usuario juanmi
+  [1m[36mPedido Load (0.1ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."usuario" = ?[0m  [["usuario", "juanmi"]]
+  ↳ app/controllers/pedidos_controller.rb:6:in `index'
+Completed 200 OK in 2ms (Views: 1.3ms | ActiveRecord: 0.1ms | Allocations: 1062)
+
+
+Started POST "/pedidos" for 127.0.0.1 at 2024-05-17 17:21:22 +0200
+Processing by PedidosController#create as HTML
+  Parameters: {"id"=>0, "idPedido"=>"724827", "hamburguesas"=>[{"nombre"=>"Hamburguesa normal", "pan"=>"Pan normal", "lechuga"=>"Lechuga fresca", "tomate"=>"Tomate pera", "quesoCabra"=>"Queso de cabra recién cortado", "cebolla"=>"Cebolla llorosa", "pepinillos"=>"Pepinillos", "bacon"=>"Bacon grasiento", "carne"=>"Carne Wagyu", "precio"=>5.0}], "precio"=>5.0, "listo"=>false, "usuario"=>"juanmi", "pedido"=>{"id"=>0, "idPedido"=>"724827", "usuario"=>"juanmi", "precio"=>5.0, "listo"=>false}}
+[31mUnpermitted parameter: :id. Context: { controller: PedidosController, action: create, request: #<ActionDispatch::Request:0x00007352b0d09eb0>, params: {"id"=>0, "idPedido"=>"724827", "hamburguesas"=>[{"nombre"=>"Hamburguesa normal", "pan"=>"Pan normal", "lechuga"=>"Lechuga fresca", "tomate"=>"Tomate pera", "quesoCabra"=>"Queso de cabra recién cortado", "cebolla"=>"Cebolla llorosa", "pepinillos"=>"Pepinillos", "bacon"=>"Bacon grasiento", "carne"=>"Carne Wagyu", "precio"=>5.0}], "precio"=>5.0, "listo"=>false, "usuario"=>"juanmi", "controller"=>"pedidos", "action"=>"create", "pedido"=>{"id"=>0, "idPedido"=>"724827", "usuario"=>"juanmi", "precio"=>5.0, "listo"=>false}} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/pedidos_controller.rb:11:in `create'
+  [1m[36mPedido Create (2.1ms)[0m  [1m[32mINSERT INTO "pedidos" ("idPedido", "usuario", "precio", "listo", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["idPedido", "724827"], ["usuario", "juanmi"], ["precio", 5.0], ["listo", 0], ["created_at", "2024-05-17 15:21:22.458098"], ["updated_at", "2024-05-17 15:21:22.458098"]]
+  ↳ app/controllers/pedidos_controller.rb:11:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/pedidos_controller.rb:11:in `create'
+Completed 201 Created in 4ms (Views: 0.2ms | ActiveRecord: 2.3ms | Allocations: 2226)
+
+
+Started PATCH "/pedidos/0" for 127.0.0.1 at 2024-05-17 17:21:29 +0200
+Processing by PedidosController#update as HTML
+  Parameters: {"listo"=>true, "id"=>"0", "pedido"=>{"listo"=>true}}
+  [1m[36mPedido Load (0.1ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."id" = ? LIMIT ?[0m  [["id", 0], ["LIMIT", 1]]
+  ↳ app/controllers/pedidos_controller.rb:19:in `update'
+Completed 404 Not Found in 1ms (ActiveRecord: 0.1ms | Allocations: 573)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Pedido with 'id'=0):
+  
+app/controllers/pedidos_controller.rb:19:in `update'
+Started DELETE "/pedidos/12" for 127.0.0.1 at 2024-05-17 17:21:47 +0200
+Processing by PedidosController#destroy as HTML
+  Parameters: {"id"=>"12"}
+  [1m[36mPedido Load (0.1ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/pedidos_controller.rb:28:in `destroy'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/pedidos_controller.rb:29:in `destroy'
+  [1m[36mPedido Destroy (0.5ms)[0m  [1m[31mDELETE FROM "pedidos" WHERE "pedidos"."id" = ?[0m  [["id", 12]]
+  ↳ app/controllers/pedidos_controller.rb:29:in `destroy'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/pedidos_controller.rb:29:in `destroy'
+Completed 200 OK in 3ms (ActiveRecord: 0.9ms | Allocations: 2077)
+
+
+Started GET "/pedidos?usuario=juanmi" for ::1 at 2024-05-17 17:21:52 +0200
+Processing by PedidosController#index as HTML
+  Parameters: {"usuario"=>"juanmi"}
+Cargando pedidos para el usuario juanmi
+  [1m[36mPedido Load (0.1ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."usuario" = ?[0m  [["usuario", "juanmi"]]
+  ↳ app/controllers/pedidos_controller.rb:6:in `index'
+Completed 200 OK in 2ms (Views: 1.6ms | ActiveRecord: 0.1ms | Allocations: 1062)
+
+
+Started GET "/pedidos?usuario=david" for 127.0.0.1 at 2024-05-17 17:24:45 +0200
+Processing by PedidosController#index as HTML
+  Parameters: {"usuario"=>"david"}
+Cargando pedidos para el usuario david
+  [1m[36mPedido Load (0.1ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."usuario" = ?[0m  [["usuario", "david"]]
+  ↳ app/controllers/pedidos_controller.rb:6:in `index'
+Completed 200 OK in 3ms (Views: 2.9ms | ActiveRecord: 0.1ms | Allocations: 837)
+
+
+Started GET "/pedidos?usuario=juanmi" for 127.0.0.1 at 2024-05-17 17:24:47 +0200
+Processing by PedidosController#index as HTML
+  Parameters: {"usuario"=>"juanmi"}
+Cargando pedidos para el usuario juanmi
+  [1m[36mPedido Load (0.1ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."usuario" = ?[0m  [["usuario", "juanmi"]]
+  ↳ app/controllers/pedidos_controller.rb:6:in `index'
+Completed 200 OK in 2ms (Views: 1.8ms | ActiveRecord: 0.1ms | Allocations: 1062)
+
+
+Started GET "/pedidos?usuario=juanmi" for ::1 at 2024-05-17 17:24:48 +0200
+Processing by PedidosController#index as HTML
+  Parameters: {"usuario"=>"juanmi"}
+Cargando pedidos para el usuario juanmi
+  [1m[36mPedido Load (0.1ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."usuario" = ?[0m  [["usuario", "juanmi"]]
+  ↳ app/controllers/pedidos_controller.rb:6:in `index'
+Completed 200 OK in 2ms (Views: 1.8ms | ActiveRecord: 0.1ms | Allocations: 1062)
+
+
+Started GET "/pedidos?usuario=juanmi" for ::1 at 2024-05-17 17:24:48 +0200
+Processing by PedidosController#index as HTML
+  Parameters: {"usuario"=>"juanmi"}
+Cargando pedidos para el usuario juanmi
+  [1m[36mPedido Load (0.2ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."usuario" = ?[0m  [["usuario", "juanmi"]]
+  ↳ app/controllers/pedidos_controller.rb:6:in `index'
+Completed 200 OK in 2ms (Views: 1.4ms | ActiveRecord: 0.2ms | Allocations: 1062)
+
+
+Started DELETE "/pedidos/14" for 127.0.0.1 at 2024-05-17 17:24:53 +0200
+Processing by PedidosController#destroy as HTML
+  Parameters: {"id"=>"14"}
+  [1m[36mPedido Load (0.1ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."id" = ? LIMIT ?[0m  [["id", 14], ["LIMIT", 1]]
+  ↳ app/controllers/pedidos_controller.rb:28:in `destroy'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/pedidos_controller.rb:29:in `destroy'
+  [1m[36mPedido Destroy (0.6ms)[0m  [1m[31mDELETE FROM "pedidos" WHERE "pedidos"."id" = ?[0m  [["id", 14]]
+  ↳ app/controllers/pedidos_controller.rb:29:in `destroy'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/pedidos_controller.rb:29:in `destroy'
+Completed 200 OK in 3ms (ActiveRecord: 0.8ms | Allocations: 2077)
+
+
+Started GET "/pedidos?usuario=juanmi" for 127.0.0.1 at 2024-05-17 17:25:09 +0200
+Processing by PedidosController#index as HTML
+  Parameters: {"usuario"=>"juanmi"}
+Cargando pedidos para el usuario juanmi
+  [1m[36mPedido Load (0.1ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."usuario" = ?[0m  [["usuario", "juanmi"]]
+  ↳ app/controllers/pedidos_controller.rb:6:in `index'
+Completed 200 OK in 2ms (Views: 1.5ms | ActiveRecord: 0.1ms | Allocations: 986)
+
+
+Started GET "/pedidos?usuario=juanmi" for ::1 at 2024-05-17 17:25:23 +0200
+Processing by PedidosController#index as HTML
+  Parameters: {"usuario"=>"juanmi"}
+Cargando pedidos para el usuario juanmi
+  [1m[36mPedido Load (0.1ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."usuario" = ?[0m  [["usuario", "juanmi"]]
+  ↳ app/controllers/pedidos_controller.rb:6:in `index'
+Completed 200 OK in 2ms (Views: 1.3ms | ActiveRecord: 0.1ms | Allocations: 986)
+
+
+Started GET "/pedidos?usuario=juanmi" for ::1 at 2024-05-17 17:25:24 +0200
+Processing by PedidosController#index as HTML
+  Parameters: {"usuario"=>"juanmi"}
+Cargando pedidos para el usuario juanmi
+  [1m[36mPedido Load (0.1ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."usuario" = ?[0m  [["usuario", "juanmi"]]
+  ↳ app/controllers/pedidos_controller.rb:6:in `index'
+Completed 200 OK in 2ms (Views: 1.5ms | ActiveRecord: 0.1ms | Allocations: 986)
+
+
+Started DELETE "/pedidos/13" for 127.0.0.1 at 2024-05-17 17:25:27 +0200
+Processing by PedidosController#destroy as HTML
+  Parameters: {"id"=>"13"}
+  [1m[36mPedido Load (0.1ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."id" = ? LIMIT ?[0m  [["id", 13], ["LIMIT", 1]]
+  ↳ app/controllers/pedidos_controller.rb:28:in `destroy'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/pedidos_controller.rb:29:in `destroy'
+  [1m[36mPedido Destroy (0.5ms)[0m  [1m[31mDELETE FROM "pedidos" WHERE "pedidos"."id" = ?[0m  [["id", 13]]
+  ↳ app/controllers/pedidos_controller.rb:29:in `destroy'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/pedidos_controller.rb:29:in `destroy'
+Completed 200 OK in 2ms (ActiveRecord: 0.6ms | Allocations: 2077)
+
+
+Started GET "/pedidos?usuario=juanmi" for ::1 at 2024-05-17 17:25:34 +0200
+Processing by PedidosController#index as HTML
+  Parameters: {"usuario"=>"juanmi"}
+Cargando pedidos para el usuario juanmi
+  [1m[36mPedido Load (0.2ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."usuario" = ?[0m  [["usuario", "juanmi"]]
+  ↳ app/controllers/pedidos_controller.rb:6:in `index'
+Completed 200 OK in 3ms (Views: 2.3ms | ActiveRecord: 0.2ms | Allocations: 911)
+
+
+Started GET "/pedidos?usuario=juanmi" for ::1 at 2024-05-17 17:43:24 +0200
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PedidosController#index as HTML
+  Parameters: {"usuario"=>"juanmi"}
+Cargando pedidos para el usuario juanmi
+  [1m[36mPedido Load (0.1ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."usuario" = ?[0m  [["usuario", "juanmi"]]
+  ↳ app/controllers/pedidos_controller.rb:6:in `index'
+Completed 200 OK in 41ms (Views: 25.0ms | ActiveRecord: 2.0ms | Allocations: 18894)
+
+
+Started GET "/favicon.ico" for ::1 at 2024-05-17 17:43:24 +0200
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/pedidos?usuario=juanmi" for 127.0.0.1 at 2024-05-17 17:43:46 +0200
+Processing by PedidosController#index as HTML
+  Parameters: {"usuario"=>"juanmi"}
+Cargando pedidos para el usuario juanmi
+  [1m[36mPedido Load (0.1ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."usuario" = ?[0m  [["usuario", "juanmi"]]
+  ↳ app/controllers/pedidos_controller.rb:6:in `index'
+Completed 200 OK in 2ms (Views: 1.9ms | ActiveRecord: 0.1ms | Allocations: 1152)
+
+
+Started POST "/pedidos" for 127.0.0.1 at 2024-05-17 17:44:07 +0200
+Processing by PedidosController#create as HTML
+  Parameters: {"id"=>0, "idPedido"=>"533037", "hamburguesas"=>[{"nombre"=>"Hamburguesa normal", "pan"=>"Pan normal", "lechuga"=>"Lechuga fresca", "tomate"=>"Tomate pera", "quesoCabra"=>"Queso de cabra recién cortado", "cebolla"=>"Cebolla llorosa", "pepinillos"=>"Pepinillos", "bacon"=>"Bacon grasiento", "carne"=>"Carne Wagyu", "precio"=>5.0}], "precio"=>16.5, "listo"=>false, "usuario"=>"juanmi", "pedido"=>{"id"=>0, "idPedido"=>"533037", "usuario"=>"juanmi", "precio"=>16.5, "listo"=>false}}
+[31mUnpermitted parameter: :id. Context: { controller: PedidosController, action: create, request: #<ActionDispatch::Request:0x00007b396e5dc4b0>, params: {"id"=>0, "idPedido"=>"533037", "hamburguesas"=>[{"nombre"=>"Hamburguesa normal", "pan"=>"Pan normal", "lechuga"=>"Lechuga fresca", "tomate"=>"Tomate pera", "quesoCabra"=>"Queso de cabra recién cortado", "cebolla"=>"Cebolla llorosa", "pepinillos"=>"Pepinillos", "bacon"=>"Bacon grasiento", "carne"=>"Carne Wagyu", "precio"=>5.0}], "precio"=>16.5, "listo"=>false, "usuario"=>"juanmi", "controller"=>"pedidos", "action"=>"create", "pedido"=>{"id"=>0, "idPedido"=>"533037", "usuario"=>"juanmi", "precio"=>16.5, "listo"=>false}} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/pedidos_controller.rb:11:in `create'
+  [1m[36mPedido Create (1.0ms)[0m  [1m[32mINSERT INTO "pedidos" ("idPedido", "usuario", "precio", "listo", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["idPedido", "533037"], ["usuario", "juanmi"], ["precio", 16.5], ["listo", 0], ["created_at", "2024-05-17 15:44:07.368288"], ["updated_at", "2024-05-17 15:44:07.368288"]]
+  ↳ app/controllers/pedidos_controller.rb:11:in `create'
+  [1m[36mTRANSACTION (3.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/pedidos_controller.rb:11:in `create'
+Completed 201 Created in 9ms (Views: 0.5ms | ActiveRecord: 4.5ms | Allocations: 3070)
+
+
+Started GET "/pedidos?usuario=juanmi" for ::1 at 2024-05-17 17:44:08 +0200
+Processing by PedidosController#index as HTML
+  Parameters: {"usuario"=>"juanmi"}
+Cargando pedidos para el usuario juanmi
+  [1m[36mPedido Load (0.2ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."usuario" = ?[0m  [["usuario", "juanmi"]]
+  ↳ app/controllers/pedidos_controller.rb:6:in `index'
+Completed 200 OK in 3ms (Views: 2.1ms | ActiveRecord: 0.2ms | Allocations: 993)
+
+
+Started PATCH "/pedidos/15" for 127.0.0.1 at 2024-05-17 17:44:14 +0200
+Processing by PedidosController#update as HTML
+  Parameters: {"listo"=>true, "id"=>"15", "pedido"=>{"listo"=>true}}
+  [1m[36mPedido Load (0.1ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/pedidos_controller.rb:19:in `update'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/pedidos_controller.rb:20:in `update'
+  [1m[36mPedido Update (0.5ms)[0m  [1m[33mUPDATE "pedidos" SET "listo" = ?, "updated_at" = ? WHERE "pedidos"."id" = ?[0m  [["listo", 1], ["updated_at", "2024-05-17 15:44:14.350007"], ["id", 15]]
+  ↳ app/controllers/pedidos_controller.rb:20:in `update'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/pedidos_controller.rb:20:in `update'
+Completed 200 OK in 4ms (Views: 0.2ms | ActiveRecord: 0.8ms | Allocations: 3128)
+
+
+Started GET "/pedidos?usuario=juanmi" for ::1 at 2024-05-17 17:44:16 +0200
+Processing by PedidosController#index as HTML
+  Parameters: {"usuario"=>"juanmi"}
+Cargando pedidos para el usuario juanmi
+  [1m[36mPedido Load (0.3ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."usuario" = ?[0m  [["usuario", "juanmi"]]
+  ↳ app/controllers/pedidos_controller.rb:6:in `index'
+Completed 200 OK in 3ms (Views: 1.9ms | ActiveRecord: 0.3ms | Allocations: 988)
+
+
+Started GET "/pedidos?usuario=juanmi" for ::1 at 2024-05-17 17:44:18 +0200
+Processing by PedidosController#index as HTML
+  Parameters: {"usuario"=>"juanmi"}
+Cargando pedidos para el usuario juanmi
+  [1m[36mPedido Load (0.1ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."usuario" = ?[0m  [["usuario", "juanmi"]]
+  ↳ app/controllers/pedidos_controller.rb:6:in `index'
+Completed 200 OK in 2ms (Views: 1.8ms | ActiveRecord: 0.1ms | Allocations: 1001)
+
+
+Started GET "/pedidos?usuario=juanmi" for ::1 at 2024-05-17 17:44:19 +0200
+Processing by PedidosController#index as HTML
+  Parameters: {"usuario"=>"juanmi"}
+Cargando pedidos para el usuario juanmi
+  [1m[36mPedido Load (0.1ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."usuario" = ?[0m  [["usuario", "juanmi"]]
+  ↳ app/controllers/pedidos_controller.rb:6:in `index'
+Completed 200 OK in 2ms (Views: 1.8ms | ActiveRecord: 0.1ms | Allocations: 986)
+
+
+Started GET "/" for 127.0.0.1 at 2024-05-17 19:12:21 +0200
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /var/lib/gems/3.1.0/gems/railties-7.1.3.3/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /var/lib/gems/3.1.0/gems/railties-7.1.3.3/lib/rails/templates/rails/welcome/index.html.erb (Duration: 0.8ms | Allocations: 355)
+Completed 200 OK in 10ms (Views: 3.5ms | ActiveRecord: 0.0ms | Allocations: 3942)
+
+
+Started GET "/pedidos?usuario=juanmi" for 127.0.0.1 at 2024-05-17 19:12:31 +0200
+Processing by PedidosController#index as HTML
+  Parameters: {"usuario"=>"juanmi"}
+Cargando pedidos para el usuario juanmi
+  [1m[36mPedido Load (0.1ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."usuario" = ?[0m  [["usuario", "juanmi"]]
+  ↳ app/controllers/pedidos_controller.rb:6:in `index'
+Completed 200 OK in 51ms (Views: 8.3ms | ActiveRecord: 1.8ms | Allocations: 17144)
+
+
+Started GET "/favicon.ico" for 127.0.0.1 at 2024-05-17 19:12:32 +0200
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/pedidos?usuario=juanmi" for 127.0.0.1 at 2024-05-17 19:12:56 +0200
+Processing by PedidosController#index as HTML
+  Parameters: {"usuario"=>"juanmi"}
+Cargando pedidos para el usuario juanmi
+  [1m[36mPedido Load (0.1ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."usuario" = ?[0m  [["usuario", "juanmi"]]
+  ↳ app/controllers/pedidos_controller.rb:6:in `index'
+Completed 200 OK in 3ms (Views: 2.2ms | ActiveRecord: 0.1ms | Allocations: 1212)
+
+
+Started POST "/pedidos" for 127.0.0.1 at 2024-05-17 19:13:16 +0200
+Processing by PedidosController#create as HTML
+  Parameters: {"id"=>0, "idPedido"=>"711300", "hamburguesas"=>[{"nombre"=>"Hamburguesa normal", "pan"=>"Pan normal", "lechuga"=>"Lechuga fresca", "tomate"=>"Tomate pera", "quesoCabra"=>"Queso de cabra recién cortado", "cebolla"=>"Cebolla llorosa", "pepinillos"=>"Pepinillos", "bacon"=>"Bacon grasiento", "carne"=>"Carne Wagyu", "precio"=>5.0}], "precio"=>15.0, "listo"=>false, "usuario"=>"juanmi", "pedido"=>{"id"=>0, "idPedido"=>"711300", "usuario"=>"juanmi", "precio"=>15.0, "listo"=>false}}
+[31mUnpermitted parameter: :id. Context: { controller: PedidosController, action: create, request: #<ActionDispatch::Request:0x00007130f11a26b8>, params: {"id"=>0, "idPedido"=>"711300", "hamburguesas"=>[{"nombre"=>"Hamburguesa normal", "pan"=>"Pan normal", "lechuga"=>"Lechuga fresca", "tomate"=>"Tomate pera", "quesoCabra"=>"Queso de cabra recién cortado", "cebolla"=>"Cebolla llorosa", "pepinillos"=>"Pepinillos", "bacon"=>"Bacon grasiento", "carne"=>"Carne Wagyu", "precio"=>5.0}], "precio"=>15.0, "listo"=>false, "usuario"=>"juanmi", "controller"=>"pedidos", "action"=>"create", "pedido"=>{"id"=>0, "idPedido"=>"711300", "usuario"=>"juanmi", "precio"=>15.0, "listo"=>false}} }[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/pedidos_controller.rb:11:in `create'
+  [1m[36mPedido Create (1.1ms)[0m  [1m[32mINSERT INTO "pedidos" ("idPedido", "usuario", "precio", "listo", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["idPedido", "711300"], ["usuario", "juanmi"], ["precio", 15.0], ["listo", 0], ["created_at", "2024-05-17 17:13:16.067787"], ["updated_at", "2024-05-17 17:13:16.067787"]]
+  ↳ app/controllers/pedidos_controller.rb:11:in `create'
+  [1m[36mTRANSACTION (3.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/pedidos_controller.rb:11:in `create'
+Completed 201 Created in 8ms (Views: 0.4ms | ActiveRecord: 4.8ms | Allocations: 3069)
+
+
+Started GET "/pedidos?usuario=juanmi" for 127.0.0.1 at 2024-05-17 19:13:16 +0200
+Processing by PedidosController#index as HTML
+  Parameters: {"usuario"=>"juanmi"}
+Cargando pedidos para el usuario juanmi
+  [1m[36mPedido Load (0.1ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."usuario" = ?[0m  [["usuario", "juanmi"]]
+  ↳ app/controllers/pedidos_controller.rb:6:in `index'
+Completed 200 OK in 3ms (Views: 2.5ms | ActiveRecord: 0.1ms | Allocations: 1077)
+
+
+Started GET "/pedidos?usuario=juanmi" for 127.0.0.1 at 2024-05-17 19:13:22 +0200
+Processing by PedidosController#index as HTML
+  Parameters: {"usuario"=>"juanmi"}
+Cargando pedidos para el usuario juanmi
+  [1m[36mPedido Load (0.1ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."usuario" = ?[0m  [["usuario", "juanmi"]]
+  ↳ app/controllers/pedidos_controller.rb:6:in `index'
+Completed 200 OK in 2ms (Views: 1.7ms | ActiveRecord: 0.1ms | Allocations: 1062)
+
+
+Started PATCH "/pedidos/16" for 127.0.0.1 at 2024-05-17 19:13:23 +0200
+Processing by PedidosController#update as HTML
+  Parameters: {"listo"=>true, "id"=>"16", "pedido"=>{"listo"=>true}}
+  [1m[36mPedido Load (0.2ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."id" = ? LIMIT ?[0m  [["id", 16], ["LIMIT", 1]]
+  ↳ app/controllers/pedidos_controller.rb:19:in `update'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/pedidos_controller.rb:20:in `update'
+  [1m[36mPedido Update (1.5ms)[0m  [1m[33mUPDATE "pedidos" SET "listo" = ?, "updated_at" = ? WHERE "pedidos"."id" = ?[0m  [["listo", 1], ["updated_at", "2024-05-17 17:13:23.075862"], ["id", 16]]
+  ↳ app/controllers/pedidos_controller.rb:20:in `update'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/pedidos_controller.rb:20:in `update'
+Completed 200 OK in 7ms (Views: 0.4ms | ActiveRecord: 1.8ms | Allocations: 3127)
+
+
+Started GET "/pedidos?usuario=juanmi" for 127.0.0.1 at 2024-05-17 19:13:23 +0200
+Processing by PedidosController#index as HTML
+  Parameters: {"usuario"=>"juanmi"}
+Cargando pedidos para el usuario juanmi
+  [1m[36mPedido Load (0.1ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."usuario" = ?[0m  [["usuario", "juanmi"]]
+  ↳ app/controllers/pedidos_controller.rb:6:in `index'
+Completed 200 OK in 2ms (Views: 1.7ms | ActiveRecord: 0.1ms | Allocations: 1064)
+
+
+Started GET "/pedidos?usuario=juanmi" for 127.0.0.1 at 2024-05-17 19:13:24 +0200
+Processing by PedidosController#index as HTML
+  Parameters: {"usuario"=>"juanmi"}
+Cargando pedidos para el usuario juanmi
+  [1m[36mPedido Load (0.1ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."usuario" = ?[0m  [["usuario", "juanmi"]]
+  ↳ app/controllers/pedidos_controller.rb:6:in `index'
+Completed 200 OK in 2ms (Views: 1.3ms | ActiveRecord: 0.1ms | Allocations: 1077)
+
+
+Started GET "/pedidos?usuario=juanmi" for 127.0.0.1 at 2024-05-17 19:13:26 +0200
+Processing by PedidosController#index as HTML
+  Parameters: {"usuario"=>"juanmi"}
+Cargando pedidos para el usuario juanmi
+  [1m[36mPedido Load (0.1ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."usuario" = ?[0m  [["usuario", "juanmi"]]
+  ↳ app/controllers/pedidos_controller.rb:6:in `index'
+Completed 200 OK in 2ms (Views: 1.4ms | ActiveRecord: 0.1ms | Allocations: 1062)
+
+
+Started GET "/pedidos?usuario=juanmi" for 127.0.0.1 at 2024-05-17 19:13:27 +0200
+Processing by PedidosController#index as HTML
+  Parameters: {"usuario"=>"juanmi"}
+Cargando pedidos para el usuario juanmi
+  [1m[36mPedido Load (0.2ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."usuario" = ?[0m  [["usuario", "juanmi"]]
+  ↳ app/controllers/pedidos_controller.rb:6:in `index'
+Completed 200 OK in 2ms (Views: 1.6ms | ActiveRecord: 0.1ms | Allocations: 1062)
+
+
+Started POST "/pedidos" for 127.0.0.1 at 2024-05-17 19:15:50 +0200
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PedidosController#create as HTML
+  Parameters: {"id"=>0, "idPedido"=>"059914", "hamburguesas"=>[{"nombre"=>"Hamburguesa normal", "pan"=>"Pan normal", "lechuga"=>"Lechuga fresca", "tomate"=>"Tomate pera", "quesoCabra"=>"Queso de cabra recién cortado", "cebolla"=>"Cebolla llorosa", "pepinillos"=>"Pepinillos", "bacon"=>"Bacon grasiento", "carne"=>"Carne Wagyu", "precio"=>5.0}], "precio"=>15.0, "listo"=>false, "usuario"=>"juanmi", "pedido"=>{"id"=>0, "idPedido"=>"059914", "usuario"=>"juanmi", "precio"=>15.0, "listo"=>false}}
+[31mUnpermitted parameter: :id. Context: { controller: PedidosController, action: create, request: #<ActionDispatch::Request:0x00007d58bc0ddb70>, params: {"id"=>0, "idPedido"=>"059914", "hamburguesas"=>[{"nombre"=>"Hamburguesa normal", "pan"=>"Pan normal", "lechuga"=>"Lechuga fresca", "tomate"=>"Tomate pera", "quesoCabra"=>"Queso de cabra recién cortado", "cebolla"=>"Cebolla llorosa", "pepinillos"=>"Pepinillos", "bacon"=>"Bacon grasiento", "carne"=>"Carne Wagyu", "precio"=>5.0}], "precio"=>15.0, "listo"=>false, "usuario"=>"juanmi", "controller"=>"pedidos", "action"=>"create", "pedido"=>{"id"=>0, "idPedido"=>"059914", "usuario"=>"juanmi", "precio"=>15.0, "listo"=>false}} }[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/pedidos_controller.rb:12:in `create'
+  [1m[36mPedido Create (1.9ms)[0m  [1m[32mINSERT INTO "pedidos" ("idPedido", "usuario", "precio", "listo", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["idPedido", "059914"], ["usuario", "juanmi"], ["precio", 15.0], ["listo", 0], ["created_at", "2024-05-17 17:15:51.051708"], ["updated_at", "2024-05-17 17:15:51.051708"]]
+  ↳ app/controllers/pedidos_controller.rb:12:in `create'
+  [1m[36mTRANSACTION (3.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/pedidos_controller.rb:12:in `create'
+Completed 500 Internal Server Error in 21ms (ActiveRecord: 7.4ms | Allocations: 13529)
+
+
+  
+NoMethodError (undefined method `each' for nil:NilClass
+
+          params[:pedido][:hamburguesas].each do |hamburguesa_params|
+                                        ^^^^^):
+  
+app/controllers/pedidos_controller.rb:13:in `create'
+Started GET "/pedidos?usuario=juanmi" for 127.0.0.1 at 2024-05-17 19:15:53 +0200
+Processing by PedidosController#index as HTML
+  Parameters: {"usuario"=>"juanmi"}
+Cargando pedidos para el usuario juanmi
+  [1m[36mPedido Load (0.2ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."usuario" = ?[0m  [["usuario", "juanmi"]]
+  ↳ app/controllers/pedidos_controller.rb:6:in `index'
+Completed 200 OK in 7ms (Views: 2.8ms | ActiveRecord: 0.2ms | Allocations: 3037)
+
+
+Started PATCH "/pedidos/0" for 127.0.0.1 at 2024-05-17 19:15:57 +0200
+Processing by PedidosController#update as HTML
+  Parameters: {"listo"=>true, "id"=>"0", "pedido"=>{"listo"=>true}}
+  [1m[36mPedido Load (0.2ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."id" = ? LIMIT ?[0m  [["id", 0], ["LIMIT", 1]]
+  ↳ app/controllers/pedidos_controller.rb:24:in `update'
+Completed 404 Not Found in 2ms (ActiveRecord: 0.2ms | Allocations: 929)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Pedido with 'id'=0):
+  
+app/controllers/pedidos_controller.rb:24:in `update'
+Started GET "/pedidos?usuario=juanmi" for 127.0.0.1 at 2024-05-17 19:16:02 +0200
+Processing by PedidosController#index as HTML
+  Parameters: {"usuario"=>"juanmi"}
+Cargando pedidos para el usuario juanmi
+  [1m[36mPedido Load (0.1ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."usuario" = ?[0m  [["usuario", "juanmi"]]
+  ↳ app/controllers/pedidos_controller.rb:6:in `index'
+Completed 200 OK in 2ms (Views: 1.7ms | ActiveRecord: 0.1ms | Allocations: 1140)
+
+
+Started GET "/pedidos?usuario=juanmi" for 127.0.0.1 at 2024-05-17 19:16:02 +0200
+Processing by PedidosController#index as HTML
+  Parameters: {"usuario"=>"juanmi"}
+Cargando pedidos para el usuario juanmi
+  [1m[36mPedido Load (0.1ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."usuario" = ?[0m  [["usuario", "juanmi"]]
+  ↳ app/controllers/pedidos_controller.rb:6:in `index'
+Completed 200 OK in 2ms (Views: 1.7ms | ActiveRecord: 0.1ms | Allocations: 1153)
+
+
+Started GET "/pedidos?usuario=juanmi" for 127.0.0.1 at 2024-05-17 19:16:02 +0200
+Processing by PedidosController#index as HTML
+  Parameters: {"usuario"=>"juanmi"}
+Cargando pedidos para el usuario juanmi
+  [1m[36mPedido Load (0.1ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."usuario" = ?[0m  [["usuario", "juanmi"]]
+  ↳ app/controllers/pedidos_controller.rb:6:in `index'
+Completed 200 OK in 2ms (Views: 1.7ms | ActiveRecord: 0.1ms | Allocations: 1137)
+
+
+Started GET "/pedidos?usuario=juanmi" for 127.0.0.1 at 2024-05-17 19:16:03 +0200
+Processing by PedidosController#index as HTML
+  Parameters: {"usuario"=>"juanmi"}
+Cargando pedidos para el usuario juanmi
+  [1m[36mPedido Load (0.1ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."usuario" = ?[0m  [["usuario", "juanmi"]]
+  ↳ app/controllers/pedidos_controller.rb:6:in `index'
+Completed 200 OK in 2ms (Views: 1.7ms | ActiveRecord: 0.1ms | Allocations: 1152)
+
+
+Started GET "/pedidos?usuario=juanmi" for 127.0.0.1 at 2024-05-17 19:16:03 +0200
+Processing by PedidosController#index as HTML
+  Parameters: {"usuario"=>"juanmi"}
+Cargando pedidos para el usuario juanmi
+  [1m[36mPedido Load (0.1ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."usuario" = ?[0m  [["usuario", "juanmi"]]
+  ↳ app/controllers/pedidos_controller.rb:6:in `index'
+Completed 200 OK in 2ms (Views: 1.7ms | ActiveRecord: 0.1ms | Allocations: 1137)
+
+
+Started GET "/pedidos?usuario=juanmi" for 127.0.0.1 at 2024-05-17 19:16:03 +0200
+Processing by PedidosController#index as HTML
+  Parameters: {"usuario"=>"juanmi"}
+Cargando pedidos para el usuario juanmi
+  [1m[36mPedido Load (0.1ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."usuario" = ?[0m  [["usuario", "juanmi"]]
+  ↳ app/controllers/pedidos_controller.rb:6:in `index'
+Completed 200 OK in 2ms (Views: 1.7ms | ActiveRecord: 0.1ms | Allocations: 1137)
+
+
+Started GET "/pedidos?usuario=juanmi" for 127.0.0.1 at 2024-05-17 19:16:04 +0200
+Processing by PedidosController#index as HTML
+  Parameters: {"usuario"=>"juanmi"}
+Cargando pedidos para el usuario juanmi
+  [1m[36mPedido Load (0.1ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."usuario" = ?[0m  [["usuario", "juanmi"]]
+  ↳ app/controllers/pedidos_controller.rb:6:in `index'
+Completed 200 OK in 2ms (Views: 1.9ms | ActiveRecord: 0.1ms | Allocations: 1137)
+
+
+Started GET "/pedidos?usuario=juanmi" for 127.0.0.1 at 2024-05-17 19:16:04 +0200
+Processing by PedidosController#index as HTML
+  Parameters: {"usuario"=>"juanmi"}
+Cargando pedidos para el usuario juanmi
+  [1m[36mPedido Load (0.1ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."usuario" = ?[0m  [["usuario", "juanmi"]]
+  ↳ app/controllers/pedidos_controller.rb:6:in `index'
+Completed 200 OK in 2ms (Views: 1.7ms | ActiveRecord: 0.1ms | Allocations: 1137)
+
+
+Started GET "/pedidos?usuario=juanmi" for 127.0.0.1 at 2024-05-17 19:16:04 +0200
+Processing by PedidosController#index as HTML
+  Parameters: {"usuario"=>"juanmi"}
+Cargando pedidos para el usuario juanmi
+  [1m[36mPedido Load (0.2ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."usuario" = ?[0m  [["usuario", "juanmi"]]
+  ↳ app/controllers/pedidos_controller.rb:6:in `index'
+Completed 200 OK in 2ms (Views: 1.7ms | ActiveRecord: 0.2ms | Allocations: 1137)
+
+
+Started GET "/pedidos?usuario=juanmi" for 127.0.0.1 at 2024-05-17 19:16:04 +0200
+Processing by PedidosController#index as HTML
+  Parameters: {"usuario"=>"juanmi"}
+Cargando pedidos para el usuario juanmi
+  [1m[36mPedido Load (0.1ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."usuario" = ?[0m  [["usuario", "juanmi"]]
+  ↳ app/controllers/pedidos_controller.rb:6:in `index'
+Completed 200 OK in 2ms (Views: 1.6ms | ActiveRecord: 0.1ms | Allocations: 1137)
+
+
+Started GET "/pedidos?usuario=juanmi" for 127.0.0.1 at 2024-05-17 19:16:04 +0200
+Processing by PedidosController#index as HTML
+  Parameters: {"usuario"=>"juanmi"}
+Cargando pedidos para el usuario juanmi
+  [1m[36mPedido Load (0.1ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."usuario" = ?[0m  [["usuario", "juanmi"]]
+  ↳ app/controllers/pedidos_controller.rb:6:in `index'
+Completed 200 OK in 2ms (Views: 1.7ms | ActiveRecord: 0.1ms | Allocations: 1137)
+
+
+Started GET "/pedidos?usuario=juanmi" for 127.0.0.1 at 2024-05-17 19:16:05 +0200
+Processing by PedidosController#index as HTML
+  Parameters: {"usuario"=>"juanmi"}
+Cargando pedidos para el usuario juanmi
+  [1m[36mPedido Load (0.1ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."usuario" = ?[0m  [["usuario", "juanmi"]]
+  ↳ app/controllers/pedidos_controller.rb:6:in `index'
+Completed 200 OK in 2ms (Views: 1.6ms | ActiveRecord: 0.1ms | Allocations: 1137)
+
+
+Started GET "/pedidos?usuario=juanmi" for 127.0.0.1 at 2024-05-17 19:16:05 +0200
+Processing by PedidosController#index as HTML
+  Parameters: {"usuario"=>"juanmi"}
+Cargando pedidos para el usuario juanmi
+  [1m[36mPedido Load (0.1ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."usuario" = ?[0m  [["usuario", "juanmi"]]
+  ↳ app/controllers/pedidos_controller.rb:6:in `index'
+Completed 200 OK in 2ms (Views: 1.6ms | ActiveRecord: 0.1ms | Allocations: 1137)
+
+
+Started GET "/pedidos?usuario=juanmi" for 127.0.0.1 at 2024-05-17 19:16:05 +0200
+Processing by PedidosController#index as HTML
+  Parameters: {"usuario"=>"juanmi"}
+Cargando pedidos para el usuario juanmi
+  [1m[36mPedido Load (0.1ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."usuario" = ?[0m  [["usuario", "juanmi"]]
+  ↳ app/controllers/pedidos_controller.rb:6:in `index'
+Completed 200 OK in 2ms (Views: 1.4ms | ActiveRecord: 0.1ms | Allocations: 1137)
+
+
+Started GET "/pedidos?usuario=juanmi" for 127.0.0.1 at 2024-05-17 19:16:06 +0200
+Processing by PedidosController#index as HTML
+  Parameters: {"usuario"=>"juanmi"}
+Cargando pedidos para el usuario juanmi
+  [1m[36mPedido Load (0.1ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."usuario" = ?[0m  [["usuario", "juanmi"]]
+  ↳ app/controllers/pedidos_controller.rb:6:in `index'
+Completed 200 OK in 2ms (Views: 1.6ms | ActiveRecord: 0.1ms | Allocations: 1137)
+
+
+Started GET "/pedidos?usuario=juanmi" for 127.0.0.1 at 2024-05-17 19:16:07 +0200
+Processing by PedidosController#index as HTML
+  Parameters: {"usuario"=>"juanmi"}
+Cargando pedidos para el usuario juanmi
+  [1m[36mPedido Load (0.1ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."usuario" = ?[0m  [["usuario", "juanmi"]]
+  ↳ app/controllers/pedidos_controller.rb:6:in `index'
+Completed 200 OK in 2ms (Views: 1.4ms | ActiveRecord: 0.1ms | Allocations: 1137)
+
+
+Started GET "/pedidos?usuario=juanmi" for 127.0.0.1 at 2024-05-17 19:16:10 +0200
+Processing by PedidosController#index as HTML
+  Parameters: {"usuario"=>"juanmi"}
+Cargando pedidos para el usuario juanmi
+  [1m[36mPedido Load (0.1ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."usuario" = ?[0m  [["usuario", "juanmi"]]
+  ↳ app/controllers/pedidos_controller.rb:6:in `index'
+Completed 200 OK in 2ms (Views: 1.7ms | ActiveRecord: 0.1ms | Allocations: 1137)
+
+
+Started GET "/pedidos?usuario=juanmi" for 127.0.0.1 at 2024-05-17 19:16:10 +0200
+Processing by PedidosController#index as HTML
+  Parameters: {"usuario"=>"juanmi"}
+Cargando pedidos para el usuario juanmi
+  [1m[36mPedido Load (0.3ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."usuario" = ?[0m  [["usuario", "juanmi"]]
+  ↳ app/controllers/pedidos_controller.rb:6:in `index'
+Completed 200 OK in 2ms (Views: 1.7ms | ActiveRecord: 0.3ms | Allocations: 1137)
+
+
+Started GET "/pedidos?usuario=juanmi" for 127.0.0.1 at 2024-05-17 19:16:10 +0200
+Processing by PedidosController#index as HTML
+  Parameters: {"usuario"=>"juanmi"}
+Cargando pedidos para el usuario juanmi
+  [1m[36mPedido Load (0.1ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."usuario" = ?[0m  [["usuario", "juanmi"]]
+  ↳ app/controllers/pedidos_controller.rb:6:in `index'
+Completed 200 OK in 2ms (Views: 2.0ms | ActiveRecord: 0.1ms | Allocations: 1137)
+
+
+Started GET "/pedidos?usuario=juanmi" for 127.0.0.1 at 2024-05-17 19:16:10 +0200
+Processing by PedidosController#index as HTML
+  Parameters: {"usuario"=>"juanmi"}
+Cargando pedidos para el usuario juanmi
+  [1m[36mPedido Load (0.1ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."usuario" = ?[0m  [["usuario", "juanmi"]]
+  ↳ app/controllers/pedidos_controller.rb:6:in `index'
+Completed 200 OK in 2ms (Views: 1.6ms | ActiveRecord: 0.1ms | Allocations: 1137)
+
+
+Started GET "/pedidos?usuario=juanmi" for 127.0.0.1 at 2024-05-17 19:16:11 +0200
+Processing by PedidosController#index as HTML
+  Parameters: {"usuario"=>"juanmi"}
+Cargando pedidos para el usuario juanmi
+  [1m[36mPedido Load (0.1ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."usuario" = ?[0m  [["usuario", "juanmi"]]
+  ↳ app/controllers/pedidos_controller.rb:6:in `index'
+Completed 200 OK in 2ms (Views: 1.7ms | ActiveRecord: 0.1ms | Allocations: 1137)
+
+
+Started GET "/pedidos?usuario=juanmi" for 127.0.0.1 at 2024-05-17 19:16:11 +0200
+Processing by PedidosController#index as HTML
+  Parameters: {"usuario"=>"juanmi"}
+Cargando pedidos para el usuario juanmi
+  [1m[36mPedido Load (0.1ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."usuario" = ?[0m  [["usuario", "juanmi"]]
+  ↳ app/controllers/pedidos_controller.rb:6:in `index'
+Completed 200 OK in 2ms (Views: 1.6ms | ActiveRecord: 0.1ms | Allocations: 1137)
+
+
+Started GET "/pedidos?usuario=juanmi" for 127.0.0.1 at 2024-05-17 19:16:11 +0200
+Processing by PedidosController#index as HTML
+  Parameters: {"usuario"=>"juanmi"}
+Cargando pedidos para el usuario juanmi
+  [1m[36mPedido Load (0.1ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."usuario" = ?[0m  [["usuario", "juanmi"]]
+  ↳ app/controllers/pedidos_controller.rb:6:in `index'
+Completed 200 OK in 2ms (Views: 1.4ms | ActiveRecord: 0.1ms | Allocations: 1137)
+
+
+Started GET "/pedidos?usuario=juanmi" for 127.0.0.1 at 2024-05-17 19:16:15 +0200
+Processing by PedidosController#index as HTML
+  Parameters: {"usuario"=>"juanmi"}
+Cargando pedidos para el usuario juanmi
+  [1m[36mPedido Load (0.1ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."usuario" = ?[0m  [["usuario", "juanmi"]]
+  ↳ app/controllers/pedidos_controller.rb:6:in `index'
+Completed 200 OK in 3ms (Views: 2.2ms | ActiveRecord: 0.1ms | Allocations: 1137)
+
+
+Started GET "/pedidos?usuario=juanmi" for 127.0.0.1 at 2024-05-17 19:16:16 +0200
+Processing by PedidosController#index as HTML
+  Parameters: {"usuario"=>"juanmi"}
+Cargando pedidos para el usuario juanmi
+  [1m[36mPedido Load (0.1ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."usuario" = ?[0m  [["usuario", "juanmi"]]
+  ↳ app/controllers/pedidos_controller.rb:6:in `index'
+Completed 200 OK in 2ms (Views: 1.7ms | ActiveRecord: 0.1ms | Allocations: 1138)
+
+
+Started GET "/pedidos?usuario=juanmi" for 127.0.0.1 at 2024-05-17 19:16:16 +0200
+Processing by PedidosController#index as HTML
+  Parameters: {"usuario"=>"juanmi"}
+Cargando pedidos para el usuario juanmi
+  [1m[36mPedido Load (0.1ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."usuario" = ?[0m  [["usuario", "juanmi"]]
+  ↳ app/controllers/pedidos_controller.rb:6:in `index'
+Completed 200 OK in 2ms (Views: 1.8ms | ActiveRecord: 0.1ms | Allocations: 1137)
+
+
+Started GET "/pedidos?usuario=juanmi" for 127.0.0.1 at 2024-05-17 19:16:16 +0200
+Processing by PedidosController#index as HTML
+  Parameters: {"usuario"=>"juanmi"}
+Cargando pedidos para el usuario juanmi
+  [1m[36mPedido Load (0.1ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."usuario" = ?[0m  [["usuario", "juanmi"]]
+  ↳ app/controllers/pedidos_controller.rb:6:in `index'
+Completed 200 OK in 2ms (Views: 1.5ms | ActiveRecord: 0.1ms | Allocations: 1137)
+
+
+Started GET "/pedidos?usuario=juanmi" for 127.0.0.1 at 2024-05-17 19:16:16 +0200
+Processing by PedidosController#index as HTML
+  Parameters: {"usuario"=>"juanmi"}
+Cargando pedidos para el usuario juanmi
+  [1m[36mPedido Load (0.4ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."usuario" = ?[0m  [["usuario", "juanmi"]]
+  ↳ app/controllers/pedidos_controller.rb:6:in `index'
+Completed 200 OK in 2ms (Views: 1.5ms | ActiveRecord: 0.4ms | Allocations: 1137)
+
+
+Started GET "/pedidos?usuario=juanmi" for 127.0.0.1 at 2024-05-17 19:16:16 +0200
+Processing by PedidosController#index as HTML
+  Parameters: {"usuario"=>"juanmi"}
+Cargando pedidos para el usuario juanmi
+  [1m[36mPedido Load (0.2ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."usuario" = ?[0m  [["usuario", "juanmi"]]
+  ↳ app/controllers/pedidos_controller.rb:6:in `index'
+Completed 200 OK in 5ms (Views: 4.1ms | ActiveRecord: 0.1ms | Allocations: 1138)
+
+
+Started GET "/pedidos?usuario=juanmi" for 127.0.0.1 at 2024-05-17 19:16:17 +0200
+Processing by PedidosController#index as HTML
+  Parameters: {"usuario"=>"juanmi"}
+Cargando pedidos para el usuario juanmi
+  [1m[36mPedido Load (0.1ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."usuario" = ?[0m  [["usuario", "juanmi"]]
+  ↳ app/controllers/pedidos_controller.rb:6:in `index'
+Completed 200 OK in 2ms (Views: 2.0ms | ActiveRecord: 0.1ms | Allocations: 1137)
+
+
+Started GET "/pedidos?usuario=juanmi" for 127.0.0.1 at 2024-05-17 19:16:17 +0200
+Processing by PedidosController#index as HTML
+  Parameters: {"usuario"=>"juanmi"}
+Cargando pedidos para el usuario juanmi
+  [1m[36mPedido Load (0.1ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."usuario" = ?[0m  [["usuario", "juanmi"]]
+  ↳ app/controllers/pedidos_controller.rb:6:in `index'
+Completed 200 OK in 2ms (Views: 1.7ms | ActiveRecord: 0.1ms | Allocations: 1137)
+
+
+Started GET "/pedidos?usuario=juanmi" for 127.0.0.1 at 2024-05-17 19:16:17 +0200
+Processing by PedidosController#index as HTML
+  Parameters: {"usuario"=>"juanmi"}
+Cargando pedidos para el usuario juanmi
+  [1m[36mPedido Load (0.1ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."usuario" = ?[0m  [["usuario", "juanmi"]]
+  ↳ app/controllers/pedidos_controller.rb:6:in `index'
+Completed 200 OK in 2ms (Views: 1.8ms | ActiveRecord: 0.1ms | Allocations: 1137)
+
+
+Started GET "/pedidos?usuario=juanmi" for 127.0.0.1 at 2024-05-17 19:16:17 +0200
+Processing by PedidosController#index as HTML
+  Parameters: {"usuario"=>"juanmi"}
+Cargando pedidos para el usuario juanmi
+  [1m[36mPedido Load (0.1ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."usuario" = ?[0m  [["usuario", "juanmi"]]
+  ↳ app/controllers/pedidos_controller.rb:6:in `index'
+Completed 200 OK in 2ms (Views: 2.0ms | ActiveRecord: 0.1ms | Allocations: 1137)
+
+
+Started GET "/pedidos?usuario=juanmi" for 127.0.0.1 at 2024-05-17 19:16:17 +0200
+Processing by PedidosController#index as HTML
+  Parameters: {"usuario"=>"juanmi"}
+Cargando pedidos para el usuario juanmi
+  [1m[36mPedido Load (0.1ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."usuario" = ?[0m  [["usuario", "juanmi"]]
+  ↳ app/controllers/pedidos_controller.rb:6:in `index'
+Completed 200 OK in 2ms (Views: 1.7ms | ActiveRecord: 0.1ms | Allocations: 1137)
+
+
+Started GET "/pedidos?usuario=juanmi" for 127.0.0.1 at 2024-05-17 19:16:18 +0200
+Processing by PedidosController#index as HTML
+  Parameters: {"usuario"=>"juanmi"}
+Cargando pedidos para el usuario juanmi
+  [1m[36mPedido Load (0.1ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."usuario" = ?[0m  [["usuario", "juanmi"]]
+  ↳ app/controllers/pedidos_controller.rb:6:in `index'
+Completed 200 OK in 2ms (Views: 1.4ms | ActiveRecord: 0.1ms | Allocations: 1137)
+
+
+Started GET "/pedidos?usuario=juanmi" for 127.0.0.1 at 2024-05-17 19:16:18 +0200
+Processing by PedidosController#index as HTML
+  Parameters: {"usuario"=>"juanmi"}
+Cargando pedidos para el usuario juanmi
+  [1m[36mPedido Load (0.1ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."usuario" = ?[0m  [["usuario", "juanmi"]]
+  ↳ app/controllers/pedidos_controller.rb:6:in `index'
+Completed 200 OK in 2ms (Views: 1.8ms | ActiveRecord: 0.1ms | Allocations: 1137)
+
+
+Started GET "/pedidos?usuario=juanmi" for 127.0.0.1 at 2024-05-17 19:16:18 +0200
+Processing by PedidosController#index as HTML
+  Parameters: {"usuario"=>"juanmi"}
+Cargando pedidos para el usuario juanmi
+  [1m[36mPedido Load (0.2ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."usuario" = ?[0m  [["usuario", "juanmi"]]
+  ↳ app/controllers/pedidos_controller.rb:6:in `index'
+Completed 200 OK in 2ms (Views: 1.5ms | ActiveRecord: 0.2ms | Allocations: 1137)
+
+
+Started GET "/pedidos?usuario=juanmi" for 127.0.0.1 at 2024-05-17 19:16:18 +0200
+Processing by PedidosController#index as HTML
+  Parameters: {"usuario"=>"juanmi"}
+Cargando pedidos para el usuario juanmi
+  [1m[36mPedido Load (0.1ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."usuario" = ?[0m  [["usuario", "juanmi"]]
+  ↳ app/controllers/pedidos_controller.rb:6:in `index'
+Completed 200 OK in 2ms (Views: 1.7ms | ActiveRecord: 0.1ms | Allocations: 1137)
+
+
+Started GET "/pedidos?usuario=juanmi" for 127.0.0.1 at 2024-05-17 19:16:18 +0200
+Processing by PedidosController#index as HTML
+  Parameters: {"usuario"=>"juanmi"}
+Cargando pedidos para el usuario juanmi
+  [1m[36mPedido Load (0.1ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."usuario" = ?[0m  [["usuario", "juanmi"]]
+  ↳ app/controllers/pedidos_controller.rb:6:in `index'
+Completed 200 OK in 2ms (Views: 1.5ms | ActiveRecord: 0.1ms | Allocations: 1137)
+
+
+Started GET "/pedidos?usuario=juanmi" for 127.0.0.1 at 2024-05-17 19:16:19 +0200
+Processing by PedidosController#index as HTML
+  Parameters: {"usuario"=>"juanmi"}
+Cargando pedidos para el usuario juanmi
+  [1m[36mPedido Load (0.2ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."usuario" = ?[0m  [["usuario", "juanmi"]]
+  ↳ app/controllers/pedidos_controller.rb:6:in `index'
+Completed 200 OK in 2ms (Views: 1.5ms | ActiveRecord: 0.1ms | Allocations: 1137)
+
+
+Started GET "/pedidos?usuario=juanmi" for 127.0.0.1 at 2024-05-17 19:16:19 +0200
+Processing by PedidosController#index as HTML
+  Parameters: {"usuario"=>"juanmi"}
+Cargando pedidos para el usuario juanmi
+  [1m[36mPedido Load (0.1ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."usuario" = ?[0m  [["usuario", "juanmi"]]
+  ↳ app/controllers/pedidos_controller.rb:6:in `index'
+Completed 200 OK in 2ms (Views: 1.4ms | ActiveRecord: 0.1ms | Allocations: 1137)
+
+
+Started GET "/pedidos?usuario=juanmi" for 127.0.0.1 at 2024-05-17 19:16:19 +0200
+Processing by PedidosController#index as HTML
+  Parameters: {"usuario"=>"juanmi"}
+Cargando pedidos para el usuario juanmi
+  [1m[36mPedido Load (0.1ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."usuario" = ?[0m  [["usuario", "juanmi"]]
+  ↳ app/controllers/pedidos_controller.rb:6:in `index'
+Completed 200 OK in 2ms (Views: 1.5ms | ActiveRecord: 0.1ms | Allocations: 1137)
+
+
+Started GET "/pedidos?usuario=juanmi" for 127.0.0.1 at 2024-05-17 19:16:59 +0200
+Processing by PedidosController#index as HTML
+  Parameters: {"usuario"=>"juanmi"}
+Cargando pedidos para el usuario juanmi
+  [1m[36mPedido Load (0.1ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."usuario" = ?[0m  [["usuario", "juanmi"]]
+  ↳ app/controllers/pedidos_controller.rb:6:in `index'
+Completed 200 OK in 2ms (Views: 1.4ms | ActiveRecord: 0.1ms | Allocations: 1137)
+
+
+Started POST "/pedidos" for 127.0.0.1 at 2024-05-17 19:17:09 +0200
+Processing by PedidosController#create as HTML
+  Parameters: {"id"=>0, "idPedido"=>"258789", "hamburguesas"=>[{"nombre"=>"Hamburguesa sin gluten", "pan"=>"Pan sin gluten", "lechuga"=>"Lechuga verde", "tomate"=>"Tomate pera", "quesoCabra"=>nil, "cebolla"=>"Cebolla llorosa", "pepinillos"=>"Pepinillos", "bacon"=>"Bacon grasiento", "carne"=>"Carne Wagyu (sin trazas)", "precio"=>6.0}], "precio"=>22.0, "listo"=>false, "usuario"=>"juanmi", "pedido"=>{"id"=>0, "idPedido"=>"258789", "usuario"=>"juanmi", "precio"=>22.0, "listo"=>false}}
+[31mUnpermitted parameter: :id. Context: { controller: PedidosController, action: create, request: #<ActionDispatch::Request:0x00007d5897a6c8a0>, params: {"id"=>0, "idPedido"=>"258789", "hamburguesas"=>[{"nombre"=>"Hamburguesa sin gluten", "pan"=>"Pan sin gluten", "lechuga"=>"Lechuga verde", "tomate"=>"Tomate pera", "quesoCabra"=>nil, "cebolla"=>"Cebolla llorosa", "pepinillos"=>"Pepinillos", "bacon"=>"Bacon grasiento", "carne"=>"Carne Wagyu (sin trazas)", "precio"=>6.0}], "precio"=>22.0, "listo"=>false, "usuario"=>"juanmi", "controller"=>"pedidos", "action"=>"create", "pedido"=>{"id"=>0, "idPedido"=>"258789", "usuario"=>"juanmi", "precio"=>22.0, "listo"=>false}} }[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/pedidos_controller.rb:12:in `create'
+  [1m[36mPedido Create (1.1ms)[0m  [1m[32mINSERT INTO "pedidos" ("idPedido", "usuario", "precio", "listo", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["idPedido", "258789"], ["usuario", "juanmi"], ["precio", 22.0], ["listo", 0], ["created_at", "2024-05-17 17:17:09.772728"], ["updated_at", "2024-05-17 17:17:09.772728"]]
+  ↳ app/controllers/pedidos_controller.rb:12:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/pedidos_controller.rb:12:in `create'
+Completed 500 Internal Server Error in 5ms (ActiveRecord: 1.3ms | Allocations: 3081)
+
+
+  
+NoMethodError (undefined method `each' for nil:NilClass
+
+          params[:pedido][:hamburguesas].each do |hamburguesa_params|
+                                        ^^^^^):
+  
+app/controllers/pedidos_controller.rb:13:in `create'
+Started PATCH "/pedidos/0" for 127.0.0.1 at 2024-05-17 19:17:16 +0200
+Processing by PedidosController#update as HTML
+  Parameters: {"listo"=>true, "id"=>"0", "pedido"=>{"listo"=>true}}
+  [1m[36mPedido Load (0.2ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."id" = ? LIMIT ?[0m  [["id", 0], ["LIMIT", 1]]
+  ↳ app/controllers/pedidos_controller.rb:24:in `update'
+Completed 404 Not Found in 2ms (ActiveRecord: 0.2ms | Allocations: 574)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Pedido with 'id'=0):
+  
+app/controllers/pedidos_controller.rb:24:in `update'
+Started GET "/pedidos?usuario=juanmi" for 127.0.0.1 at 2024-05-17 19:17:22 +0200
+Processing by PedidosController#index as HTML
+  Parameters: {"usuario"=>"juanmi"}
+Cargando pedidos para el usuario juanmi
+  [1m[36mPedido Load (0.1ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."usuario" = ?[0m  [["usuario", "juanmi"]]
+  ↳ app/controllers/pedidos_controller.rb:6:in `index'
+Completed 200 OK in 5ms (Views: 4.5ms | ActiveRecord: 0.1ms | Allocations: 1228)
+
+
+Started GET "/pedidos?usuario=juanmi" for 127.0.0.1 at 2024-05-17 19:17:22 +0200
+Processing by PedidosController#index as HTML
+  Parameters: {"usuario"=>"juanmi"}
+Cargando pedidos para el usuario juanmi
+  [1m[36mPedido Load (0.2ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."usuario" = ?[0m  [["usuario", "juanmi"]]
+  ↳ app/controllers/pedidos_controller.rb:6:in `index'
+Completed 200 OK in 3ms (Views: 2.0ms | ActiveRecord: 0.2ms | Allocations: 1212)
+
+
+Started GET "/pedidos?usuario=juanmi" for 127.0.0.1 at 2024-05-17 19:17:22 +0200
+Processing by PedidosController#index as HTML
+  Parameters: {"usuario"=>"juanmi"}
+Cargando pedidos para el usuario juanmi
+  [1m[36mPedido Load (0.1ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."usuario" = ?[0m  [["usuario", "juanmi"]]
+  ↳ app/controllers/pedidos_controller.rb:6:in `index'
+Completed 200 OK in 2ms (Views: 1.6ms | ActiveRecord: 0.1ms | Allocations: 1212)
+
+
+Started GET "/pedidos?usuario=juanmi" for 127.0.0.1 at 2024-05-17 19:17:23 +0200
+Processing by PedidosController#index as HTML
+  Parameters: {"usuario"=>"juanmi"}
+Cargando pedidos para el usuario juanmi
+  [1m[36mPedido Load (0.1ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."usuario" = ?[0m  [["usuario", "juanmi"]]
+  ↳ app/controllers/pedidos_controller.rb:6:in `index'
+Completed 200 OK in 2ms (Views: 1.8ms | ActiveRecord: 0.1ms | Allocations: 1212)
+
+
+Started GET "/pedidos?usuario=juanmi" for 127.0.0.1 at 2024-05-17 19:17:23 +0200
+Processing by PedidosController#index as HTML
+  Parameters: {"usuario"=>"juanmi"}
+Cargando pedidos para el usuario juanmi
+  [1m[36mPedido Load (0.1ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."usuario" = ?[0m  [["usuario", "juanmi"]]
+  ↳ app/controllers/pedidos_controller.rb:6:in `index'
+Completed 200 OK in 2ms (Views: 1.9ms | ActiveRecord: 0.1ms | Allocations: 1212)
+
+
+Started GET "/pedidos?usuario=juanmi" for 127.0.0.1 at 2024-05-17 19:17:23 +0200
+Processing by PedidosController#index as HTML
+  Parameters: {"usuario"=>"juanmi"}
+Cargando pedidos para el usuario juanmi
+  [1m[36mPedido Load (0.1ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."usuario" = ?[0m  [["usuario", "juanmi"]]
+  ↳ app/controllers/pedidos_controller.rb:6:in `index'
+Completed 200 OK in 2ms (Views: 1.7ms | ActiveRecord: 0.1ms | Allocations: 1212)
+
+
+Started GET "/pedidos?usuario=juanmi" for 127.0.0.1 at 2024-05-17 19:17:23 +0200
+Processing by PedidosController#index as HTML
+  Parameters: {"usuario"=>"juanmi"}
+Cargando pedidos para el usuario juanmi
+  [1m[36mPedido Load (0.1ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."usuario" = ?[0m  [["usuario", "juanmi"]]
+  ↳ app/controllers/pedidos_controller.rb:6:in `index'
+Completed 200 OK in 2ms (Views: 1.8ms | ActiveRecord: 0.1ms | Allocations: 1212)
+
+
+Started GET "/pedidos?usuario=juanmi" for 127.0.0.1 at 2024-05-17 19:17:23 +0200
+Processing by PedidosController#index as HTML
+  Parameters: {"usuario"=>"juanmi"}
+Cargando pedidos para el usuario juanmi
+  [1m[36mPedido Load (0.1ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."usuario" = ?[0m  [["usuario", "juanmi"]]
+  ↳ app/controllers/pedidos_controller.rb:6:in `index'
+Completed 200 OK in 3ms (Views: 2.1ms | ActiveRecord: 0.1ms | Allocations: 1212)
+
+
+Started GET "/pedidos?usuario=juanmi" for 127.0.0.1 at 2024-05-17 19:17:24 +0200
+Processing by PedidosController#index as HTML
+  Parameters: {"usuario"=>"juanmi"}
+Cargando pedidos para el usuario juanmi
+  [1m[36mPedido Load (0.1ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."usuario" = ?[0m  [["usuario", "juanmi"]]
+  ↳ app/controllers/pedidos_controller.rb:6:in `index'
+Completed 200 OK in 2ms (Views: 2.0ms | ActiveRecord: 0.1ms | Allocations: 1212)
+
+
+Started GET "/pedidos?usuario=juanmi" for 127.0.0.1 at 2024-05-17 19:17:24 +0200
+Processing by PedidosController#index as HTML
+  Parameters: {"usuario"=>"juanmi"}
+Cargando pedidos para el usuario juanmi
+  [1m[36mPedido Load (0.1ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."usuario" = ?[0m  [["usuario", "juanmi"]]
+  ↳ app/controllers/pedidos_controller.rb:6:in `index'
+Completed 200 OK in 3ms (Views: 2.5ms | ActiveRecord: 0.1ms | Allocations: 1212)
+
+
+Started DELETE "/pedidos/0" for 127.0.0.1 at 2024-05-17 19:17:53 +0200
+Processing by PedidosController#destroy as HTML
+  Parameters: {"id"=>"0"}
+  [1m[36mPedido Load (0.1ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."id" = ? LIMIT ?[0m  [["id", 0], ["LIMIT", 1]]
+  ↳ app/controllers/pedidos_controller.rb:33:in `destroy'
+Completed 404 Not Found in 1ms (ActiveRecord: 0.1ms | Allocations: 574)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Pedido with 'id'=0):
+  
+app/controllers/pedidos_controller.rb:33:in `destroy'
+Started DELETE "/pedidos/17" for 127.0.0.1 at 2024-05-17 19:17:54 +0200
+Processing by PedidosController#destroy as HTML
+  Parameters: {"id"=>"17"}
+  [1m[36mPedido Load (0.1ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."id" = ? LIMIT ?[0m  [["id", 17], ["LIMIT", 1]]
+  ↳ app/controllers/pedidos_controller.rb:33:in `destroy'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/pedidos_controller.rb:34:in `destroy'
+  [1m[36mPedido Destroy (0.5ms)[0m  [1m[31mDELETE FROM "pedidos" WHERE "pedidos"."id" = ?[0m  [["id", 17]]
+  ↳ app/controllers/pedidos_controller.rb:34:in `destroy'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/pedidos_controller.rb:34:in `destroy'
+Completed 200 OK in 3ms (ActiveRecord: 0.9ms | Allocations: 2200)
+
+
+Started DELETE "/pedidos/16" for 127.0.0.1 at 2024-05-17 19:17:55 +0200
+Processing by PedidosController#destroy as HTML
+  Parameters: {"id"=>"16"}
+  [1m[36mPedido Load (0.1ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."id" = ? LIMIT ?[0m  [["id", 16], ["LIMIT", 1]]
+  ↳ app/controllers/pedidos_controller.rb:33:in `destroy'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/pedidos_controller.rb:34:in `destroy'
+  [1m[36mPedido Destroy (1.1ms)[0m  [1m[31mDELETE FROM "pedidos" WHERE "pedidos"."id" = ?[0m  [["id", 16]]
+  ↳ app/controllers/pedidos_controller.rb:34:in `destroy'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/pedidos_controller.rb:34:in `destroy'
+Completed 200 OK in 3ms (ActiveRecord: 1.4ms | Allocations: 2083)
+
+
+Started DELETE "/pedidos/15" for 127.0.0.1 at 2024-05-17 19:17:56 +0200
+Processing by PedidosController#destroy as HTML
+  Parameters: {"id"=>"15"}
+  [1m[36mPedido Load (0.1ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."id" = ? LIMIT ?[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/pedidos_controller.rb:33:in `destroy'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/pedidos_controller.rb:34:in `destroy'
+  [1m[36mPedido Destroy (0.6ms)[0m  [1m[31mDELETE FROM "pedidos" WHERE "pedidos"."id" = ?[0m  [["id", 15]]
+  ↳ app/controllers/pedidos_controller.rb:34:in `destroy'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/pedidos_controller.rb:34:in `destroy'
+Completed 200 OK in 4ms (ActiveRecord: 0.8ms | Allocations: 2077)
+
+
+Started DELETE "/pedidos/11" for 127.0.0.1 at 2024-05-17 19:17:57 +0200
+Processing by PedidosController#destroy as HTML
+  Parameters: {"id"=>"11"}
+  [1m[36mPedido Load (0.1ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."id" = ? LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/pedidos_controller.rb:33:in `destroy'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/pedidos_controller.rb:34:in `destroy'
+  [1m[36mPedido Destroy (0.6ms)[0m  [1m[31mDELETE FROM "pedidos" WHERE "pedidos"."id" = ?[0m  [["id", 11]]
+  ↳ app/controllers/pedidos_controller.rb:34:in `destroy'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/pedidos_controller.rb:34:in `destroy'
+Completed 200 OK in 3ms (ActiveRecord: 0.8ms | Allocations: 2080)
+
+
+Started DELETE "/pedidos/10" for 127.0.0.1 at 2024-05-17 19:17:57 +0200
+Processing by PedidosController#destroy as HTML
+  Parameters: {"id"=>"10"}
+  [1m[36mPedido Load (0.1ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."id" = ? LIMIT ?[0m  [["id", 10], ["LIMIT", 1]]
+  ↳ app/controllers/pedidos_controller.rb:33:in `destroy'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/pedidos_controller.rb:34:in `destroy'
+  [1m[36mPedido Destroy (0.7ms)[0m  [1m[31mDELETE FROM "pedidos" WHERE "pedidos"."id" = ?[0m  [["id", 10]]
+  ↳ app/controllers/pedidos_controller.rb:34:in `destroy'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/pedidos_controller.rb:34:in `destroy'
+Completed 200 OK in 4ms (ActiveRecord: 1.0ms | Allocations: 2077)
+
+
+Started GET "/pedidos?usuario=juanmi" for 127.0.0.1 at 2024-05-17 19:19:40 +0200
+Processing by PedidosController#index as HTML
+  Parameters: {"usuario"=>"juanmi"}
+Cargando pedidos para el usuario juanmi
+  [1m[36mPedido Load (0.1ms)[0m  [1m[34mSELECT "pedidos".* FROM "pedidos" WHERE "pedidos"."usuario" = ?[0m  [["usuario", "juanmi"]]
+  ↳ app/controllers/pedidos_controller.rb:6:in `index'
+Completed 200 OK in 13ms (Views: 9.9ms | ActiveRecord: 1.6ms | Allocations: 5873)
+
+
