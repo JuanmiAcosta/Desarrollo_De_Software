@@ -12,6 +12,7 @@ class Pedido {
   late String? usuario;
 
   Pedido() {
+    id = 0;
     idPedido = DateTime.now().toString().split('.').last;
     hamburguesas = [];
     precio = 0.0;
@@ -46,6 +47,7 @@ class Pedido {
 
   Map<String, dynamic> toJson() {
     return {
+      if(id != null) 'id' : id,
       if (idPedido != null) 'idPedido': idPedido,
       if (hamburguesas.isNotEmpty) 'hamburguesas': hamburguesas.map((e) => e.toJson()).toList(),
       'precio': precio,

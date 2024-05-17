@@ -105,6 +105,8 @@ class _MenuState extends State<Menu> {
                 if (newValue != null && newValue != currentUser) {
                   setState(() {
                     currentUser = newValue;
+                    _pedidoActual.clear();
+                    _cantidad = 0;
                     _cargarPedidosIniciales();
                   });
                 }
