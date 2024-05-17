@@ -94,4 +94,19 @@ class Hamburguesa {
       precio: json['precio'] as double?,
     );
   }
+
+  Map<String, dynamic> toJson() {
+    return{
+      if(nombre != null) 'nombre':nombre,
+      'pan':pan,
+      'lechuga': lechuga,
+      'tomate':tomate,
+      'quesoCabra':quesoCabra,
+      'cebolla':cebolla,
+      'pepinillos':pepinillos,
+      'bacon':bacon,
+      'carne':carne,
+      'precio':precio
+    };
+  }
 }

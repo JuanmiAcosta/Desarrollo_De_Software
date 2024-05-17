@@ -2,8 +2,12 @@ import 'ObservadorPedido.dart';
 import 'Pedido.dart';
 import 'package:flutter/material.dart';
 
+import 'dart:convert';
+import 'package:http/http.dart' as http;
+
 class DisplayPedidos implements ObservadorPedido {
   List<Pedido> historial = [];
+  final String apiUrl = "http://localhost:3000/pedidos";
 
   late ScaffoldMessengerState _scaffoldMessengerState; // Referencia al ScaffoldMessenger
   late Function() _actualizarHistorial; // Agregar una función de actualización
@@ -37,5 +41,19 @@ class DisplayPedidos implements ObservadorPedido {
     }
     historial.add(pedido);
   }
+
+  //Parte API Rest
+  Future<void> cargarPedidos(String usuarios) async {
+    final response = http.get(Uri.parse('$apiUrl?usuario=$usuario'));
+    if (response.statusCode == 200) {
+      List<dynamic> pedidosJson = json.decode(respose.body);
+
+      historial.clear();
+      historial.addAll(pedidosJson.map((json) => Pedido.fromJson(json)).toList());
+    } else {
+      throw Exception('Fallo al cargar pedidos');
+    }
+  }
+
 
 }

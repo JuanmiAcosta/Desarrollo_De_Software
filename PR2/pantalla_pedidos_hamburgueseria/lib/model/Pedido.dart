@@ -5,23 +5,25 @@ import 'Hamburguesa.dart';
 
 class Pedido {
   late String? idPedido;
-  late List<Hamburguesa>? hamburguesas;
-  late double? precio;
-  late bool? listo; // Comprobar si el pedido está listo
+  late List<Hamburguesa> hamburguesas;
+  late double precio;
+  late bool listo; // Comprobar si el pedido está listo
 
   Pedido() {
     idPedido = DateTime.now().toString().split('.').last;
     hamburguesas = [];
-    precio = 0;
+    precio = 0.0;
     listo = false; // por defecto false
   }
 
   Pedido.json({
     this.idPedido,
-    this.hamburguesas,
-    this.precio,
-    this.listo
-  });
+    List<Hamburguesa>? hamburguesas,
+    double? precio,
+    bool? listo,
+  })  : hamburguesas = hamburguesas ?? [],
+        precio = precio ?? 0.0,
+        listo = listo ?? false;
 
   factory Pedido.fromJson(Map<String, dynamic> json) {
     return Pedido.json(
@@ -29,14 +31,23 @@ class Pedido {
       hamburguesas: (json['hamburguesas'] as List<dynamic>?)
           ?.map((e) => Hamburguesa.fromJson(e as Map<String, dynamic>))
           .toList(),
-      precio: json['precio'] as double?,
+      precio: (json['precio'] as num?)?.toDouble(),
       listo: json['listo'] as bool?,
     );
   }
 
+  Map<String, dynamic> toJson() {
+    return {
+      if (idPedido != null) 'idPedido': idPedido,
+      if (hamburguesas.isNotEmpty) 'hamburguesas': hamburguesas.map((e) => e.toJson()).toList(),
+      'precio': precio,
+      'listo': listo,
+    };
+  }
+
   void aniadeHamburguesa(Hamburguesa hamburguesa) {
     hamburguesas.add(hamburguesa);
-    precio += hamburguesa.precio;
+    precio += hamburguesa.getPrecio()!;
   }
 
   double getPrecio(){
