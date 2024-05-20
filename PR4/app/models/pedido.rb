@@ -1,4 +1,5 @@
 class Pedido < ApplicationRecord
-  has_many :Hamburguesa, inverse_of: :Pedido
-  accepts_nested_attributes_for :Hamburguesa
+    has_many :hamburguesas, dependent: :destroy
+    accepts_nested_attributes_for :hamburguesas
+    #Permite gestionar hamburguesas a la vez que pedidos
 end

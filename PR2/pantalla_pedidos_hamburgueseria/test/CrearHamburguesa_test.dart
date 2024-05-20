@@ -77,7 +77,7 @@ void main() {
       cocinero.cambiaReceta(normalBuilder);
       cocinero.buildHamburguesa();
       pedidoactual = cocinero.getPedido();
-      expect(pedidoactual.getPrecio(), sinGlutenBuilder.hamburguesa.precio+veganaBuilder.hamburguesa.precio+normalBuilder.hamburguesa.precio);
+      expect(pedidoactual.getPrecio(), 16.50);
     });
 
   });

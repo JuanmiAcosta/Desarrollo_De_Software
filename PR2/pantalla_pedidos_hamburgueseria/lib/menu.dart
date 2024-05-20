@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:pantalla_pedidos_hamburgueseria/model/Cocinero.dart';
+import 'package:pantalla_pedidos_hamburgueseria/model/Hamburguesa.dart';
 import 'model/Pedido.dart';
 import 'model/DisplayPedidos.dart';
 
@@ -332,20 +333,23 @@ class _MenuState extends State<Menu> {
       });
 
       List<String> listAux = List<String>.from(_pedidoActual);
+      List<Hamburguesa> listaHAux = construyeListaHAux(listAux);
       double precio = _calculaTotalPedido(_pedidoActual);
 
       try {
         // Esperar 5 segundos antes de comenzar
-        await Future.delayed(Duration(seconds: 5));
+        await Future.delayed(Duration(seconds: 4));
 
         setState(() {
-          _cocinero.cocinaPedido(listAux, context);
           _cocinero.setPrecioPedido(precio);
+          _cocinero.cocinaPedido(listAux, context);
           _cocinero.pedidoActual.usuario = currentUser;
+          // Guardar en base de datos y asegurarse que se complete antes de continuar
+          //_cocinero.pedidoActual.hamburguesas = listaHAux; //Asegurarnos que se manda bien la lista de hamburguesas (asincronia)
+          print(_cocinero.pedidoActual);
+          _aniadirPedido(_cocinero.pedidoActual);
+          _cocinero.borrarPedidoActual();
         });
-
-        // Guardar en base de datos y asegurarse que se complete antes de continuar
-        _aniadirPedido(_cocinero.pedidoActual);
 
         // Esperar 7 segundos adicionales antes de marcar como finalizado
         await Future.delayed(Duration(seconds: 7));
@@ -413,6 +417,66 @@ class _MenuState extends State<Menu> {
 
   void _actualizarHistorial() {
     setState(() {}); // Forzar la actualización del estado para reflejar los cambios en el historial de pedidos en el Drawer
+  }
+
+  List<Hamburguesa> construyeListaHAux(List<String> listAux) { //metodo para hacer pruebas
+    List<Hamburguesa> hamburguesas = [];
+
+    for (String hamburguesaStr in listAux) {
+      switch (hamburguesaStr) {
+        case "Hamburguesa normal":
+          hamburguesas.add(Hamburguesa(
+            nombre: "Hamburguesa normal",
+            pan: "Pan normal",
+            lechuga: "Lechuga fresca",
+            tomate: "Tomate pera",
+            quesoCabra: "Queso de cabra recién cortado",
+            cebolla: "Cebolla llorosa",
+            pepinillos: "Pepinillos",
+            bacon: "Bacon grasiento",
+            carne: "Carne Wagyu",
+            precio: 5.0,
+          ));
+          break;
+
+        case "Hamburguesa vegana":
+          hamburguesas.add(Hamburguesa(
+            nombre: "Hamburguesa vegana",
+            pan: "Pan normal",
+            lechuga: "Lechuga fresca",
+            tomate: "Tomate pera",
+            quesoCabra: null,
+            cebolla: "Cebolla llorosa",
+            pepinillos: "Pepinillos",
+            bacon: "Bacon Vegano reseco",
+            carne: "Carne Vegana de dudosa procedencia",
+            precio: 5.5,
+          ));
+          break;
+
+        case "Hamburguesa sin gluten":
+          hamburguesas.add(Hamburguesa(
+            nombre: "Hamburguesa sin gluten",
+            pan: "Pan sin gluten",
+            lechuga: "Lechuga fresca",
+            tomate: "Tomate pera",
+            quesoCabra: null,
+            cebolla: "Cebolla llorosa",
+            pepinillos: "Pepinillos",
+            bacon: "Bacon sin gluten",
+            carne: "Carne de origen dudoso",
+            precio: 6.0,
+          ));
+          break;
+
+      // Agrega más casos según sea necesario para otros tipos de hamburguesas
+
+        default:
+          throw Exception("Tipo de hamburguesa no válido: $hamburguesaStr");
+      }
+    }
+
+    return hamburguesas;
   }
 
 }

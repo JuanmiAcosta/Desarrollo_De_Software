@@ -15,10 +15,11 @@
 #   end
 # end
 
+
 #config/initializers/cors.rb
 Rails.application.config.middleware.insert_before 0, Rack::Cors do
   allow do
-    origins 'localhost/pedidos'  #cualquier origenm , pero mejor poner aqui el localhost o 127.0.0.1:/tareas (aprox)
+    origins '*'  #cualquier origenm , pero mejor poner aqui el localhost o 127.0.0.1:/tareas (aprox)
     resource '*',
       headers: :any,
       methods: [:get, :post, :patch, :put, :delete, :options, :head]

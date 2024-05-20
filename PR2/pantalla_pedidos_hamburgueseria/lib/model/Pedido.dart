@@ -47,12 +47,13 @@ class Pedido {
 
   Map<String, dynamic> toJson() {
     return {
-      if(id != null) 'id' : id,
-      if (idPedido != null) 'idPedido': idPedido,
-      if (hamburguesas.isNotEmpty) 'hamburguesas': hamburguesas.map((e) => e.toJson()).toList(),
-      'precio': precio,
-      'listo': listo,
-      'usuario' : usuario,
+      'pedido': {
+        if (idPedido != null) 'idPedido': idPedido,
+        'precio': precio,
+        'listo': listo,
+        'usuario' : usuario,
+        if (hamburguesas.isNotEmpty) 'hamburguesas': hamburguesas.map((e) => e.toJson()).toList(),
+      }
     };
   }
 
@@ -62,7 +63,7 @@ class Pedido {
 
   void aniadeHamburguesa(Hamburguesa hamburguesa) {
     hamburguesas.add(hamburguesa);
-    precio += hamburguesa.getPrecio()!;
+    print("ANIADIENDO HAMBURGUESA");
   }
 
   double getPrecio(){

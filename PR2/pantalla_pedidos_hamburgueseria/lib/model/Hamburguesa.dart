@@ -106,7 +106,7 @@ class Hamburguesa {
       'pepinillos':pepinillos,
       'bacon':bacon,
       'carne':carne,
-      'precio':precio
+      'precio':precio,
     };
   }
 }

@@ -22,7 +22,7 @@ class Cocinero implements Subject {
     _builder = builder;
   }
 
-  Future<void> cocinaPedido(List<String> hamburguesas, BuildContext context) async{
+  void cocinaPedido(List<String> hamburguesas, BuildContext context){
     for (String hamburguesa in hamburguesas) {
       switch (hamburguesa) {
         case "Hamburguesa normal":
@@ -46,12 +46,12 @@ class Cocinero implements Subject {
         default:
           throw Exception("Tipo de hamburguesa no válido");
       }
-      await buildHamburguesa(); // Esperar a que se cocine la hamburguesa actual antes de continuarbuildHamburguesa();
+      buildHamburguesa(); // Esperar a que se cocine la hamburguesa actual antes de continuarbuildHamburguesa();
     }
     notify(context);
   }
 
-  Future<void> buildHamburguesa() async {
+  void buildHamburguesa() {
     status = "Cocinando";
 
     _builder.aniadePan();
@@ -98,10 +98,14 @@ class Cocinero implements Subject {
     for (var notified in observers) {
        notified.update(pedidoActual, context);
     }
-    pedidoActual = Pedido();
+    //pedidoActual = Pedido();
   }
 
   void setPrecioPedido(double precio) {
     this.pedidoActual.precio=precio;
+  }
+
+  void borrarPedidoActual() {
+    pedidoActual = Pedido();
   }
 }

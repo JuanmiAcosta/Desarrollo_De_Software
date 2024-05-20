@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_05_17_140739) do
+ActiveRecord::Schema[7.1].define(version: 2024_05_19_163305) do
   create_table "hamburguesas", force: :cascade do |t|
     t.string "pan"
     t.string "nombre"
@@ -24,6 +24,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_17_140739) do
     t.integer "pedido_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "lechuga"
     t.index ["pedido_id"], name: "index_hamburguesas_on_pedido_id"
   end
 
