@@ -30,7 +30,7 @@ void main() {
       terminalPedidos = TerminalPedidos();
     });
 
-    test('Probando inserción en BD', () async {
+    test('Probando insert en BD', () async {
       cocinero.attach(displayPedidos);
       cocinero = Cocinero.Parametros(normalBuilder);
       cocinero.buildHamburguesa();
@@ -43,6 +43,41 @@ void main() {
       await displayPedidos.agregar(pedidoactual);
       String? idUltimoInsertado = displayPedidos.historial.last.idPedido;
       expect(idUltimoInsertado, pedidoactual.idPedido) ;
+    });
+
+    test('Probando update en BD', () async {
+      cocinero.attach(displayPedidos);
+      cocinero = Cocinero.Parametros(normalBuilder);
+      cocinero.buildHamburguesa();
+      cocinero.cambiaReceta(veganaBuilder);
+      cocinero.buildHamburguesa();
+      cocinero.cambiaReceta(sinGlutenBuilder);
+      cocinero.buildHamburguesa();
+      pedidoactual = cocinero.getPedido();
+      print(pedidoactual.hamburguesas.length);
+      await displayPedidos.agregar(pedidoactual);
+      Pedido? ultimoInsertado = displayPedidos.historial.last;
+      expect(ultimoInsertado.listo, false);
+      await displayPedidos.marcarFinalizado(ultimoInsertado);
+      expect(ultimoInsertado.listo, true);
+    });
+
+    test('Probando eliminar en BD', () async {
+      cocinero.attach(displayPedidos);
+      cocinero = Cocinero.Parametros(normalBuilder);
+      cocinero.buildHamburguesa();
+      cocinero.cambiaReceta(veganaBuilder);
+      cocinero.buildHamburguesa();
+      cocinero.cambiaReceta(sinGlutenBuilder);
+      cocinero.buildHamburguesa();
+      pedidoactual = cocinero.getPedido();
+      print(pedidoactual.hamburguesas.length);
+      await displayPedidos.agregar(pedidoactual);
+      int numPedidos = displayPedidos.historial.length;
+      Pedido? ultimoInsertado = displayPedidos.historial.last;
+      await displayPedidos.eliminar(ultimoInsertado);
+      int numPedidosDespuesEliminar = displayPedidos.historial.length;
+      expect(numPedidos-1, numPedidosDespuesEliminar);
     });
 
   });
